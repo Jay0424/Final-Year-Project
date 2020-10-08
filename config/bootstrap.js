@@ -10,6 +10,11 @@
  */
 
 module.exports.bootstrap = async function() {
+  //Use bcrypt to encrypt pasword
+  sails.bcrypt = require('bcryptjs');
+  const saltRounds = 10;
+  const hash = await sails.bcrypt.hash('123456', saltRounds);
+
 
   // By convention, this is a good place to set up fake data during development.
   //
@@ -26,5 +31,21 @@ module.exports.bootstrap = async function() {
   //   // etc.
   // ]);
   // ```
+
+  //User Sample Data
+  if (await User.count() > 0) {
+    return;
+  }
+
+  await User.createEach([
+    {username:"jay01", password:hash},
+    {username:"jay02", password:hash},
+    {username:"jay03", password:hash},
+    {username:"jay04", password:hash},
+    {username:"jay05", password:hash},
+    {username:"jay06", password:hash},
+    // etc.
+  ]);
+  
 
 };
