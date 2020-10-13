@@ -11,6 +11,11 @@ module.exports = {
         if (req.method == "GET")
             return res.view('user/register');
 
+    },
+
+    login: async function (req, res) {
+        if (req.method == "GET")
+            return res.view('user/login');
 
     }
 
