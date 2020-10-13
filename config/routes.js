@@ -22,6 +22,12 @@ module.exports.routes = {
   // '/': { view: 'pages/homepage' },
 
   '/': { view: 'user/homepage' },
+
+  //Register
+  'GET /user/register': 'UserController.register',
+  'POST /user/register': 'UserController.register',
+
+
   
 
 

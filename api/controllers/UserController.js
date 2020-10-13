@@ -7,8 +7,13 @@
 
 module.exports = {
 
-    
-  
+    register: async function (req, res) {
+        if (req.method == "GET")
+            return res.view('user/register');
+
+
+    }
+
 
 };
 
