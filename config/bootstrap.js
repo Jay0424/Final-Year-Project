@@ -44,6 +44,9 @@ module.exports.bootstrap = async function() {
     {username:"jay04", password:hash},
     {username:"jay05", password:hash},
     {username:"jay06", password:hash},
+    {username:"admin01", password:hash},
+    {username:"admin02", password:hash},
+
     // etc.
   ]);
   
