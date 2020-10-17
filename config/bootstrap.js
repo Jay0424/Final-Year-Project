@@ -38,14 +38,14 @@ module.exports.bootstrap = async function() {
   }
 
   await User.createEach([
-    {username:"jay01", password:hash},
-    {username:"jay02", password:hash},
-    {username:"jay03", password:hash},
-    {username:"jay04", password:hash},
-    {username:"jay05", password:hash},
-    {username:"jay06", password:hash},
-    {username:"admin01", password:hash},
-    {username:"admin02", password:hash},
+    {username:"jay01", password:hash, userrole:"user"},
+    {username:"jay02", password:hash, userrole:"user"},
+    {username:"jay03", password:hash, userrole:"user"},
+    {username:"jay04", password:hash, userrole:"user"},
+    {username:"jay05", password:hash, userrole:"user"},
+    {username:"jay06", password:hash, userrole:"user"},
+    {username:"admin01", password:hash, userrole:"admin"},
+    {username:"admin02", password:hash, userrole:"admin"},
 
     // etc.
   ]);

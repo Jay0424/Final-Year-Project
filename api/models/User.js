@@ -24,12 +24,21 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
     username: {
-      type: "string"
+      type: "string",
+      unique:true,
+      required: true,
     },
     
     password: {
       type: "string"
     },
+
+    userrole: {
+      type: "string",
+      defaultsTo:"user",
+    },
+
+
 
   },
 

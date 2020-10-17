@@ -65,15 +65,29 @@ module.exports = {
 
                 req.session.userid = user.id;
 
+                req.session.userrole = user.userrole;
+
                 sails.log("[Session] ", req.session);
 
                 // return res.ok("Login successfully.");
+                if (req.session.userrole == "admin") {
+                    return res.redirect("/user/adminindex");
+                }
+                else if (req.session.userrole == "user") {
+                    return res.redirect("/user/userindex");
+                }
 
             });
-
-            return res.ok("Login successfully.");
         }
 
+    },
+
+    userindex: async function (req, res) {
+        return res.view('user/userindex');
+    },
+
+    adminindex: async function (req, res) {
+        return res.view('user/adminindex');
     },
 
 
