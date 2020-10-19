@@ -21,21 +21,23 @@ module.exports.routes = {
 
   // '/': { view: 'pages/homepage' },
 
-  '/': { view: 'user/homepage' },
+  //Visitor
+  '/': { view: 'visitor/index' },
 
   //Register
-  'GET /user/register': 'UserController.register',
-  'POST /user/register': 'UserController.register',
+  'GET /visitor/register': 'UserController.register',
+  'POST /visitor/register': 'UserController.register',
 
   //Login
-  'GET /user/login': 'UserController.login',
-  'POST /user/login': 'UserController.login',
+  'GET /visitor/login': 'UserController.login',
+  'POST /visitor/login': 'UserController.login',
+
 
   //Userindex
-  ' /user/userindex': 'UserController.userindex',
+  ' /user/index': 'UserController.userindex',
 
   //Adminindex
-  ' /user/adminindex': 'UserController.adminindex',
+  ' /admin/index': 'UserController.adminindex',
 
 
   

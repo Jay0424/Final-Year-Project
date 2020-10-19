@@ -8,14 +8,19 @@
 module.exports = {
 
     register: async function (req, res) {
+
+        const Swal = require('sweetalert2')
+
         if (req.method == "GET") {
-            return res.view('user/register');
+            return res.view('visitor/register');
         }
 
         var thatAccount = await User.findOne({ username: req.body.username });
 
         if (thatAccount) {
-            return res.status(409).send("The username has been used. Please use other username.");
+            //return res.status(409).send("The username has been used. Please use other username.");
+
+            alert("The username has been used. Please use other username.");
         }
 
         if (req.method == "POST") {
@@ -43,7 +48,7 @@ module.exports = {
 
     login: async function (req, res) {
         if (req.method == "GET") {
-            return res.view('user/login');
+            return res.view('visitor/login');
         }
 
         if (req.method == "POST") {
@@ -71,10 +76,10 @@ module.exports = {
 
                 // return res.ok("Login successfully.");
                 if (req.session.userrole == "admin") {
-                    return res.redirect("/user/adminindex");
+                    return res.redirect("/admin/index");
                 }
                 else if (req.session.userrole == "user") {
-                    return res.redirect("/user/userindex");
+                    return res.redirect("/user/index");
                 }
 
             });
@@ -89,19 +94,16 @@ module.exports = {
             if (err) return res.serverError(err);
 
             return res.redirect("/");
-            // return res.redirect("/apartment/visitorindex")
 
         });
     },
 
-
-
     userindex: async function (req, res) {
-        return res.view('user/userindex');
+        return res.view('user/index');
     },
 
     adminindex: async function (req, res) {
-        return res.view('user/adminindex');
+        return res.view('admin/index');
     },
 
 

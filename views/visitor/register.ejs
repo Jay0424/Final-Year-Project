@@ -1,0 +1,68 @@
+<body onload="pageLoaded()">
+    <nav>
+        <a class="logo disable" href="/">3D CV</a>
+        <ul>
+            <li><a href="#">User Guide</a></li>
+            <li><a href="#">CV Template</a></li>
+            <li><a class="nav-button" href="/visitor/register">Register</a></li>
+            <li><a class="nav-button" href="/visitor/login">Login</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2 class="intro">Register</h2>
+        <form action="/visitor/register" method="POST">
+            <div class="form-group row">
+                <div class="col-xl-12 col-form-label">
+                    <label>Username:</label>
+                    <input type="text" class="form-control" name="username" id="username"
+                        placeholder="Enter your username" required>
+
+                </div>
+
+                <div class="col-xl-12 col-form-label">
+                    <label>Password:</label>
+                    <input type="password" class="form-control" name="password" placeholder="Enter your password"
+                        required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary center">Submit</button>
+        </form>
+    </div>
+
+</body>
+
+<script>
+
+    function validation() {
+        var register = document.getElementById("username").value;
+
+        var thatUser = await User.findOne({ username: register });
+
+        if (thatUser) {
+            alert(
+                "The username is already used"
+            )
+
+        }
+    }
+
+    function btn1Clicked(elem) {
+
+
+
+        Swal.fire({
+            title: 'Error!',
+            text: 'Do you want to continue',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+        })
+
+
+    }
+
+
+
+
+
+</script>
