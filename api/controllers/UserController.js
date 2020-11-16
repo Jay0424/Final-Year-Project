@@ -5,11 +5,10 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
+
 module.exports = {
 
     register: async function (req, res) {
-
-        const Swal = require('sweetalert2')
 
         if (req.method == "GET") {
             return res.view('visitor/register');
@@ -18,9 +17,8 @@ module.exports = {
         var thatAccount = await User.findOne({ username: req.body.username });
 
         if (thatAccount) {
-            //return res.status(409).send("The username has been used. Please use other username.");
+            return res.status(409).send("The username has been used. Please use other username.");
 
-            alert("The username has been used. Please use other username.");
         }
 
         if (req.method == "POST") {
@@ -99,7 +97,30 @@ module.exports = {
     },
 
     userindex: async function (req, res) {
+
         return res.view('user/index');
+
+    },
+
+
+
+    userbasic: async function (req, res) {
+        if (req.method == "GET") {
+            return res.view('user/basic')
+        }
+        
+        if (req.method == "POST") {
+            {
+                await User.update(req.session.userid).set({
+                    name: req.body.name,
+                    email: req.body.email,
+                    phoneno: req.body.phoneno,
+
+                }).fetch();
+            }
+
+            return res.redirect('/user/index');
+        }
     },
 
     adminindex: async function (req, res) {

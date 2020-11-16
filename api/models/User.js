@@ -38,6 +38,24 @@ module.exports = {
       defaultsTo:"user",
     },
 
+    name:{
+      type:"string",
+      defaultsTo:"",
+    },
+
+    email:{
+      type:"string",
+      defaultsTo:"",
+    },
+
+    phoneno:{
+      type:"string",
+      defaultsTo:"",
+    },
+
+
+
+
 
 
   },

@@ -11,10 +11,10 @@
 
     <div class="container">
         <h2 class="intro">Register</h2>
-        <form action="/visitor/register" method="POST">
+        <form action="/visitor/register" method="POST" onsubmit="return validateForm()">
             <div class="form-group row">
-                <div class="col-xl-12 col-form-label">
-                    <label>Username:</label>
+                <div class="col-xl-12 col-form-label center">
+                    <label >Username:</label>
                     <input type="text" class="form-control" name="username" id="username"
                         placeholder="Enter your username" required>
 
@@ -32,31 +32,25 @@
 
 </body>
 
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="sweetalert2.all.min.js"></script>
 <script>
 
-    function validation() {
-        var register = document.getElementById("username").value;
-
-        var thatUser = await User.findOne({ username: register });
-
-        if (thatUser) {
-            alert(
-                "The username is already used"
-            )
-
-        }
+    function validateForm() {
+        alert("User Registered Successfully");
+        return true;
     }
 
-    function btn1Clicked(elem) {
+    function validateForm() {
+        var register = document.getElementById("username").value;
 
+        var thatAccount = await User.findOne({ username: register });
 
-
-        Swal.fire({
-            title: 'Error!',
-            text: 'Do you want to continue',
-            icon: 'error',
-            confirmButtonText: 'Cool'
-        })
+        if (thatAccount) {
+            alert("The username is already used");
+            return false;
+        }
 
 
     }

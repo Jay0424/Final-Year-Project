@@ -35,6 +35,8 @@ module.exports.routes = {
 
   //Userindex
   ' /user/index': 'UserController.userindex',
+  'GET /user/basic': 'UserController.userbasic',
+  'POST /user/basic': 'UserController.userbasic',
 
   //Adminindex
   ' /admin/index': 'UserController.adminindex',

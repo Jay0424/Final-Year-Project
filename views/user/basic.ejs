@@ -1,0 +1,39 @@
+<body onload="pageLoaded()">
+
+    <nav>
+        <a class="logo disable" href="/">3D CV</a>
+        <ul>
+            <li><a href="#">User Guide</a></li>
+            <li><a href="#">CV Template</a></li>
+            <li><a class="nav-button" href="/user/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2 class="intro">Enter your basic information</h2>
+        <form action="/user/basic" method="POST">
+            <div class="form-group row">
+                <div class="col-xl-12 col-form-label center">
+                    <label>Name:</label>
+                    <input type="text" class="form-control" placeholder="Enter your name" name="name" required>
+
+                </div>
+
+                <div class="col-xl-12 col-form-label center">
+                    <label>Email:</label>
+                    <input type="email" class="form-control" placeholder="Enter your email" name="email" required>
+                </div>
+
+                <div class="col-xl-12 col-form-label center">
+                    <label>Phone number:</label>
+                    <input type="text" class="form-control" placeholder="Enter your phone number" name="phoneno" required>
+                </div>
+
+
+
+            </div>
+            <button type="submit" class="btn btn-primary center">Next</button>
+        </form>
+    </div>
+
+</body>
