@@ -102,6 +102,15 @@ module.exports = {
 
     },
 
+    userpapercv: async function (req, res) {
+        var thatUser=await User.findOne(req.session.userid);
+
+        if (!thatUser) return res.notFound();
+
+        return res.view('user/papercv', {user: thatUser});
+
+    },
+
 
 
     userbasic: async function (req, res) {
