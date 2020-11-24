@@ -1,8 +1,60 @@
-<body class="papercv">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+    .papercv{
+      background-color: white;
+      background-image:none;
+    }
+
+    .pmain{
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+    }
+
+    .pcontent{
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+    }
+
+    .pcenter{
+      display:flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phr{
+        height:2px;
+        border-width:0;
+        color:gray;
+        background-color:gray
+    }
+
+
+
+</style>
+
+<body class="papercv" >
     <div class="container">
-        <h2 class="center">Paper CV</h2>
-        <h2>Name: <%=user.name%></h2>
-        <h2>Email: <%=user.email%></h2>
-        <h2>Phone number: <%=user.phoneno%></h2>
+        <br>
+        <h2 class="pmain pcenter"><%=user.name%></h2>
+        <h2 class="pmain pcenter">Email:<%=user.email%></h2>
+        <h2 class="pmain pcenter">Phone number:<%=user.phoneno%></h2>
+        <hr class="phr">
+        <h2 class="pmain">Summary</h2>
+        <h2 class="pcontent">Experienced Human Resources Manager with over 5 years of experience.</h2>
+        <hr class="phr">
+        <h2 class="pmain">Education</h2>
+        <h2 class="pcontent">Experienced Human Resources Manager with over 5 years of experience.</h2>
+        <hr class="phr">
+        <h2 class="pmain">Skills</h2>
+        <h2 class="pcontent">Experienced Human Resources Manager with over 5 years of experience.</h2>
+        <hr class="phr">
+        <h2 class="pmain">Work Experiences</h2>
+        <h2 class="pcontent">Experienced Human Resources Manager with over 5 years of experience.</h2>
+        <hr class="phr">
+        <h2 class="pmain">Projects</h2>
+        <h2 class="pcontent">Experienced Human Resources Manager with over 5 years of experience.</h2>
+        <hr class="phr">        
     </div>
 </body>
