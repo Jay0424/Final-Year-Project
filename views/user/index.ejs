@@ -4,7 +4,7 @@
 <body onload="pageLoaded()">
 
     <nav>
-        <a class="logo disable" href="/">3D CV</a>
+        <a class="logo disable" href="/user/index">3D CV</a>
         <ul>
             <li><a href="#">User Guide</a></li>
             <li><a href="#">CV Template</a></li>
@@ -25,12 +25,13 @@
                 View Digital CV</button>
         </div>
 
-        <div style="float: right;">
-            <lottie-player class="ani" src="https://assets10.lottiefiles.com/packages/lf20_ycbVE1.json" background="transparent"
-                speed="1" style="width: 400px; height: 400px;" loop autoplay></lottie-player>
-        </div>
 
         <div class="tab">
+            <div style="float: right;">
+                <lottie-player class="ani" src="https://assets10.lottiefiles.com/packages/lf20_ycbVE1.json"
+                    background="transparent" speed="1" style="width: 400px; height: 400px;" loop autoplay>
+                </lottie-player>
+            </div>
             <h3><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Reminders:</h3>
 
             <br>
@@ -52,17 +53,47 @@
 
 
         <div class="tab">
-            View Paper CV
-            View Paper CV
-            View Paper CV
-            View Paper CV
+            <div style="float: right;">
+                <lottie-player class="ani" src="https://assets7.lottiefiles.com/packages/lf20_d0KDSI.json" background="transparent"
+                    speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+            </div>
+            <h3><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Reminders:</h3>
+
+            <br>
+            <h4>1. Paper CV will be displayed in the new page</h4>
+            <br>
+            <h4>2. Edit informaction in the account in case it has wrong informaction</h4>
+            <br>
+            <h4>3. Right click of your mouse will display the print function</h4>
+            <br>
+            <h4>4. Press ctrl+p to print the papercv</h4>
+            <br>
+
+            <button id="create-button" type="submit" class="btn btn-primary center"
+                onclick=" window.open('/user/papercv','_blank')" target="_blank">View Paper CV</button>
+
         </div>
 
         <div class="tab">
-            View Digital CV
-            View Digital CV
-            View Digital CV
-            View Digital CV
+            <div style="float: right;">
+                <lottie-player  class="ani" src="https://assets3.lottiefiles.com/packages/lf20_huzedm21.json"
+                    background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
+                </lottie-player>
+            </div>
+
+            <h3><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Reminders:</h3>
+
+            <br>
+            <h4>1. A website of Didgital CV will be displayed in the new page</h4>
+            <br>
+            <h4>2. Edit informaction in the account in case it has wrong informaction</h4>
+            <br>
+            <h4>3. Keep the link privately as it can be accessed by public</h4>
+            <br>
+            <h4>4. The website link can be used for interview</h4>
+            <br>
+
+            <button id="create-button" type="submit" class="btn btn-primary center">View Digital CV</button>
         </div>
 
         <!-- <form action="/user/basic" method="GET">
