@@ -23,6 +23,27 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
+    school: {
+      type: "string"
+    },
+
+    syear:{
+      type:"number"
+    },
+
+    nyear:{
+      type:"number"
+    },
+
+    certification:{
+      type:"string"
+    },
+
+    EduownBy:{
+      collection:"User",
+      via:"ownEdu"
+    }
+
   },
 
 };

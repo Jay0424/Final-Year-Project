@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 <body onload="pageLoaded()">
 
     <nav>
@@ -9,9 +12,60 @@
         </ul>
     </nav>
 
-    <div class="container">
-        <h2 class="intro">Menu</h2>
-        <form action="/user/basic" method="GET">
+
+    <!-- <h2 class="intro">Menu</h2> -->
+
+    <div class="menubar">
+
+        <div class="btnbar">
+
+            <button onclick="showTab(0)"><i class="fa fa-gavel" aria-hidden="true"></i>Create CV</button>
+            <button onclick="showTab(1)"><i class="fa fa-id-card-o" aria-hidden="true"></i>View Paper CV</button>
+            <button onclick="showTab(2)"><i class="fa fa-desktop" aria-hidden="true"></i>
+                View Digital CV</button>
+        </div>
+
+        <div style="float: right;">
+            <lottie-player class="ani" src="https://assets10.lottiefiles.com/packages/lf20_ycbVE1.json" background="transparent"
+                speed="1" style="width: 400px; height: 400px;" loop autoplay></lottie-player>
+        </div>
+
+        <div class="tab">
+            <h3><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Reminders:</h3>
+
+            <br>
+            <h4>1. The blank with * must be filled in</h4>
+            <br>
+            <h4>2. Make sure you input the real information</h4>
+            <br>
+            <h4>3. Look at the reminders of every single page</h4>
+            <br>
+            <h4>4. Click the back button to edit information of the previous page</h4>
+            <br>
+            <h4>5. After submitting, you can edit CV in the account</h4>
+            <br>
+            <form action="/user/basic" method="GET">
+                <button id="create-button" type="submit" class="btn btn-primary">Start</button>
+            </form>
+        </div>
+
+
+
+        <div class="tab">
+            View Paper CV
+            View Paper CV
+            View Paper CV
+            View Paper CV
+        </div>
+
+        <div class="tab">
+            View Digital CV
+            View Digital CV
+            View Digital CV
+            View Digital CV
+        </div>
+
+        <!-- <form action="/user/basic" method="GET">
             <button type="submit" class="btn btn-primary center">Create CV</button>
         </form>
 
@@ -25,9 +79,26 @@
 
         <form action="/user/papercv" method="GET">
             <button type="submit" class="btn btn-primary center">View Paper CV</button>
-        </form>
+        </form> -->
 
 
     </div>
 
+
+
 </body>
+
+<script>
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+
+    function showTab(n) {
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        for (i = 0; i < x.length; i++) {
+            if (i != n) {
+                x[i].style.display = "none";
+            }
+        }
+    }
+</script>

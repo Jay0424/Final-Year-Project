@@ -103,11 +103,11 @@ module.exports = {
     },
 
     userpapercv: async function (req, res) {
-        var thatUser=await User.findOne(req.session.userid);
+        var thatUser = await User.findOne(req.session.userid);
 
         if (!thatUser) return res.notFound();
 
-        return res.view('user/papercv', {user: thatUser});
+        return res.view('user/papercv', { user: thatUser });
 
     },
 
@@ -117,7 +117,7 @@ module.exports = {
         if (req.method == "GET") {
             return res.view('user/basic')
         }
-        
+
         if (req.method == "POST") {
             {
                 await User.update(req.session.userid).set({
@@ -128,12 +128,32 @@ module.exports = {
                 }).fetch();
             }
 
-            return res.redirect('/user/index');
+            return res.redirect('/user/edu');
         }
     },
 
     adminindex: async function (req, res) {
         return res.view('admin/index');
+    },
+
+    useredu: async function (req, res) {
+        if (req.method == "GET") {
+            return res.view('user/edu');
+        }
+
+        if (req.method == "POST") {
+            {
+                
+                await Education.create(
+                    {
+                        
+
+                    });
+            }
+
+            return res.redirect('/user/index');
+        }
+
     },
 
 

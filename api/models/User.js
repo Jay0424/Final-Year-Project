@@ -53,6 +53,11 @@ module.exports = {
       defaultsTo:"",
     },
 
+    ownEdu:{
+      collection:"Education",
+      via:"EduownBy"
+    }
+
 
 
 

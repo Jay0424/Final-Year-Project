@@ -1,0 +1,197 @@
+<script defer src="validEdu2.ejs"></script>
+
+
+<body onload="pageLoaded()">
+
+    <nav>
+        <a class="logo disable" href="/">3D CV</a>
+        <ul>
+            <li><a href="#">User Guide</a></li>
+            <li><a href="#">CV Template</a></li>
+            <li><a class="nav-button" href="/user/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2 class="intro">Enter your education</h2>
+        <form action="/user/edu" id="eduform" method="POST"
+            onsubmit="return (validedu1()&&validedu2()&&validedu3()&&validyear2()&&validyear3())">
+            <div class="form-group row">
+
+                <div class="col-xl-4 col-form-label center">
+                    <label>School:</label>
+                    <input type="text" class="form-control" placeholder="Enter school name" name="school1" id="school1"
+                        required>
+                </div>
+
+                <div class="col-xl-4 col-form-label center">
+                    <label>Certification:</label>
+                    <input type="text" class="form-control" placeholder="Enter certification" name="certification1"
+                        id="certification1" required>
+                </div>
+
+                <div class="col-xl-2 col-form-label center">
+                    <label>From:</label>
+                    <input type="number" class="form-control" placeholder="year (start)" name="syear1" id="syear1"
+                        required>
+                </div>
+
+                <div class="col-xl-2 col-form-label center">
+                    <label>To:</label>
+                    <input type="number" class="form-control" placeholder="year (end)" name="eyear1" id="eyear1"
+                        required>
+                </div>
+
+                <div class="col-xl-4 col-form-label center">
+                    <label>School:</label>
+                    <input type="text" class="form-control" placeholder="Enter school name" name="school2" id="school2">
+                </div>
+
+                <div class="col-xl-4 col-form-label center">
+                    <label>Certification:</label>
+                    <input type="text" class="form-control" placeholder="Enter certification" name="certification2"
+                        id="certification2">
+                </div>
+
+                <div class="col-xl-2 col-form-label center">
+                    <label>From:</label>
+                    <input type="number" class="form-control" placeholder="year (start)" name="syear2" id="syear2">
+                </div>
+
+                <div class="col-xl-2 col-form-label center">
+                    <label>To:</label>
+                    <input type="number" class="form-control" placeholder="year (end)" name="eyear2" id="eyear2">
+                </div>
+
+                <div class="col-xl-4 col-form-label center">
+                    <label>School:</label>
+                    <input type="text" class="form-control" placeholder="Enter school name" name="school3" id="school3">
+                </div>
+
+                <div class="col-xl-4 col-form-label center">
+                    <label>Certification:</label>
+                    <input type="text" class="form-control" placeholder="Enter certification" name="certification3"
+                        id="certification3">
+                </div>
+
+                <div class="col-xl-2 col-form-label center">
+                    <label>From:</label>
+                    <input type="number" class="form-control" placeholder="year (start)" name="syear3" id="syear3">
+                </div>
+
+                <div class="col-xl-2 col-form-label center">
+                    <label>To:</label>
+                    <input type="number" class="form-control" placeholder="year (end)" name="eyear3" id="eyear3">
+                </div>
+
+
+            </div>
+            <button type="submit" class="btn btn-primary" style="float:right">Next</button>
+        </form>
+
+        <button onclick="goBack()" style="float:left" class="btn btn-primary">Back to basic</button>
+
+
+    </div>
+
+</body>
+
+<script>
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+
+    function showTab(n) {
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        for (i = 0; i < x.length; i++) {
+            if (i != n) {
+                x[i].style.display = "none";
+            }
+        }
+    }
+
+    function goBack() {
+        window.history.back();
+    }
+
+    function validedu1() {
+        const syear = document.getElementById("syear1").value;
+        const eyear = document.getElementById("eyear1").value;
+        var valid = true;
+        if (eyear < syear) {
+            alert("Make sure the end year is latter or equal to the start year");
+            valid = false;
+        }
+
+        return valid;
+    }
+
+    function validedu2() {
+        const school = document.getElementById("school2");
+        const certification = document.getElementById("certification2");
+        const syear = document.getElementById("syear2");
+        const eyear = document.getElementById("eyear2");
+        var valid = true;
+
+        if (school.value == "" && certification.value == "" && syear.value == "" && eyear.value == "") {
+            valid = true;
+        } else if (school.value != "" && certification.value != "" && syear.value != "" && eyear.value != "") {
+            valid = true;
+        } else {
+            alert("Make sure you enter all the elements of one education record");
+            valid = false;
+        }
+
+
+
+        return valid;
+    }
+
+    function validedu3() {
+        const school = document.getElementById("school3");
+        const certification = document.getElementById("certification3");
+        const syear = document.getElementById("syear3");
+        const eyear = document.getElementById("eyear3");
+        var valid = true;
+
+        if (school.value == "" && certification.value == "" && syear.value == "" && eyear.value == "") {
+            valid = true;
+        } else if (school.value != "" && certification.value != "" && syear.value != "" && eyear.value != "") {
+            valid = true;
+        } else {
+            alert("Make sure you enter all the elements of one education record");
+            valid = false;
+        }
+
+        return valid;
+    }
+
+    function validyear2() {
+        const syear2 = document.getElementById("syear2").value;
+        const eyear2 = document.getElementById("eyear2").value;
+        var valid = true;
+
+        if (eyear2 < syear2) {
+            alert("Make sure the end year is latter or equal to the start year");
+            valid = false;
+
+        }
+
+        return valid;
+    }
+
+    function validyear3() {
+        const syear3 = document.getElementById("syear3").value;
+        const eyear3 = document.getElementById("eyear3").value;
+        var valid = true;
+
+        if (eyear3 < syear3) {
+            alert("Make sure the end year is latter or equal to the start year");
+            valid = false;
+        }
+
+
+        return valid;
+    }
+
+</script>
