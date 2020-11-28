@@ -29,6 +29,14 @@
                     <input type="text" class="form-control" placeholder="Enter your phone number" name="phoneno"
                         required>
                 </div>
+
+                <div class="col-xl-12 col-form-label center" style="height: 300px;">
+                    <label>Summary:</label>
+                    <textarea type="text" class="form-control"
+                        placeholder="Briefly introduce yourself or your previous job experiences, for example: Experienced Human Resources Manager with over 5 years of experience."
+                        name="summary" rows="3" required></textarea>
+                </div>
+
             </div>
             <button type="submit" class="btn btn-primary center">Next</button>
         </form>
@@ -37,7 +45,7 @@
         <button class="btn btn-primary" onclick="showTab(1)">Education</button>
         <button class="btn btn-primary" onclick="showTab(2)">Work Experiences</button>
         <button class="btn btn-primary" onclick="showTab(3)">Skills</button> -->
-        
+
 
         <!-- <div class="tab">
             <br>
@@ -73,20 +81,18 @@
 </body>
 
 <script>
-var currentTab = 0; // Current tab is set to be the first tab (0)
-showTab(currentTab); // Display the current tab
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
 
-function showTab(n){
-    var x=document.getElementsByClassName("tab");
-    x[n].style.display="block";
-    for(i=0;i<x.length;i++)
-    {
-        if(i!=n)
-        {
-            x[i].style.display="none";
+    function showTab(n) {
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        for (i = 0; i < x.length; i++) {
+            if (i != n) {
+                x[i].style.display = "none";
+            }
         }
     }
-}
 
 
 </script>

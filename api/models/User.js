@@ -61,6 +61,10 @@ module.exports = {
     paperstatus:{
         type:"string",
         defaultsTo:"notsubmit"
+    },
+
+    summary:{
+      type:"string",
     }
 
 

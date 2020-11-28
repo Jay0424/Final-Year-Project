@@ -141,6 +141,7 @@ module.exports = {
                     name: req.body.name,
                     email: req.body.email,
                     phoneno: req.body.phoneno,
+                    summary: req.body.summary,
 
                 }).fetch();
             }
