@@ -98,16 +98,33 @@ module.exports = {
 
     userindex: async function (req, res) {
 
-        return res.view('user/index');
+        var thatUser = await User.findOne(req.session.userid);
+        
+        if (thatUser.paperstatus == "submit") {
+            return res.view('user/index2');
+        }
+        else {
+            return res.view('user/index')
+        }
+        
+
+        
 
     },
 
     userpapercv: async function (req, res) {
         var thatUser = await User.findOne(req.session.userid);
 
+        var userid = thatUser.id;
+
+        var educations = await User.findOne(userid).populate("ownEdu", { sort: "syear DESC" });
+
         if (!thatUser) return res.notFound();
 
-        return res.view('user/papercv', { user: thatUser });
+        return res.view('user/papercv', {
+            user: thatUser,
+            education: educations.ownEdu
+        });
 
     },
 
@@ -143,12 +160,49 @@ module.exports = {
 
         if (req.method == "POST") {
             {
-                
-                await Education.create(
-                    {
-                        
+                var thatUser = await User.findOne(req.session.userid);
 
-                    });
+                var edu1 = await Education.create(
+                    {
+                        school: req.body.school1,
+                        certification: req.body.certification1,
+                        syear: req.body.syear1,
+                        eyear: req.body.eyear1,
+                    }).fetch();
+
+                await User.addToCollection(thatUser.id, "ownEdu").members(edu1.id);
+
+
+
+                if (req.body.schoo2 != "" && req.body.certification2 != "" && req.body.syear2 != 0 && req.body.eyear2 != 0) {
+                    var edu2 = await Education.create(
+                        {
+                            school: req.body.school2,
+                            certification: req.body.certification2,
+                            syear: req.body.syear2,
+                            eyear: req.body.eyear2,
+                        }).fetch();
+
+                    await User.addToCollection(thatUser.id, "ownEdu").members(edu2.id);
+                }
+
+                if (req.body.schoo3 != "" && req.body.certification3 != "" && req.body.syear3 != 0 && req.body.eyear3 != 0) {
+                    var edu3 = await Education.create(
+                        {
+                            school: req.body.school3,
+                            certification: req.body.certification3,
+                            syear: req.body.syear3,
+                            eyear: req.body.eyear3,
+                        }).fetch();
+                    await User.addToCollection(thatUser.id, "ownEdu").members(edu3.id);
+                }
+
+                await User.update(thatUser.id).set({
+                    paperstatus:"submit"
+
+                }).fetch();
+
+
             }
 
             return res.redirect('/user/index');

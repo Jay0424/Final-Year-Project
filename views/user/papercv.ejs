@@ -45,7 +45,12 @@
         <h2 class="pcontent">Experienced Human Resources Manager with over 5 years of experience.</h2>
         <hr class="phr">
         <h2 class="pmain">Education</h2>
-        <h2 class="pcontent">Experienced Human Resources Manager with over 5 years of experience.</h2>
+        <% education.forEach(function(model) { %>
+        <h2 class="pcontent"><%=model.school%></h2>
+        <h2 class="pcontent"><%=model.certification%></h2>
+        <h2 class="pcontent"><%=model.syear%></h2>
+        <h2 class="pcontent"><%=model.eyear%></h2>
+        <% }); %>
         <hr class="phr">
         <h2 class="pmain">Skills</h2>
         <h2 class="pcontent">Experienced Human Resources Manager with over 5 years of experience.</h2>

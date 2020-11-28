@@ -56,7 +56,14 @@ module.exports = {
     ownEdu:{
       collection:"Education",
       via:"EduownBy"
+    },
+
+    paperstatus:{
+        type:"string",
+        defaultsTo:"notsubmit"
     }
+
+
 
 
 

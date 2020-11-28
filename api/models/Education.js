@@ -31,7 +31,7 @@ module.exports = {
       type:"number"
     },
 
-    nyear:{
+    eyear:{
       type:"number"
     },
 
