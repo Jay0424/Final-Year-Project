@@ -2,39 +2,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-    .papercv{
-      background-color: white;
-      background-image:none;
+    .papercv {
+        background-color: white;
+        background-image: none;
     }
 
-    .pmain{
+    .pmain {
         font-family: 'Lato', sans-serif;
         font-weight: 700;
     }
 
-    .pcontent{
+    .pcontent {
         font-family: 'Lato', sans-serif;
         font-weight: 400;
     }
 
-    .pcenter{
-      display:flex;
-      align-items: center;
-      justify-content: center;
+    .pcenter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .phr{
-        height:2px;
-        border-width:0;
-        color:gray;
-        background-color:gray
+    .phr {
+        height: 2px;
+        border-width: 0;
+        color: gray;
+        background-color: gray
     }
-
-
-
 </style>
 
-<body class="papercv" >
+<body class="papercv">
     <div class="container">
         <br>
         <h2 class="pmain pcenter"><%=user.name%></h2>
@@ -42,14 +39,20 @@
         <h2 class="pmain pcenter">Phone number:<%=user.phoneno%></h2>
         <hr class="phr">
         <h2 class="pmain">Summary</h2>
-        <h2 class="pcontent">Experienced Human Resources Manager with over 5 years of experience.</h2>
+        <h2 class="pcontent"><%=user.summary%></h2>
         <hr class="phr">
         <h2 class="pmain">Education</h2>
+        <% var i=1%>
         <% education.forEach(function(model) { %>
-        <h2 class="pcontent"><%=model.school%></h2>
+        
+        <h2 class="pcontent"><%=model.syear%>-<%=model.eyear%> <%=model.school%></h2>
         <h2 class="pcontent"><%=model.certification%></h2>
-        <h2 class="pcontent"><%=model.syear%></h2>
-        <h2 class="pcontent"><%=model.eyear%></h2>
+
+        <%if(i!=education.length){%>
+        <br id="oneline">
+        <% i++ %>
+        <%}%>
+        
         <% }); %>
         <hr class="phr">
         <h2 class="pmain">Skills</h2>
@@ -60,6 +63,16 @@
         <hr class="phr">
         <h2 class="pmain">Projects</h2>
         <h2 class="pcontent">Experienced Human Resources Manager with over 5 years of experience.</h2>
-        <hr class="phr">        
+        <hr class="phr">
     </div>
 </body>
+
+<script>
+
+    var education = education;
+
+    if (education.length == 1) {
+        document.getElementById("oneline").style.display = "none";
+    }
+
+</script>

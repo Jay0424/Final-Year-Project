@@ -99,18 +99,23 @@ module.exports = {
     userindex: async function (req, res) {
 
         var thatUser = await User.findOne(req.session.userid);
-        
+
         if (thatUser.paperstatus == "submit") {
             return res.view('user/index2');
         }
         else {
             return res.view('user/index')
         }
-        
-
-        
-
     },
+
+    userindex2: async function (req, res) {
+
+
+        return res.view('user/index2');
+    
+    },
+
+
 
     userpapercv: async function (req, res) {
         var thatUser = await User.findOne(req.session.userid);
@@ -199,7 +204,7 @@ module.exports = {
                 }
 
                 await User.update(thatUser.id).set({
-                    paperstatus:"submit"
+                    paperstatus: "submit"
 
                 }).fetch();
 
