@@ -112,7 +112,7 @@ module.exports = {
 
 
         return res.view('user/index2');
-    
+
     },
 
 
@@ -124,11 +124,14 @@ module.exports = {
 
         var educations = await User.findOne(userid).populate("ownEdu", { sort: "syear DESC" });
 
+        var works = await User.findOne(userid).populate("ownWork", { sort: "start DESC" });
+
         if (!thatUser) return res.notFound();
 
         return res.view('user/papercv', {
             user: thatUser,
-            education: educations.ownEdu
+            education: educations.ownEdu,
+            work:works.ownWork,
         });
 
     },
@@ -211,11 +214,38 @@ module.exports = {
 
             }
 
-            return res.redirect('/user/index');
+            return res.redirect('/user/work');
         }
 
     },
 
+    userwork: async function (req, res) {
+        if (req.method == "GET") {
+            return res.view('user/work');
+        }
 
-};
+        if (req.method == "POST") {
+            {
+                var thatUser = await User.findOne(req.session.userid);
+
+                var work1 = await Work.create(
+                    {
+                        company: req.body.company1,
+                        job: req.body.job1,
+                        start: req.body.start1,
+                        end: req.body.end1,
+                        description:req.body.description1,
+                    }).fetch();
+
+                await User.addToCollection(thatUser.id, "ownWork").members(work1.id);
+            }
+        }
+
+        return res.redirect('/user/index2');
+    },
+
+
+
+
+}
 

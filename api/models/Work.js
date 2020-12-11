@@ -1,5 +1,5 @@
 /**
- * User.js
+ * Work.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -22,61 +22,30 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-
-    username: {
-      type: "string",
-      unique:true,
-      required: true,
-    },
-    
-    password: {
+    company: {
       type: "string"
     },
 
-    userrole: {
-      type: "string",
-      defaultsTo:"user",
+    job: {
+      type: "string"
     },
 
-    name:{
-      type:"string",
-      defaultsTo:"",
+    start:{
+      type: "string"
     },
 
-    email:{
-      type:"string",
-      defaultsTo:"",
+    end:{
+      type: "string"
     },
 
-    phoneno:{
-      type:"string",
-      defaultsTo:"",
+    description:{
+      type: "string"
     },
 
-    ownEdu:{
-      collection:"Education",
-      via:"EduownBy"
-    },
-
-    ownWork:{
-      collection:"Work",
-      via:"WorkownBy"
-    },
-
-    paperstatus:{
-        type:"string",
-        defaultsTo:"notsubmit"
-    },
-
-    summary:{
-      type:"string",
+    WorkownBy:{
+      collection:"User",
+      via:"ownWork"
     }
-
-
-
-
-
-
 
 
   },

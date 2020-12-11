@@ -41,6 +41,8 @@ module.exports.routes = {
   'POST /user/basic': 'UserController.userbasic',
   'GET /user/edu': 'UserController.useredu',
   'POST /user/edu': 'UserController.useredu',
+  'GET /user/work': 'UserController.userwork',
+  'POST /user/work': 'UserController.userwork',
 
   //Adminindex
   ' /admin/index': 'UserController.adminindex',

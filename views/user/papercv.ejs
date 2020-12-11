@@ -41,6 +41,8 @@
         <h2 class="pmain">Summary</h2>
         <h2 class="pcontent"><%=user.summary%></h2>
         <hr class="phr">
+
+
         <h2 class="pmain">Education</h2>
         <% var i=1%>
         <% education.forEach(function(model) { %>
@@ -52,8 +54,24 @@
         <br id="oneline">
         <% i++ %>
         <%}%>
-        
         <% }); %>
+        
+        <hr class="phr">
+
+        <h2 class="pmain">Work Experience</h2>
+        <% var j=1%>
+        <% work.forEach(function(model) { %>
+        
+        <h2 class="pcontent"> <%=model.job%>/<%=model.company%> (<%=model.start%> to <%=model.end%>)</h2>
+        <h2 class="pcontent"><%=model.description%></h2>
+
+        <%if(j!=work.length){%>
+        <br id="oneline">
+        <% j++ %>
+        <%}%>
+        <% }); %>
+
+
         <hr class="phr">
         <h2 class="pmain">Skills</h2>
         <h2 class="pcontent">Experienced Human Resources Manager with over 5 years of experience.</h2>
