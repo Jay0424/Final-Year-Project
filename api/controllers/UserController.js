@@ -131,7 +131,7 @@ module.exports = {
         return res.view('user/papercv', {
             user: thatUser,
             education: educations.ownEdu,
-            work:works.ownWork,
+            work: works.ownWork,
         });
 
     },
@@ -183,7 +183,7 @@ module.exports = {
 
 
 
-                if (req.body.schoo2 != "" && req.body.certification2 != "" && req.body.syear2 != 0 && req.body.eyear2 != 0) {
+                if (req.body.school2 != "" && req.body.certification2 != "" && req.body.syear2 != 0 && req.body.eyear2 != 0) {
                     var edu2 = await Education.create(
                         {
                             school: req.body.school2,
@@ -195,7 +195,7 @@ module.exports = {
                     await User.addToCollection(thatUser.id, "ownEdu").members(edu2.id);
                 }
 
-                if (req.body.schoo3 != "" && req.body.certification3 != "" && req.body.syear3 != 0 && req.body.eyear3 != 0) {
+                if (req.body.school3 != "" && req.body.certification3 != "" && req.body.syear3 != 0 && req.body.eyear3 != 0) {
                     var edu3 = await Education.create(
                         {
                             school: req.body.school3,
@@ -206,10 +206,10 @@ module.exports = {
                     await User.addToCollection(thatUser.id, "ownEdu").members(edu3.id);
                 }
 
-                await User.update(thatUser.id).set({
-                    paperstatus: "submit"
+                // await User.update(thatUser.id).set({
+                //     paperstatus: "submit"
 
-                }).fetch();
+                // }).fetch();
 
 
             }
@@ -234,10 +234,38 @@ module.exports = {
                         job: req.body.job1,
                         start: req.body.start1,
                         end: req.body.end1,
-                        description:req.body.description1,
+                        description: req.body.description1,
                     }).fetch();
 
                 await User.addToCollection(thatUser.id, "ownWork").members(work1.id);
+
+                if (req.body.company2 != "" && req.body.job2 != "" && req.body.start2 != 0 && req.body.end2 != 0 && req.body.description2 != 0) {
+                    var work2 = await Work.create(
+                        {
+                            company: req.body.company2,
+                            job: req.body.job2,
+                            start: req.body.start2,
+                            end: req.body.end2,
+                            description: req.body.description2,
+                        }).fetch();
+
+                    await User.addToCollection(thatUser.id, "ownWork").members(work2.id);
+                }
+
+                if (req.body.company3 != "" && req.body.job3 != "" && req.body.start3 != 0 && req.body.end3 != 0 && req.body.description3 != 0) {
+                    var work3 = await Work.create(
+                        {
+                            company: req.body.company3,
+                            job: req.body.job2,
+                            start: req.body.start3,
+                            end: req.body.end3,
+                            description: req.body.description3,
+                        }).fetch();
+
+                    await User.addToCollection(thatUser.id, "ownWork").members(work3.id);
+                }
+
+
             }
         }
 

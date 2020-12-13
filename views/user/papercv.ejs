@@ -10,11 +10,25 @@
     .pmain {
         font-family: 'Lato', sans-serif;
         font-weight: 700;
+        font-size:30px;
+    }
+
+    .ptitle {
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        font-size: 25px;
     }
 
     .pcontent {
         font-family: 'Lato', sans-serif;
         font-weight: 400;
+        font-size: 23px;
+    }
+
+    .pdescription {
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        font-size: 20px;
     }
 
     .pcenter {
@@ -29,6 +43,7 @@
         color: gray;
         background-color: gray
     }
+
 </style>
 
 <body class="papercv">
@@ -37,9 +52,12 @@
         <h2 class="pmain pcenter"><%=user.name%></h2>
         <h2 class="pmain pcenter">Email:<%=user.email%></h2>
         <h2 class="pmain pcenter">Phone number:<%=user.phoneno%></h2>
+
         <hr class="phr">
+
         <h2 class="pmain">Summary</h2>
         <h2 class="pcontent"><%=user.summary%></h2>
+        
         <hr class="phr">
 
 
@@ -47,8 +65,9 @@
         <% var i=1%>
         <% education.forEach(function(model) { %>
         
-        <h2 class="pcontent"><%=model.syear%>-<%=model.eyear%> <%=model.school%></h2>
-        <h2 class="pcontent"><%=model.certification%></h2>
+        <h2 class="ptitle"><%=model.certification%></h2>
+        <h2 class="pcontent"><%=model.school%></h2>
+        <h2 class="pcontent"><%=model.syear%>-<%=model.eyear%></h2>
 
         <%if(i!=education.length){%>
         <br id="oneline">
@@ -62,9 +81,11 @@
         <% var j=1%>
         <% work.forEach(function(model) { %>
         
-        <h2 class="pcontent"> <%=model.job%>/<%=model.company%> (<%=model.start%> to <%=model.end%>)</h2>
-        <h2 class="pcontent"><%=model.description%></h2>
+        <h2 class="ptitle"> <%=model.job%></h2>
+        <h2 class="pcontent"><%=model.company%> / <%=model.start%> - <%=model.end%></h2>
+        <h2 class="pdescription"><%=model.description%></h2>
 
+    
         <%if(j!=work.length){%>
         <br id="oneline">
         <% j++ %>
