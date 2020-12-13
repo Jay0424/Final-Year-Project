@@ -1,0 +1,131 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<body onload="pageLoaded()">
+
+    <nav>
+        <a class="logo disable" href="/user/index">3D CV</a>
+        <ul>
+            <li><a href="#">User Guide</a></li>
+            <li><a href="#">CV Template</a></li>
+            <li><a class="nav-button" href="/user/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <h2 class="intro"> <i class="fa fa-star" aria-hidden="true" style="padding-right: 20px;"></i>Skills</h2>
+        <h4>Example: (Please separate the skills with symbol comma "," )</h4>
+        <h4>Type: Microsoft Office / Skills: Word, Excel, PowerPoint</h4>
+        <h4>Type: Personal skill / Skills: Leadership, Good communication</h4>
+
+
+        <form action="/user/skill" id="skillform" method="POST"
+            onsubmit="return (validskill1()&&validskill2())">
+            <div class="form-group row">
+
+                <div class="col-xl-3 col-form-label center">
+                    <label>Type:</label>
+                    <input type="text" class="form-control" placeholder="Enter the type of skill" name="type1"
+                        id="type1" required>
+                </div>
+
+                <div class="col-xl-9 col-form-label center">
+                    <label>Skills:</label>
+                    <input type="text" class="form-control"
+                        placeholder="Enter all the skills separate with symbol comma ',' " name="content1" id="content1"
+                        required>
+                </div>
+
+                <div class="col-xl-3 col-form-label center">
+                    <label>Type:</label>
+                    <input type="text" class="form-control" placeholder="Enter the type of skill" name="type2"
+                        id="type2">
+                </div>
+
+                <div class="col-xl-9 col-form-label center">
+                    <label>Skills:</label>
+                    <input type="text" class="form-control"
+                        placeholder="Enter all the skills separate with symbol comma ',' " name="content2"
+                        id="content2">
+                </div>
+
+                <div class="col-xl-3 col-form-label center">
+                    <label>Type:</label>
+                    <input type="text" class="form-control" placeholder="Enter the type of skill" name="type3"
+                        id="type3">
+                </div>
+
+                <div class="col-xl-9 col-form-label center">
+                    <label>Skills:</label>
+                    <input type="text" class="form-control"
+                        placeholder="Enter all the skills separate with symbol comma ',' " name="content3"
+                        id="content3">
+                </div>
+
+
+            </div>
+            <button type="submit" class="btn btn-primary" style="float:right">Next</button>
+        </form>
+
+        <button onclick="goBack()" style="float:left" class="btn btn-primary">Back to Work Experience</button>
+
+
+    </div>
+
+</body>
+
+<script>
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+
+    function showTab(n) {
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        for (i = 0; i < x.length; i++) {
+            if (i != n) {
+                x[i].style.display = "none";
+            }
+        }
+    }
+
+    function goBack() {
+        window.history.back();
+    }
+
+    function validskill2() {
+        const type = document.getElementById("type2");
+        const content = document.getElementById("content2");
+        
+        var valid = true;
+
+        if (type.value == "" && content.value == "") {
+            valid = true;
+        } else if (type.value != "" && content.value != "") {
+            valid = true;
+        } else {
+            alert("Make sure you enter all the elements of one skill record");
+            valid = false;
+        }
+        return valid;
+    }
+
+    function validskill3() {
+        const type = document.getElementById("type3");
+        const content = document.getElementById("content3");
+        
+        var valid = true;
+
+        if (type.value == "" && content.value == "") {
+            valid = true;
+        } else if (type.value != "" && content.value != "") {
+            valid = true;
+        } else {
+            alert("Make sure you enter all the elements of one skill record");
+            valid = false;
+        }
+        return valid;
+    }
+
+
+</script>

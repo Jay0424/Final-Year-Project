@@ -38,13 +38,13 @@
 
                 <div class="col-xl-2 col-form-label center">
                     <label>From:</label>
-                    <input type="number" class="form-control" placeholder="year (start)" name="syear1" id="syear1"
+                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (start)" name="syear1" id="syear1"
                         required>
                 </div>
 
                 <div class="col-xl-2 col-form-label center">
                     <label>To:</label>
-                    <input type="number" class="form-control" placeholder="year (end)" name="eyear1" id="eyear1"
+                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (end)" name="eyear1" id="eyear1"
                         required>
                 </div>
 
@@ -61,12 +61,12 @@
 
                 <div class="col-xl-2 col-form-label center">
                     <label>From:</label>
-                    <input type="number" class="form-control" placeholder="year (start)" name="syear2" id="syear2">
+                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (start)" name="syear2" id="syear2">
                 </div>
 
                 <div class="col-xl-2 col-form-label center">
                     <label>To:</label>
-                    <input type="number" class="form-control" placeholder="year (end)" name="eyear2" id="eyear2">
+                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (end)" name="eyear2" id="eyear2">
                 </div>
 
                 <div class="col-xl-4 col-form-label center">
@@ -82,12 +82,12 @@
 
                 <div class="col-xl-2 col-form-label center">
                     <label>From:</label>
-                    <input type="number" class="form-control" placeholder="year (start)" name="syear3" id="syear3">
+                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (start)" name="syear3" id="syear3">
                 </div>
 
                 <div class="col-xl-2 col-form-label center">
                     <label>To:</label>
-                    <input type="number" class="form-control" placeholder="year (end)" name="eyear3" id="eyear3">
+                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (end)" name="eyear3" id="eyear3">
                 </div>
 
 

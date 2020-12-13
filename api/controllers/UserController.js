@@ -269,8 +269,14 @@ module.exports = {
             }
         }
 
-        return res.redirect('/user/index2');
+        return res.redirect('/user/skill');
     },
+
+    userskill: async function (req, res) {
+        if (req.method == "GET") {
+            return res.view('user/skill');
+        }
+    }
 
 
 

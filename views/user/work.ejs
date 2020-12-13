@@ -41,7 +41,7 @@
 
                 <div class="col-xl-2 col-form-label center">
                     <label>From:</label>
-                    <input type="month" class="form-control" name="start1" id="start1" required>
+                    <input type="month" class="form-control" min="1900-01" name="start1" id="start1" required>
                 </div>
 
                 <div class="col-xl-2 col-form-label center">
@@ -140,6 +140,14 @@
         window.history.back();
     }
 
+    function yearmonth(){
+        var yearmonth="";
+        var year=(new Date().getFullYear()).toString();
+        var month=(new Date().getMonth()).toString();
+        yearmonth=year+"-"+month;
+        document.getElementById("start1").value= yearmonth;
+    }
+
     function validwork2() {
         const company = document.getElementById("company2");
         const job = document.getElementById("job2");
@@ -153,7 +161,7 @@
         } else if (company.value != "" && job.value != "" && start.value != "" && end.value != "" && description.value != "") {
             valid = true;
         } else {
-            alert("Make sure you enter all the elements of one job record 2");
+            alert("Make sure you enter all the elements of one job record");
             valid = false;
         }
         return valid;
@@ -172,7 +180,7 @@
         } else if (company.value != "" && job.value != "" && start.value != "" && end.value != "" && description.value != "") {
             valid = true;
         } else {
-            alert("Make sure you enter all the elements of one job record 3");
+            alert("Make sure you enter all the elements of one job record");
             valid = false;
         }
         return valid;
