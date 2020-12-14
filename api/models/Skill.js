@@ -31,6 +31,13 @@ module.exports = {
       type:"string"
     },
 
+    SkillownBy:{
+      collection:"User",
+      via:"ownSkill"
+    }
+
+
+
   },
 
 };

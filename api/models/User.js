@@ -63,6 +63,11 @@ module.exports = {
       via:"WorkownBy"
     },
 
+    ownSkill:{
+      collection:"Skill",
+      via:"SkillownBy"
+    },
+
     paperstatus:{
         type:"string",
         defaultsTo:"notsubmit"

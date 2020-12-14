@@ -126,12 +126,15 @@ module.exports = {
 
         var works = await User.findOne(userid).populate("ownWork", { sort: "start DESC" });
 
+        var skills = await User.findOne(userid).populate("ownSkill", { sort: "id ASC" });
+
         if (!thatUser) return res.notFound();
 
         return res.view('user/papercv', {
             user: thatUser,
             education: educations.ownEdu,
             work: works.ownWork,
+            skill: skills.ownSkill,
         });
 
     },
@@ -276,6 +279,47 @@ module.exports = {
         if (req.method == "GET") {
             return res.view('user/skill');
         }
+
+        if (req.method == "POST") {
+            {
+                var thatUser = await User.findOne(req.session.userid);
+
+                var skill1 = await Skill.create(
+                    {
+                        type: req.body.type1,
+                        content: req.body.content1,
+
+                    }).fetch();
+
+                await User.addToCollection(thatUser.id, "ownSkill").members(skill1.id);
+
+                if (req.body.type2 != "" && req.body.content2) {
+                    var skill2 = await Skill.create(
+                        {
+                            type: req.body.type2,
+                            content: req.body.content2,
+                        }).fetch();
+
+                    await User.addToCollection(thatUser.id, "ownSkill").members(skill2.id);
+                }
+
+                if (req.body.type3 != "" && req.body.content3) {
+                    var skill3 = await Skill.create(
+                        {
+                            type: req.body.type3,
+                            content: req.body.content3,
+                        }).fetch();
+
+                    await User.addToCollection(thatUser.id, "ownSkill").members(skill3.id);
+                }
+
+
+            }
+        }
+
+        return res.redirect('/user/index2');
+
+
     }
 
 
