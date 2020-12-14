@@ -46,7 +46,7 @@
 
                 <div class="col-xl-2 col-form-label center">
                     <label>To:</label>
-                    <input type="month" class="form-control" name="end1" id="end1" required>
+                    <input type="month" class="form-control" min="1900-01" name="end1" id="end1" required>
                 </div>
 
                 <div class="col-xl-12 col-form-label center">
@@ -68,12 +68,12 @@
 
                 <div class="col-xl-2 col-form-label center">
                     <label>From:</label>
-                    <input type="month" class="form-control" name="start2" id="start2">
+                    <input type="month" class="form-control" min="1900-01" name="start2" id="start2">
                 </div>
 
                 <div class="col-xl-2 col-form-label center">
                     <label>To:</label>
-                    <input type="month" class="form-control" name="end2" id="end2">
+                    <input type="month" class="form-control" min="1900-01" name="end2" id="end2">
                 </div>
 
                 <div class="col-xl-12 col-form-label center">
@@ -95,12 +95,12 @@
 
                 <div class="col-xl-2 col-form-label center">
                     <label>From:</label>
-                    <input type="month" class="form-control" name="start3" id="start3">
+                    <input type="month" class="form-control" min="1900-01" name="start3" id="start3">
                 </div>
 
                 <div class="col-xl-2 col-form-label center">
                     <label>To:</label>
-                    <input type="month" class="form-control" name="end3" id="end3">
+                    <input type="month" class="form-control" min="1900-01" name="end3" id="end3">
                 </div>
 
                 <div class="col-xl-12 col-form-label center">
@@ -117,12 +117,13 @@
 
         <button onclick="goBack()" style="float:left" class="btn btn-primary">Back to Education</button>
 
-
     </div>
 
 </body>
 
 <script>
+
+    start1.max = new Date().toISOString().split("T")[0];
     var currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
 
@@ -140,12 +141,14 @@
         window.history.back();
     }
 
-    function yearmonth(){
-        var yearmonth="";
-        var year=(new Date().getFullYear()).toString();
-        var month=(new Date().getMonth()).toString();
-        yearmonth=year+"-"+month;
-        document.getElementById("start1").value= yearmonth;
+    function yearmonth() {
+        var today = new Date();
+        var year = today.getFullYear();
+        var month = today.getMonth() + 1;
+        now = year + "-" + month;
+        document.getElementById("start1").max= now;
+
+
     }
 
     function validwork2() {
