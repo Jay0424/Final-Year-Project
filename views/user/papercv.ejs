@@ -95,17 +95,20 @@
         <hr class="phr">
 
         <h2 class="pmain">Skill</h2>
-        <% var k=1%>
         <% skill.forEach(function(model) { %>
         
         <h2 class="ptitle"> <%=model.type%>: <%=model.content%></h2>
     
-        <%if(k==skill.length){%>
-        <br id="oneline">
-        <% k++ %>
-        <%}%>
         <% }); %>
 
+        <hr class="phr">
+
+        <h2 class="pmain">Language</h2>
+        <% language.forEach(function(model) { %>
+        
+        <h2 class="ptitle"> <%=model.type%> (<%=model.level%>)</h2>
+    
+        <% }); %>
 
         <hr class="phr">
         <!-- <h2 class="pmain">Skills</h2>
@@ -122,10 +125,5 @@
 
 <script>
 
-    var education = education;
-
-    if (education.length == 1) {
-        document.getElementById("oneline").style.display = "none";
-    }
 
 </script>

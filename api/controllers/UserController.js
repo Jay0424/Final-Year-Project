@@ -128,6 +128,8 @@ module.exports = {
 
         var skills = await User.findOne(userid).populate("ownSkill", { sort: "id ASC" });
 
+        var languages = await User.findOne(userid).populate("ownLanguage", { sort: "degree DESC" });
+
         if (!thatUser) return res.notFound();
 
         return res.view('user/papercv', {
@@ -135,6 +137,7 @@ module.exports = {
             education: educations.ownEdu,
             work: works.ownWork,
             skill: skills.ownSkill,
+            language: languages.ownLanguage,
         });
 
     },
@@ -293,7 +296,7 @@ module.exports = {
 
                 await User.addToCollection(thatUser.id, "ownSkill").members(skill1.id);
 
-                if (req.body.type2 != "" && req.body.content2) {
+                if (req.body.type2 != "" && req.body.content2 != "") {
                     var skill2 = await Skill.create(
                         {
                             type: req.body.type2,
@@ -303,7 +306,7 @@ module.exports = {
                     await User.addToCollection(thatUser.id, "ownSkill").members(skill2.id);
                 }
 
-                if (req.body.type3 != "" && req.body.content3) {
+                if (req.body.type3 != "" && req.body.content3 != "") {
                     var skill3 = await Skill.create(
                         {
                             type: req.body.type3,
@@ -317,10 +320,96 @@ module.exports = {
             }
         }
 
+        return res.redirect('/user/language');
+
+    },
+
+    userlanguage: async function (req, res) {
+        if (req.method == "GET") {
+            return res.view('user/language');
+        }
+
+        if (req.method == "POST") {
+            {
+                var thatUser = await User.findOne(req.session.userid);
+
+                var degree1;
+                if (req.body.level1.value == "Native") {
+                    degree1 = 5;
+                } else if (req.body.level1.value == "Fluent") {
+                    degree1 = 4;
+                } else if (req.body.level1.value == "Proficient") {
+                    degree1 = 3;
+                } else if (req.body.level1.value == "Intermediate") {
+                    degree1 = 2;
+                } else if (req.body.level1.value == "Basic") {
+                    degree1 = 1;
+                }
+
+                var language1 = await Language.create(
+                    {
+                        type: req.body.type1,
+                        level: req.body.level1,
+                        degree: degree1,
+                    }).fetch();
+
+                await User.addToCollection(thatUser.id, "ownLanguage").members(language1.id);
+
+                if (req.body.type2 != "" && req.body.level2 != "") {
+                    var degree2;
+                    if (req.body.level2.value == "Native") {
+                        degree2 = 5;
+                    } else if (req.body.level2.value == "Fluent") {
+                        degree2 = 4;
+                    } else if (req.body.level2.value == "Proficient") {
+                        degree2 = 3;
+                    } else if (req.body.level2.value == "Intermediate") {
+                        degree2 = 2;
+                    } else if (req.body.level2.value == "Basic") {
+                        degree2 = 1;
+                    }
+                    var language2 = await Language.create(
+                        {
+                            type: req.body.language2,
+                            level: req.body.level2,
+                            degree: degree2,
+                        }).fetch();
+
+                    await User.addToCollection(thatUser.id, "ownLanguage").members(language2.id);
+                }
+
+                if (req.body.type3 != "" && req.body.level3 != "") {
+                    var degree3;
+                    if (req.body.level2.value == "Native") {
+                        degree3 = 5;
+                    } else if (req.body.level2.value == "Fluent") {
+                        degree3 = 4;
+                    } else if (req.body.level2.value == "Proficient") {
+                        degree3 = 3;
+                    } else if (req.body.level2.value == "Intermediate") {
+                        degree3 = 2;
+                    } else if (req.body.level2.value == "Basic") {
+                        degree3 = 1;
+                    }
+                    var language3 = await Language.create(
+                        {
+                            type: req.body.language3,
+                            level: req.body.level3,
+                            degree: degree3,
+                        }).fetch();
+
+                    await User.addToCollection(thatUser.id, "ownLanguage").members(language3.id);
+                }
+
+                await User.update(thatUser.id).set({
+                    paperstatus: "submit"
+                }).fetch();
+            }
+        }
         return res.redirect('/user/index2');
+    },
 
 
-    }
 
 
 

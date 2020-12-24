@@ -1,0 +1,176 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    .selectlevel {
+        display: none;
+    }
+</style>
+
+<body onload="pageLoaded()">
+
+    <nav>
+        <a class="logo disable" href="/user/index">3D CV</a>
+        <ul>
+            <li><a href="#">User Guide</a></li>
+            <li><a href="#">CV Template</a></li>
+            <li><a class="nav-button" href="/user/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <h2 class="intro"> <i class="fa fa-language" aria-hidden="true" style="padding-right: 20px;"></i>Language</h2>
+        <h4>Level Explanation</h4>
+        <h4>Native: First language / Mother tongue</h4>
+        <h4>Fluent: Using the language easily and accurately (read/write/speak)</h4>
+        <h4>Proficient: Using the language without much difficulty (read/write/speak)</h4>
+        <h4>Intermediate: Using the language with some difficulty (read/write/speak)</h4>
+        <h4>Basic: Only knowing some knowledge of the language</h4>
+
+
+        <form action="/user/language" id="languageform" method="POST" onsubmit="return (validlanguage2()&&validlanguage3())">
+            <div class="form-group row">
+
+                <div class="col-xl-6 col-form-label center">
+                    <label>Language:</label>
+                    <input type="text" class="form-control" name="type1" list="optionlist" required>
+                    <datalist id="optionlist">
+                        <option value="English">English</option>
+                        <option value="Cantonese">Cantonese</option>
+                        <option value="Mandarin">Mandarin</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="French">French</option>
+                        <option value="Spanish">Spanish</option>
+                    </datalist>
+                </div>
+
+                <div class="col-xl-6 col-form-label center">
+                    <label>Level:</label>
+                    <select name="level1" class="form-control" required>
+                        <option value="" class="selectlevel">Please select a level</option>
+                        <option value="Native">Native</option>
+                        <option value="Fluent">Fluent</option>
+                        <option value="Proficient">Proficient</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Basic">Basic</option>
+
+                    </select>
+                </div>
+
+                <div class="col-xl-6 col-form-label center">
+                    <label>Language:</label>
+                    <input type="text" class="form-control" name="type2" list="optionlist">
+                    <datalist id="optionlist">
+                        <option value="English">English</option>
+                        <option value="Cantonese">Cantonese</option>
+                        <option value="Mandarin">Mandarin</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="French">French</option>
+                        <option value="Spanish">Spanish</option>
+                    </datalist>
+                </div>
+
+                <div class="col-xl-6 col-form-label center">
+                    <label>Level:</label>
+                    <select name="level2" class="form-control">
+                        <option value="" class="selectlevel">Please select a level</option>
+                        <option value="Native">Native</option>
+                        <option value="Fluent">Fluent</option>
+                        <option value="Proficient">Proficient</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Basic">Basic</option>
+
+                    </select>
+                </div>
+
+                <div class="col-xl-6 col-form-label center">
+                    <label>Language:</label>
+                    <input type="text" class="form-control" name="type3" list="optionlist">
+                    <datalist id="optionlist">
+                        <option value="English">English</option>
+                        <option value="Cantonese">Cantonese</option>
+                        <option value="Mandarin">Mandarin</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="French">French</option>
+                        <option value="Spanish">Spanish</option>
+                    </datalist>
+                </div>
+
+                <div class="col-xl-6 col-form-label center">
+                    <label>Level:</label>
+                    <select name="level3" class="form-control">
+                        <option value="" class="selectlevel">Please select a level</option>
+                        <option value="Native">Native</option>
+                        <option value="Fluent">Fluent</option>
+                        <option value="Proficient">Proficient</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Basic">Basic</option>
+
+                    </select>
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary" style="float:right">Finish</button>
+        </form>
+
+        <button onclick="goBack()" style="float:left" class="btn btn-primary">Back to Skills</button>
+
+
+    </div>
+
+</body>
+
+<script>
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+
+    function showTab(n) {
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        for (i = 0; i < x.length; i++) {
+            if (i != n) {
+                x[i].style.display = "none";
+            }
+        }
+    }
+
+    function goBack() {
+        window.history.back();
+    }
+
+    function validlanguage2() {
+        const type = document.getElementById("type2");
+        const level = document.getElementById("level2");
+
+        var valid = true;
+
+        if (type.value == "" &&  level.value == "") {
+            valid = true;
+        } else if (type.value != "" && level.value != "") {
+            valid = true;
+        } else {
+            alert("Make sure you enter all the elements of one language record");
+            valid = false;
+        }
+        return valid;
+    }
+
+    function validlanguage3() {
+        const type = document.getElementById("type3");
+        const level = document.getElementById("level3");
+
+        var valid = true;
+
+        if (type.value == "" &&  level.value == "") {
+            valid = true;
+        } else if (type.value != "" && level.value != "") {
+            valid = true;
+        } else {
+            alert("Make sure you enter all the elements of one language record");
+            valid = false;
+        }
+        return valid;
+    }
+
+
+</script>
