@@ -19,10 +19,16 @@
     <div class="menubar">
 
         <div class="btnbar">
-
-            <button onclick="showTab(1)"><i class="fa fa-id-card-o" aria-hidden="true"></i>View Paper CV</button>
-            <button onclick="showTab(2)"><i class="fa fa-desktop" aria-hidden="true"></i>
-                View Digital CV</button>
+            <form action="/user/account" id="skillform" method="GET">
+                <button><i class="fa fa-user" aria-hidden="true"></i>Personal</button>
+            </form>
+            <form action="/user/account" id="skillform" method="GET">
+                <button onclick="showTab(2)"><i class="fa fa-graduation-cap" aria-hidden="true"></i>Education</button>
+            </form>
+            <button onclick="showTab(2)"><i class="fa fa-briefcase" aria-hidden="true"></i>Work</button>
+            <button onclick="showTab(2)"><i class="fa fa-star" aria-hidden="true"></i>Skills</button>
+            <button onclick="showTab(2)"><i class="fa fa-language" aria-hidden="true"></i>Language</button>
+            <button onclick="showTab(2)"><i class="fa fa-lock" aria-hidden="true"></i>Password</button>
         </div>
 
 
@@ -54,8 +60,9 @@
 
         <div class="tab">
             <div style="float: right;">
-                <lottie-player class="ani" src="https://assets7.lottiefiles.com/packages/lf20_d0KDSI.json" background="transparent"
-                    speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+                <lottie-player class="ani" src="https://assets7.lottiefiles.com/packages/lf20_d0KDSI.json"
+                    background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
+                </lottie-player>
             </div>
             <h3><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Reminders:</h3>
 
@@ -76,7 +83,7 @@
 
         <div class="tab">
             <div style="float: right;">
-                <lottie-player  class="ani" src="https://assets3.lottiefiles.com/packages/lf20_huzedm21.json"
+                <lottie-player class="ani" src="https://assets3.lottiefiles.com/packages/lf20_huzedm21.json"
                     background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
                 </lottie-player>
             </div>
@@ -120,16 +127,5 @@
 </body>
 
 <script>
-    var currentTab = 1; // Current tab is set to be the first tab (0)
-    showTab(currentTab); // Display the current tab
 
-    function showTab(n) {
-        var x = document.getElementsByClassName("tab");
-        x[n].style.display = "block";
-        for (i = 0; i < x.length; i++) {
-            if (i != n) {
-                x[i].style.display = "none";
-            }
-        }
-    }
 </script>

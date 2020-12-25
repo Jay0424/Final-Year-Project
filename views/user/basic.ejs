@@ -30,11 +30,23 @@
                         required>
                 </div>
 
-                <div class="col-xl-12 col-form-label center" style="height: 300px;">
+                <div class="col-xl-12 col-form-label center">
                     <label>Summary:</label>
                     <textarea type="text" class="form-control"
-                        placeholder="Briefly introduce yourself or your previous job experiences. For example: Experienced Human Resources Manager with over 5 years of experience."
+                        placeholder="Briefly introduce yourself or your previous job experiences. Example: Experienced Human Resources Manager with over 5 years of experience."
                         name="summary" rows="3" required></textarea>
+                </div>
+
+                <div class="col-xl-12 col-form-label center">
+                    <label>Expected salary (HK dollor for month):</label>
+                    <input type="number" class="form-control" placeholder="Enter your expected salary (month) for the job" name="salary"
+                        min=0 required>
+                </div>
+
+                <div class="col-xl-12 col-form-label center">
+                    <label>Availability:</label>
+                    <input type="text" class="form-control" placeholder="Enter the date you can start working. Example: Immediate / One month's notice" name="availability"
+                        required>
                 </div>
 
             </div>

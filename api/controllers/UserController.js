@@ -156,6 +156,8 @@ module.exports = {
                     email: req.body.email,
                     phoneno: req.body.phoneno,
                     summary: req.body.summary,
+                    salary: req.body.salary,
+                    availability:req.body.availability,
 
                 }).fetch();
             }
@@ -407,6 +409,10 @@ module.exports = {
             }
         }
         return res.redirect('/user/index2');
+    },
+
+    useraccount: async function (req, res) {
+        return res.view('user/account');
     },
 
 

@@ -25,61 +25,70 @@ module.exports = {
 
     username: {
       type: "string",
-      unique:true,
+      unique: true,
       required: true,
     },
-    
+
     password: {
       type: "string"
     },
 
     userrole: {
       type: "string",
-      defaultsTo:"user",
+      defaultsTo: "user",
     },
 
-    name:{
-      type:"string",
-      defaultsTo:"",
+    name: {
+      type: "string",
+      defaultsTo: "",
     },
 
-    email:{
-      type:"string",
-      defaultsTo:"",
+    email: {
+      type: "string",
+      defaultsTo: "",
     },
 
-    phoneno:{
-      type:"string",
-      defaultsTo:"",
+    phoneno: {
+      type: "string",
+      defaultsTo: "",
     },
 
-    ownEdu:{
-      collection:"Education",
-      via:"EduownBy"
+    availability: {
+      type: "string",
+      defaultsTo: "",
     },
 
-    ownWork:{
-      collection:"Work",
-      via:"WorkownBy"
+    salary: {
+      type: "number",
     },
 
-    ownSkill:{
-      collection:"Skill",
-      via:"SkillownBy"
+    ownEdu: {
+      collection: "Education",
+      via: "EduownBy"
     },
 
-    ownLanguage:{
-      collection:"Language",
-      via:"LanguageownBy"
+    ownWork: {
+      collection: "Work",
+      via: "WorkownBy"
     },
 
-    paperstatus:{
-        type:"string",
-        defaultsTo:"notsubmit"
+    ownSkill: {
+      collection: "Skill",
+      via: "SkillownBy"
     },
 
-    summary:{
-      type:"string",
+    ownLanguage: {
+      collection: "Language",
+      via: "LanguageownBy"
+    },
+
+    paperstatus: {
+      type: "string",
+      defaultsTo: "notsubmit"
+    },
+
+    summary: {
+      type: "string",
     }
 
 
