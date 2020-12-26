@@ -335,16 +335,16 @@ module.exports = {
             {
                 var thatUser = await User.findOne(req.session.userid);
 
-                var degree1;
-                if (req.body.level1.value == "Native") {
+                let degree1 = 0;
+                if (req.body.level1 == "Native") {
                     degree1 = 5;
-                } else if (req.body.level1.value == "Fluent") {
+                } else if (req.body.level1 == "Fluent") {
                     degree1 = 4;
-                } else if (req.body.level1.value == "Proficient") {
+                } else if (req.body.level1 == "Proficient") {
                     degree1 = 3;
-                } else if (req.body.level1.value == "Intermediate") {
+                } else if (req.body.level1 == "Intermediate") {
                     degree1 = 2;
-                } else if (req.body.level1.value == "Basic") {
+                } else if (req.body.level1 == "Basic") {
                     degree1 = 1;
                 }
 
@@ -358,21 +358,21 @@ module.exports = {
                 await User.addToCollection(thatUser.id, "ownLanguage").members(language1.id);
 
                 if (req.body.type2 != "" && req.body.level2 != "") {
-                    var degree2;
-                    if (req.body.level2.value == "Native") {
+                    let degree2;
+                    if (req.body.level2 == "Native") {
                         degree2 = 5;
-                    } else if (req.body.level2.value == "Fluent") {
+                    } else if (req.body.level2 == "Fluent") {
                         degree2 = 4;
-                    } else if (req.body.level2.value == "Proficient") {
+                    } else if (req.body.level2 == "Proficient") {
                         degree2 = 3;
-                    } else if (req.body.level2.value == "Intermediate") {
+                    } else if (req.body.level2 == "Intermediate") {
                         degree2 = 2;
-                    } else if (req.body.level2.value == "Basic") {
+                    } else if (req.body.level2 == "Basic") {
                         degree2 = 1;
                     }
                     var language2 = await Language.create(
                         {
-                            type: req.body.language2,
+                            type: req.body.type2,
                             level: req.body.level2,
                             degree: degree2,
                         }).fetch();
@@ -381,21 +381,21 @@ module.exports = {
                 }
 
                 if (req.body.type3 != "" && req.body.level3 != "") {
-                    var degree3;
-                    if (req.body.level2.value == "Native") {
+                    let degree3;
+                    if (req.body.level3 == "Native") {
                         degree3 = 5;
-                    } else if (req.body.level2.value == "Fluent") {
+                    } else if (req.body.level3 == "Fluent") {
                         degree3 = 4;
-                    } else if (req.body.level2.value == "Proficient") {
+                    } else if (req.body.level3 == "Proficient") {
                         degree3 = 3;
-                    } else if (req.body.level2.value == "Intermediate") {
+                    } else if (req.body.level3 == "Intermediate") {
                         degree3 = 2;
-                    } else if (req.body.level2.value == "Basic") {
+                    } else if (req.body.level3 == "Basic") {
                         degree3 = 1;
                     }
                     var language3 = await Language.create(
                         {
-                            type: req.body.language3,
+                            type: req.body.type3,
                             level: req.body.level3,
                             degree: degree3,
                         }).fetch();
@@ -415,7 +415,8 @@ module.exports = {
         var thatUser = await User.findOne(req.session.userid);
         if (req.method == "GET") {
             return res.view('user/basicupdate', {
-                user:thatUser});
+                user: thatUser
+            });
         }
 
         if (req.method == "POST") {
@@ -433,5 +434,50 @@ module.exports = {
         }
     },
 
-}
+    usereduupdate: async function (req, res) {
+        var thatUser = await User.findOne(req.session.userid);
+        if (req.method == "GET") {
 
+            var thatUser = await User.findOne(req.session.userid);
+
+            var userid = thatUser.id;
+
+            var educations = await User.findOne(userid).populate("ownEdu", { sort: "syear DESC" });
+
+            return res.view('user/eduupdate', {
+                education: educations.ownEdu,
+            });
+        }
+
+        if (req.method == "POST") {
+            await Education.update(req.params.id).set({
+                school: req.body.school,
+                certification: req.body.certification,
+                syear: req.body.syear,
+                eyear: req.body.eyear,
+
+            }).fetch();
+
+            return res.redirect('/user/eduupdate');
+        }
+    },
+
+    // action - delete 
+    useredudelete: async function (req, res) {
+
+        if (req.method == "GET") return res.forbidden();
+
+        var models = await Education.destroy(req.params.id).fetch();
+
+        if (models.length == 0) return res.notFound();
+
+        if (req.wantsJSON) {
+            return res.json({ message: "This education record is already deleted", url: '/user/eduupdate' });
+        } else {
+
+            return res.redirect("/user/eduupdate");
+        }
+
+    },
+
+}
