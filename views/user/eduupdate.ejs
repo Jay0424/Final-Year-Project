@@ -31,7 +31,7 @@
             <button><i class="fa fa-lock" aria-hidden="true"></i>Password</button>
         </div>
 
-        
+
         <% education.forEach(function(model) { %>
 
             <form action="/user/eduupdate/<%=model.id%>" method="POST" onsubmit="return(valideduupdate())">
@@ -74,9 +74,10 @@
             </div>
     </div>
     <% }); %>
-    <button class="btn btn-secondary"><i class="fa fa-plus-circle" aria-hidden="true"
-        style="padding-right:10px;"></i>Add Record</button>
-        </div>
+        <form action="/user/eduadd" method="GET">
+            <button type="submit" class="btn btn-secondary"><i class="fa fa-plus-circle" aria-hidden="true"
+                    style="padding-right:10px;"></i>Add Record</button>
+        </form>
 </body>
 
 

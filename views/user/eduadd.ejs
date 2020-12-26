@@ -22,37 +22,80 @@
         <H4>Year: From 2014 To 2018</H4>
         
         <form action="/user/eduadd" id="eduform" method="POST"
-            onsubmit="return (validedu()&&validyear())">
+            onsubmit="return (validedu1()&&validedu2()&&validedu3()&&validyear2()&&validyear3())">
             <div class="form-group row">
 
                 <div class="col-xl-4 col-form-label center">
                     <label>School:</label>
-                    <input type="text" class="form-control" placeholder="Enter school name" name="school" id="school"
+                    <input type="text" class="form-control" placeholder="Enter school name" name="school1" id="school1"
                         required>
                 </div>
 
                 <div class="col-xl-4 col-form-label center">
                     <label>Certification:</label>
-                    <input type="text" class="form-control" placeholder="Enter certification" name="certification"
-                        id="certification" required>
+                    <input type="text" class="form-control" placeholder="Enter certification" name="certification1"
+                        id="certification1" required>
                 </div>
 
                 <div class="col-xl-2 col-form-label center">
                     <label>From:</label>
-                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (start)" name="syear" id="syear"
+                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (start)" name="syear1" id="syear1"
                         required>
                 </div>
 
                 <div class="col-xl-2 col-form-label center">
                     <label>To:</label>
-                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (end)" name="eyear" id="eyear"
+                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (end)" name="eyear1" id="eyear1"
                         required>
                 </div>
 
+                <div class="col-xl-4 col-form-label center">
+                    <label>School:</label>
+                    <input type="text" class="form-control" placeholder="Enter school name" name="school2" id="school2">
+                </div>
+
+                <div class="col-xl-4 col-form-label center">
+                    <label>Certification:</label>
+                    <input type="text" class="form-control" placeholder="Enter certification" name="certification2"
+                        id="certification2">
+                </div>
+
+                <div class="col-xl-2 col-form-label center">
+                    <label>From:</label>
+                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (start)" name="syear2" id="syear2">
+                </div>
+
+                <div class="col-xl-2 col-form-label center">
+                    <label>To:</label>
+                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (end)" name="eyear2" id="eyear2">
+                </div>
+
+                <div class="col-xl-4 col-form-label center">
+                    <label>School:</label>
+                    <input type="text" class="form-control" placeholder="Enter school name" name="school3" id="school3">
+                </div>
+
+                <div class="col-xl-4 col-form-label center">
+                    <label>Certification:</label>
+                    <input type="text" class="form-control" placeholder="Enter certification" name="certification3"
+                        id="certification3">
+                </div>
+
+                <div class="col-xl-2 col-form-label center">
+                    <label>From:</label>
+                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (start)" name="syear3" id="syear3">
+                </div>
+
+                <div class="col-xl-2 col-form-label center">
+                    <label>To:</label>
+                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (end)" name="eyear3" id="eyear3">
+                </div>
+
+
             </div>
-            <button type="submit" class="btn btn-primary center">Add Record</button>
-            
+            <button type="submit" class="btn btn-primary center" >Add Record</button>
         </form>
+
 
     </div>
 

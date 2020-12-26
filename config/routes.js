@@ -52,6 +52,9 @@ module.exports.routes = {
   'GET /user/eduupdate': 'UserController.usereduupdate',
   'POST /user/eduupdate/:id': 'UserController.usereduupdate',
   'POST /user/edudelete/:id': 'UserController.useredudelete',
+  'GET /user/eduadd': 'UserController.usereduadd',
+  'POST /user/eduadd': 'UserController.usereduadd',
+  
 
   //Adminindex
   ' /admin/index': 'UserController.adminindex',
