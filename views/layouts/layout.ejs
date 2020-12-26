@@ -14,144 +14,147 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="sweetalert2.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-
-  <%/* If you want to discourage search engines from indexing this site, uncomment the following line: */%>
-  <%/* <meta name="robots" content="noindex"> */%>
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@600&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@500&display=swap');
 
 
-    * {
-      padding: 0;
-      margin: 0;
-      text-decoration: none;
-      list-style: none;
-      box-sizing: border-box;
-    }
+  <% /* If you want to discourage search engines from indexing this site, uncomment the following line: */%>
+    <% /* <meta name="robots" content="noindex"> */%>
 
-    body {
-      font-family: 'Sansita Swashed', cursive;
-      /* font-family: 'Noto Sans JP', sans-serif; */
-      /* font-family: 'Anton', sans-serif; */
-      background-image: url("https://www.netpremacy.com/wp-content/uploads/2018/09/Background-website-01.jpg");
-      background-size: width=100% height=auto;
-    }
-
-    nav {
-      background: rgb(48, 44, 44);
-      height: 80px;
-      width: 100%;
-    }
-
-    .logo {
-      color: white;
-      font-size: 50px;
-      line-height: 80px;
-      padding: 0px 80px;
-      font-weight: bold;
-    }
-
-    nav ul {
-      float: right;
-      margin-right: 30px;
-    }
-
-    nav ul li {
-      display: inline-block;
-      line-height: 80px;
-      margin: 0 5px;
-    }
-
-    nav ul li a {
-      color: white;
-      font-size: 25px;
-      padding: 7px 15px;
-      border-radius: 3px;
-    }
-
-    .nav-button {
-      background: linear-gradient(90deg, #0162c8, #55e7fc);
-      border-radius: 40px;
-    }
-
-    a:hover {
-      text-decoration: none;
-    }
-
-    .intro {
-      text-align: center;
-      font-size: 50px;
-      padding:40px;
-    }
-
-    .center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 30%;
-    }
-
-    #create-button{
-      display: block;
-      margin-left: 30%;
-      margin-right: 30%;
-      width: 40%;
-    }
-
-    .disable:hover {
-      color: white;
-    }
-
-    .menubar {
-      width: 80%;
-      height: 450px;
-      position: relative;
-      margin: 30px auto;
-    }
-
-    .btnbar {
-      display: flex;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .btnbar button {
-      background: white;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      padding: 14px 16px;
-      margin-right: 50px;
-      font-size: 30px;
-      font-weight: bold;
-    }
-
-    .btnbar .fa {
-      margin-right: 15px;
-    }
-
-    .btnbar button:hover {
-      color: violet;
-    }
-
-    .tab .fa {
-      margin-right: 10px;
-    }
-
-    .tab {
-      display: flex;
-      margin: 2% auto;
-    }
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@500&display=swap');
 
 
-    
-  </style>
+        * {
+          padding: 0;
+          margin: 0;
+          text-decoration: none;
+          list-style: none;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Sansita Swashed', cursive;
+          /* font-family: 'Noto Sans JP', sans-serif; */
+          /* font-family: 'Anton', sans-serif; */
+          background-image: url("https://www.netpremacy.com/wp-content/uploads/2018/09/Background-website-01.jpg");
+          background-size: width=100% height=auto;
+        }
+
+        nav {
+          background: rgb(48, 44, 44);
+          height: 80px;
+          width: 100%;
+        }
+
+        .logo {
+          color: white;
+          font-size: 50px;
+          line-height: 80px;
+          padding: 0px 80px;
+          font-weight: bold;
+        }
+
+        nav ul {
+          float: right;
+          margin-right: 30px;
+        }
+
+        nav ul li {
+          display: inline-block;
+          line-height: 80px;
+          margin: 0 5px;
+        }
+
+        nav ul li a {
+          color: white;
+          font-size: 25px;
+          padding: 7px 15px;
+          border-radius: 3px;
+        }
+
+        .nav-button {
+          background: linear-gradient(90deg, #0162c8, #55e7fc);
+          border-radius: 40px;
+        }
+
+        a:hover {
+          text-decoration: none;
+        }
+
+        .intro {
+          text-align: center;
+          font-size: 50px;
+          padding: 20px;
+        }
+
+        .center {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 30%;
+        }
+
+        .testcenter {
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%);
+        }
+
+        #create-button {
+          display: block;
+          margin-left: 30%;
+          margin-right: 30%;
+          width: 40%;
+        }
+
+        .disable:hover {
+          color: white;
+        }
+
+        .menubar {
+          width: 80%;
+          height: 450px;
+          position: relative;
+          margin: 30px auto;
+        }
+
+        .btnbar {
+          display: flex;
+          border-bottom: 1px solid #ccc;
+        }
+
+        .btnbar button {
+          background: white;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          padding: 14px 16px;
+          margin-right: 50px;
+          font-size: 30px;
+          font-weight: bold;
+        }
+
+        .btnbar .fa {
+          margin-right: 15px;
+        }
+
+        .btnbar button:hover {
+          color: violet;
+        }
+
+        .tab .fa {
+          margin-right: 10px;
+        }
+
+        .tab {
+          display: flex;
+          margin: 2% auto;
+        }
+      </style>
 
 
-  <!--
+      <!--
         Stylesheets and Preprocessors
         ==============================
 
@@ -172,9 +175,9 @@
             + Use a different or additional preprocessor, like SASS, SCSS or Stylus
     -->
 
-  <!--STYLES-->
-  <link rel="stylesheet" href="/styles/importer.css">
-  <!--STYLES END-->
+      <!--STYLES-->
+      <link rel="stylesheet" href="/styles/importer.css">
+      <!--STYLES END-->
 </head>
 
 <body>
@@ -182,7 +185,7 @@
 
 
 
-  <!--
+    <!--
         Client-side Templates
         ========================
 
@@ -203,11 +206,11 @@
               stringfile before they're served.
     -->
 
-  <!--TEMPLATES-->
-  <!--TEMPLATES END-->
+    <!--TEMPLATES-->
+    <!--TEMPLATES END-->
 
 
-  <!--
+    <!--
         Server-side View Locals
         ========================
 
@@ -223,7 +226,7 @@
     -->
 
 
-  <!--
+    <!--
 
       Client-side Javascript
       ========================
@@ -246,9 +249,9 @@
 
     -->
 
-  <!--SCRIPTS-->
-  <script src="/dependencies/sails.io.js"></script>
-  <!--SCRIPTS END-->
+    <!--SCRIPTS-->
+    <script src="/dependencies/sails.io.js"></script>
+    <!--SCRIPTS END-->
 </body>
 
 </html>

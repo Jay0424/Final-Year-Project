@@ -1,3 +1,5 @@
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 <body onload="pageLoaded()">
     <nav>
         <a class="logo disable" href="/">3D CV</a>
@@ -8,22 +10,28 @@
             <li><a class="nav-button" href="/visitor/login">Login</a></li>
         </ul>
     </nav>
-
-    <div class="container">
+    
+    <div class="container" style="width: 30%;">
         <h2 class="intro">Login</h2>
+        <lottie-player
+            src="https://assets6.lottiefiles.com/datafiles/XRVoUu3IX4sGWtiC3MPpFnJvZNq7lVWDCa8LSqgS/profile.json"
+            background="transparent" speed="4" style="width: 300px; height: 300px;"  class="center"  loop autoplay></lottie-player>
         <form action="/visitor/login" method="POST">
-            <div class="form-group row">
-                <div class="col-xl-12 col-form-label">
+            <div>
+                <div>
                     <label>Username:</label>
-                    <input type="text" class="form-control" name="username" id="username" placeholder="Enter your username" required>
+                    <input type="text" class="form-control" name="username" id="username"
+                        placeholder="Enter your username" required>
                 </div>
 
-                <div class="col-xl-12 col-form-label">
+                <div>
                     <label>Password:</label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" required>
+                    <input type="password" class="form-control" name="password" id="password"
+                        placeholder="Enter your password" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary center">Submit</button>
+            <br>
+            <button type="submit" class="btn btn-primary center" style="width: 100%;">Submit</button>
         </form>
     </div>
 

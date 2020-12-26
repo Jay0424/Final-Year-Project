@@ -157,7 +157,7 @@ module.exports = {
                     phoneno: req.body.phoneno,
                     summary: req.body.summary,
                     salary: req.body.salary,
-                    availability:req.body.availability,
+                    availability: req.body.availability,
 
                 }).fetch();
             }
@@ -411,14 +411,27 @@ module.exports = {
         return res.redirect('/user/index2');
     },
 
-    useraccount: async function (req, res) {
-        return res.view('user/account');
+    userbasicupdate: async function (req, res) {
+        var thatUser = await User.findOne(req.session.userid);
+        if (req.method == "GET") {
+            return res.view('user/basicupdate', {
+                user:thatUser});
+        }
+
+        if (req.method == "POST") {
+            await User.update(req.session.userid).set({
+                name: req.body.name,
+                email: req.body.email,
+                phoneno: req.body.phoneno,
+                summary: req.body.summary,
+                salary: req.body.salary,
+                availability: req.body.availability,
+
+            }).fetch();
+
+            return res.redirect('/user/index2');
+        }
     },
-
-
-
-
-
 
 }
 

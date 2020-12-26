@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<body onload="pageLoaded()">
+
+    <nav>
+        <a class="logo disable" href="/user/index2">3D CV</a>
+        <ul>
+            <li><a href="#">User Guide</a></li>
+            <li><a href="#">CV Template</a></li>
+            <li><a class="nav-button" href="/user/basicupdate">Account</a></li>
+            <li><a class="nav-button" href="/user/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- <h2 class="intro">Menu</h2> -->
+
+    <div class="menubar">
+
+        <div class="btnbar">
+            <form action="/user/basicupdate" method="GET">
+                <button style="color: violet;"><i class="fa fa-user" aria-hidden="true"></i>Personal</button>
+            </form>
+            <form method="GET">
+                <button><i class="fa fa-graduation-cap" aria-hidden="true"></i>Education</button>
+            </form>
+            <button><i class="fa fa-briefcase" aria-hidden="true"></i>Work</button>
+            <button><i class="fa fa-star" aria-hidden="true"></i>Skills</button>
+            <button><i class="fa fa-language" aria-hidden="true"></i>Language</button>
+            <button><i class="fa fa-lock" aria-hidden="true"></i>Password</button>
+        </div>
+
+        <form action="/user/basicupdate" method="POST">
+            <div class="form-group row">
+                <div class="col-xl-12 col-form-label center">
+                    <label>Name:</label>
+                    <input type="text" class="form-control" name="name" value="<%=user.name%>" required>
+
+                </div>
+
+                <div class="col-xl-12 col-form-label center">
+                    <label>Email:</label>
+                    <input type="email" class="form-control" name="email" value="<%=user.email%>" required>
+                </div>
+
+                <div class="col-xl-12 col-form-label center">
+                    <label>Phone number:</label>
+                    <input type="text" class="form-control" name="phoneno" value="<%=user.phoneno%>" required>
+                </div>
+
+                <div class="col-xl-12 col-form-label center">
+                    <label>Summary:</label>
+                    <textarea type="text" class="form-control" name="summary" rows="3" required> <%=user.summary%></textarea>
+                </div>
+
+                <div class="col-xl-12 col-form-label center">
+                    <label>Expected salary (HK dollor for month):</label>
+                    <input type="number" class="form-control" name="salary" min=0 value="<%=user.salary%>" required>
+                </div>
+
+                <div class="col-xl-12 col-form-label center">
+                    <label>Availability:</label>
+                    <input type="text" class="form-control" name="availability" value="<%=user.availability%>" required>
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary center">Update</button>
+        </form>
+
+
+    </div>
+
+
+
+</body>
+
+<script>
+
+</script>
