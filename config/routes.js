@@ -67,6 +67,9 @@ module.exports.routes = {
   'POST /user/languageupdate/:id': 'UserController.userlanguageupdate',
   'POST /user/languagedelete/:id': 'UserController.userlanguagedelete',
 
+  'GET /user/pwupdate': 'UserController.userpwupdate',
+  'POST /user/pwupdate/:id': 'UserController.userpwupdate',
+
   'GET /user/eduadd': 'UserController.usereduadd',
   'POST /user/eduadd': 'UserController.usereduadd',
 

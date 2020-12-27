@@ -854,9 +854,26 @@ module.exports = {
         }
     },
 
-    userpwupdate:async function (req, res) {
+    userpwupdate: async function (req, res) {
+        var thatUser = await User.findOne(req.session.userid);
         if (req.method == "GET") {
-            return res.view("/user/pwupdate")
+            return res.view('user/pwupdate', { user: thatUser })
+        }
+
+        if(req.method =="POST"){
+            const salt = await sails.bcrypt.genSalt(10);
+
+            const password = await req.body.password;
+
+            const hash = await sails.bcrypt.hash(password, salt);
+
+            var models = await User.update(req.params.id).set({
+                password: hash,
+
+            }).fetch();
+            if (models.length == 0) return res.notFound();
+
+            return res.redirect("/user/pwupdate");
         }
     },
 

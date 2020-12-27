@@ -35,8 +35,39 @@
                 <button><i class="fa fa-language" aria-hidden="true"></i>Language</button>
             </form>
             <form action="/user/pwupdate" method="GET">
-            <button><i class="fa fa-lock" aria-hidden="true"></i>Password</button>
-        </form>
+                <button><i class="fa fa-lock" aria-hidden="true"></i>Password</button>
+            </form>
         </div>
 
         <br>
+
+        <div class="container" style="width: 30%;">
+            <h2 class="center" style="text-align: center;">New Password</h2>
+            <lottie-player src="https://assets2.lottiefiles.com/datafiles/Y00QYvz2RSOfBnQ/data.json"
+                background="transparent" speed="0.75" style="width: 300px; height: 300px;" class="center" loop autoplay>
+            </lottie-player>
+            <form action="/user/pwupdate/<%=user.id%>" method="POST" onsubmit="return validupdate()">
+
+                <div>
+                    <div>
+                        <label>Password:</label>
+                        <input type="password" class="form-control" name="password" id="password"
+                            placeholder="Enter your new password" required>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary center" style="width: 100%;">Submit</button>
+
+
+            </form>
+        </div>
+    </div>
+</body>
+
+<script>
+    function validupdate(){
+        var valid=true;
+        alert("Your password is updated");
+        return valid;
+    }
+</script>
