@@ -8,6 +8,7 @@
         <ul>
             <li><a href="#">User Guide</a></li>
             <li><a href="#">CV Template</a></li>
+            <li><a class="nav-button" href="/user/basicupdate">Account</a></li>
             <li><a class="nav-button" href="/user/logout">Logout</a></li>
         </ul>
     </nav>
@@ -20,7 +21,7 @@
         <h4>Type: Personal skill / Skills: Leadership, Good communication</h4>
 
 
-        <form action="/user/skill" id="skillform" method="POST"
+        <form action="/user/skilladd" id="skillform" method="POST"
             onsubmit="return (validskill1()&&validskill2())">
             <div class="form-group row">
 
@@ -64,11 +65,8 @@
                 </div>
                 
             </div>
-            <button type="submit" class="btn btn-primary" style="float:right">Next</button>
+            <button type="submit" class="btn btn-primary center" >Add Record</button>
         </form>
-
-        <button onclick="goBack()" style="float:left" class="btn btn-primary">Back to Work Experience</button>
-
 
     </div>
 

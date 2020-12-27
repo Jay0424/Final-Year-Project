@@ -58,11 +58,18 @@ module.exports.routes = {
   'POST /user/workupdate/:id': 'UserController.userworkupdate',
   'POST /user/workdelete/:id': 'UserController.userworkdelete',
 
+  'GET /user/skillupdate': 'UserController.userskillupdate',
+  'POST /user/skillupdate/:id': 'UserController.userskillupdate',
+  'POST /user/skilldelete/:id': 'UserController.userskilldelete',
+
   'GET /user/eduadd': 'UserController.usereduadd',
   'POST /user/eduadd': 'UserController.usereduadd',
 
   'GET /user/workadd': 'UserController.userworkadd',
   'POST /user/workadd': 'UserController.userworkadd',
+
+  'GET /user/skilladd': 'UserController.userskilladd',
+  'POST /user/skilladd': 'UserController.userskilladd',
   
 
   //Adminindex
