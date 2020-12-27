@@ -8,6 +8,7 @@
         <ul>
             <li><a href="#">User Guide</a></li>
             <li><a href="#">CV Template</a></li>
+            <li><a class="nav-button" href="/user/basicupdate">Account</a></li>
             <li><a class="nav-button" href="/user/logout">Logout</a></li>
         </ul>
     </nav>
@@ -112,10 +113,8 @@
 
 
             </div>
-            <button type="submit" class="btn btn-primary" style="float:right">Next</button>
+            <button type="submit" class="btn btn-primary center" >Add Record</button>
         </form>
-
-        <button onclick="goBack()" style="float:left" class="btn btn-primary">Back to Education</button>
 
     </div>
 
@@ -123,8 +122,32 @@
 
 <script>
 
+    start1.max = new Date().toISOString().split("T")[0];
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+
+    function showTab(n) {
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        for (i = 0; i < x.length; i++) {
+            if (i != n) {
+                x[i].style.display = "none";
+            }
+        }
+    }
+
     function goBack() {
         window.history.back();
+    }
+
+    function yearmonth() {
+        var today = new Date();
+        var year = today.getFullYear();
+        var month = today.getMonth() + 1;
+        now = year + "-" + month;
+        document.getElementById("start1").max= now;
+
+
     }
 
     function validwork2() {
@@ -167,3 +190,4 @@
 
 
 </script>
+

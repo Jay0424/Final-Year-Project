@@ -25,59 +25,79 @@
             <form action="/user/eduupdate" method="GET">
                 <button style="color: violet;"><i class="fa fa-graduation-cap" aria-hidden="true"></i>Education</button>
             </form>
-            <button><i class="fa fa-briefcase" aria-hidden="true"></i>Work</button>
+            <form action="/user/workupdate" method="GET">
+                <button><i class="fa fa-briefcase" aria-hidden="true"></i>Work</button>
+            </form>
             <button><i class="fa fa-star" aria-hidden="true"></i>Skills</button>
             <button><i class="fa fa-language" aria-hidden="true"></i>Language</button>
             <button><i class="fa fa-lock" aria-hidden="true"></i>Password</button>
         </div>
 
-
+        <br>
+        <form action="/user/eduadd" method="GET">
+            <button type="submit" style="float:right" class="btn btn-secondary"><i class="fa fa-plus-circle"
+                    aria-hidden="true" style="padding-right:10px;"></i>Add Record</button>
+        </form>
+        <br>
         <% education.forEach(function(model) { %>
+            <button onclick="deleteEdu('<%= model.id %>')" class="btn btn-danger" style="color:white;float:left"><i
+                    class="fa fa-trash" aria-hidden="true"></i></button>
+            <br>
+            <div style="border-style: double;">
+                <form action="/user/eduupdate/<%=model.id%>" method="POST" onsubmit="return(valideduupdate())">
+                    <div class="form-group row">
+                        <div class="col-xl-4 col-form-label center">
+                            <label>School:</label>
+                            <input type="text" class="form-control" name="school" value="<%=model.school%>" required>
+                        </div>
 
-            <form action="/user/eduupdate/<%=model.id%>" method="POST" onsubmit="return(valideduupdate())">
-                <div class="form-group row">
-                    <div class="col-xl-4 col-form-label center">
-                        <label>School:</label>
-                        <input type="text" class="form-control" name="school" value="<%=model.school%>" required>
-                    </div>
+                        <div class="col-xl-4 col-form-label center">
+                            <label>Certification:</label>
+                            <input type="text" class="form-control" name="certification"
+                                value="<%=model.certification%>" required>
+                        </div>
 
-                    <div class="col-xl-4 col-form-label center">
-                        <label>Certification:</label>
-                        <input type="text" class="form-control" name="certification" value="<%=model.certification%>"
+                        <div class="col-xl-2 col-form-label center">
+                            <label>From:</label>
+                            <input type="number" class="form-control" min="1900" max="<%=new Date().getFullYear()%>"
+                                name="syear" id="syear" value=<%=model.syear%>
                             required>
+                        </div>
+
+                        <div class="col-xl-2 col-form-label center">
+                            <label>To:</label>
+                            <input type="number" class="form-control" min="1900" max="<%=new Date().getFullYear()%>"
+                                name="eyear" id="eyear" value=<%=model.eyear%> required>
+                        </div>
+
+                        <!-- <div class="col-xl-1 col-form-label">
+                            <label>Click</label>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div> -->
                     </div>
 
-                    <div class="col-xl-1 col-form-label center">
-                        <label>From:</label>
-                        <input type="number" class="form-control" min="1900" max="<%=new Date().getFullYear()%>"
-                            name="syear" id="syear" value=<%=model.syear%>
-                        required>
+                    <div>
+                        <!-- <a onclick="deleteEdu('<%= model.id %>')" class="btn btn-danger" style="color:white;float:right"><i class="fa fa-trash" aria-hidden="true"></i></a> -->
+                        <button style="width: 30%;" type="submit" class="btn btn-primary center">Update</button>
+                        <br>
                     </div>
 
-                    <div class="col-xl-1 col-form-label center">
-                        <label>To:</label>
-                        <input type="number" class="form-control" min="1900" max="<%=new Date().getFullYear()%>"
-                            name="eyear" id="eyear" value=<%=model.eyear%> required>
-                    </div>
+                </form>
 
-                    <div class="col-xl-1 col-form-label">
-                        <label>Click</label>
-                        <button type="submit" class="btn btn-primary">Update</button>
-                    </div>
-
-            </form>
-
-            <div class="col-xl-1 col-form-label center">
+                <!-- <div class="col-xl-1 col-form-label center">
                 <label>Click</label>
                 <a onclick="deleteEdu('<%= model.id %>')" class="btn btn-danger" style="color:white">Delete</a>
-                <!-- <button onclick="deleteEdu('<%= model.id %>')" class="btn btn-danger">Delete</button> -->
+                <button onclick="deleteEdu('<%= model.id %>')" class="btn btn-danger">Delete</button>
+            </div> -->
             </div>
-    </div>
-    <% }); %>
-        <form action="/user/eduadd" method="GET">
+            <br>
+            <% }); %>
+                <!-- <form action="/user/eduadd" method="GET">
             <button type="submit" class="btn btn-secondary"><i class="fa fa-plus-circle" aria-hidden="true"
                     style="padding-right:10px;"></i>Add Record</button>
-        </form>
+        </form> -->
+                <br>
+    </div>
 </body>
 
 

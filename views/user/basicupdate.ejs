@@ -25,13 +25,15 @@
             <form action="/user/eduupdate" method="GET">
                 <button><i class="fa fa-graduation-cap" aria-hidden="true"></i>Education</button>
             </form>
-            <button><i class="fa fa-briefcase" aria-hidden="true"></i>Work</button>
+            <form action="/user/workupdate" method="GET">
+                <button><i class="fa fa-briefcase" aria-hidden="true"></i>Work</button>
+            </form>
             <button><i class="fa fa-star" aria-hidden="true"></i>Skills</button>
             <button><i class="fa fa-language" aria-hidden="true"></i>Language</button>
             <button><i class="fa fa-lock" aria-hidden="true"></i>Password</button>
         </div>
 
-        <form action="/user/basicupdate" method="POST">
+        <form action="/user/basicupdate" method="POST" onsubmit="return validupdate()">
             <div class="form-group row">
                 <div class="col-xl-12 col-form-label center">
                     <label>Name:</label>
@@ -51,7 +53,8 @@
 
                 <div class="col-xl-12 col-form-label center">
                     <label>Summary:</label>
-                    <textarea type="text" class="form-control" name="summary" rows="3" required> <%=user.summary%></textarea>
+                    <textarea type="text" class="form-control" name="summary" rows="3"
+                        required> <%=user.summary%></textarea>
                 </div>
 
                 <div class="col-xl-12 col-form-label center">
@@ -76,5 +79,8 @@
 </body>
 
 <script>
-
+function validupdate(){
+    var valid=true;
+    alert("Personal Infomation is updated")
+}
 </script>
