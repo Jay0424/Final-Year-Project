@@ -1,0 +1,141 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<style>
+    #currentlevel {
+        display: none;
+    }
+</style>
+
+<body>
+
+    <nav>
+        <a class="logo disable" href="/user/index2">3D CV</a>
+        <ul>
+            <li><a href="#">User Guide</a></li>
+            <li><a href="#">CV Template</a></li>
+            <li><a class="nav-button" href="/user/basicupdate">Account</a></li>
+            <li><a class="nav-button" href="/user/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- <h2 class="intro">Menu</h2> -->
+
+    <div class="menubar">
+
+        <div class="btnbar">
+            <form action="/user/basicupdate" method="GET">
+                <button><i class="fa fa-user" aria-hidden="true"></i>Personal</button>
+            </form>
+            <form action="/user/eduupdate" method="GET">
+                <button><i class="fa fa-graduation-cap" aria-hidden="true"></i>Education</button>
+            </form>
+            <form action="/user/workupdate" method="GET">
+                <button><i class="fa fa-briefcase" aria-hidden="true"></i>Work</button>
+            </form>
+            <form action="/user/skillupdate" method="GET">
+                <button><i class="fa fa-star" aria-hidden="true"></i>Skill</button>
+            </form>
+            <form action="/user/languageupdate" method="GET">
+                <button style="color: violet;"><i class="fa fa-language" aria-hidden="true"></i>Language</button>
+            </form>
+            <button><i class="fa fa-lock" aria-hidden="true"></i>Password</button>
+        </div>
+
+        <br>
+        <form action="/user/languageadd" method="GET">
+            <button type="submit" style="float:right" class="btn btn-secondary"><i class="fa fa-plus-circle"
+                    aria-hidden="true" style="padding-right:10px;"></i>Add Record</button>
+        </form>
+        <br>
+
+        <% language.forEach(function(model){ %>
+            <button onclick="deleteLanguage('<%= model.id %>')" class="btn btn-danger" style="color:white;float:left"><i
+                    class="fa fa-trash" aria-hidden="true"></i></button>
+            <br>
+            <div style="border-style: double;">
+                <form action="/user/languageupdate/<%=model.id%>" method="POST" onsubmit="return validupdate()">
+                    <div class="form-group row">
+                        <div class="col-xl-6 col-form-label center">
+                            <label>Language:</label>
+                            <input type="text" class="form-control" name="type" list="optionlist"
+                                value="<%=model.type%>" required>
+                            <datalist id="optionlist">
+                                <option value="English">English</option>
+                                <option value="Cantonese">Cantonese</option>
+                                <option value="Mandarin">Mandarin</option>
+                                <option value="Japanese">Japanese</option>
+                                <option value="French">French</option>
+                                <option value="Spanish">Spanish</option>
+                            </datalist>
+                        </div>
+
+                        <div class="col-xl-6 col-form-label center">
+                            <label>Level:</label>
+                            <select id="level" name="level" class="form-control" required>
+                                <option value="<%=model.level%>" id="currentlevel" selected>
+                                    Current: <%=model.level%>
+                                </option>
+                                <option value="Native" class="levellist">Native</option>
+                                <option value="Fluent" class="levellist">Fluent</option>
+                                <option value="Proficient" class="levellist">Proficient</option>
+                                <option value="Intermediate" class="levellist">Intermediate</option>
+                                <option value="Basic" class="levellist">Basic</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- <a onclick="deleteEdu('<%= model.id %>')" class="btn btn-danger" style="color:white;float:right"><i class="fa fa-trash" aria-hidden="true"></i></a> -->
+                        <button style="width: 30%;" type="submit" class="btn btn-primary center">Update</button>
+                        <br>
+                    </div>
+
+                </form>
+            </div>
+            <br>
+            <% }); %>
+                <br>
+    </div>
+</body>
+
+<script>
+    function validupdate() {
+        var valid = true;
+        alert("This record is updated");
+        return valid;
+    }
+
+    async function deleteLanguage(id) {
+        var r = confirm("Confirm Delete?");
+
+        if (r) {
+
+            var response = await fetch("/user/languagedelete/" + id, {
+                method: "POST",
+                credentials: 'same-origin',
+            });
+
+            if (response.ok) {
+                var data = await response.json();
+                alert(data.message);
+                window.location = data.url;
+            } else {
+                alert(response.status + ": " + response.statusText);
+            }
+
+        } else {
+            alert("Cancel");
+        }
+    }
+
+    function removesame() {
+        var current = document.getElementById("currentlevel");
+        var list = document.getElementsByClassName("levellist");
+        for (i = 0; i < list.length; i++) {
+            if (list[i].value == current.value) {
+                list[i].hidden = true
+            }
+        }
+    }
+
+</script>

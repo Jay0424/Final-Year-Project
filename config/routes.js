@@ -47,6 +47,7 @@ module.exports.routes = {
   'POST /user/skill': 'UserController.userskill',
   'GET /user/language': 'UserController.userlanguage',
   'POST /user/language': 'UserController.userlanguage',
+
   'GET /user/basicupdate': 'UserController.userbasicupdate',
   'POST /user/basicupdate': 'UserController.userbasicupdate',
 
@@ -62,6 +63,10 @@ module.exports.routes = {
   'POST /user/skillupdate/:id': 'UserController.userskillupdate',
   'POST /user/skilldelete/:id': 'UserController.userskilldelete',
 
+  'GET /user/languageupdate': 'UserController.userlanguageupdate',
+  'POST /user/languageupdate/:id': 'UserController.userlanguageupdate',
+  'POST /user/languagedelete/:id': 'UserController.userlanguagedelete',
+
   'GET /user/eduadd': 'UserController.usereduadd',
   'POST /user/eduadd': 'UserController.usereduadd',
 
@@ -70,6 +75,9 @@ module.exports.routes = {
 
   'GET /user/skilladd': 'UserController.userskilladd',
   'POST /user/skilladd': 'UserController.userskilladd',
+
+  'GET /user/languageadd': 'UserController.userlanguageadd',
+  'POST /user/languageadd': 'UserController.userlanguageadd',
   
 
   //Adminindex
