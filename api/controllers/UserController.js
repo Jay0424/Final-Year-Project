@@ -17,10 +17,9 @@ module.exports = {
         var thatAccount = await User.findOne({ username: req.body.username });
 
         if (thatAccount) {
-            return res.status(409).send("The username has been used. Please use other username.");
-
+            return res.redirect("/visitor/registernotok");
         }
-
+        
         if (req.method == "POST") {
 
             const salt = await sails.bcrypt.genSalt(10);
@@ -36,12 +35,15 @@ module.exports = {
 
                 });
 
-            return res.redirect("/");
+            return res.redirect("/visitor/login");
 
         }
+    },
 
-
-
+    registernotok: async function (req, res) {
+        if (req.method == "GET") {
+            return res.view('visitor/registernotok');
+        }
     },
 
     login: async function (req, res) {
@@ -860,7 +862,7 @@ module.exports = {
             return res.view('user/pwupdate', { user: thatUser })
         }
 
-        if(req.method =="POST"){
+        if (req.method == "POST") {
             const salt = await sails.bcrypt.genSalt(10);
 
             const password = await req.body.password;
