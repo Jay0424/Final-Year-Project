@@ -19,76 +19,38 @@
         </ul>
     </nav>
 
-
-    <!-- <h2 class="intro">Menu</h2> -->
+    <h2 class="intro">Manage Multimedia</h2>
 
     <div class="menubar">
 
-        <div class="btnbar">
-            <form action="/user/basicupdate" method="GET">
-                <button><i class="fa fa-user" aria-hidden="true"></i>Personal</button>
-            </form>
-            <form action="/user/eduupdate" method="GET">
-                <button><i class="fa fa-graduation-cap" aria-hidden="true"></i>Education</button>
-            </form>
-            <form action="/user/workupdate" method="GET">
-                <button><i class="fa fa-briefcase" aria-hidden="true"></i>Work</button>
-            </form>
-            <form action="/user/skillupdate" method="GET">
-                <button><i class="fa fa-star" aria-hidden="true"></i>Skill</button>
-            </form>
-            <form action="/user/languageupdate" method="GET">
-                <button style="color: violet;"><i class="fa fa-language" aria-hidden="true"></i>Language</button>
-            </form>
-            <form action="/user/pwupdate" method="GET">
-                <button><i class="fa fa-lock" aria-hidden="true"></i>Password</button>
-            </form>
-        </div>
 
         <br>
-        <form action="/user/languageadd" method="GET">
+        <form action="/user/multiadd" method="GET">
             <button type="submit" style="float:right" class="btn btn-secondary"><i class="fa fa-plus-circle"
-                    aria-hidden="true" style="padding-right:10px;"></i>Add Record</button>
+                    aria-hidden="true" style="padding-right:10px;"></i>Add Multimedia</button>
         </form>
         <br>
 
-        <% language.forEach(function(model){ %>
-            <button onclick="deleteLanguage('<%= model.id %>')" class="btn btn-danger" style="color:white;float:left"><i
+            <button class="btn btn-danger" style="color:white;float:left"><i
                     class="fa fa-trash" aria-hidden="true"></i></button>
             <br>
             <div style="border-style: double;">
-                <form action="/user/languageupdate/<%=model.id%>" method="POST" onsubmit="return validupdate()">
+                <form method="POST" onsubmit="return validupdate()">
                     <div class="form-group row">
                         <div class="col-xl-6 col-form-label center">
-                            <label>Language:</label>
-                            <input type="text" class="form-control" name="type" list="optionlist"
-                                value="<%=model.type%>" required>
-                            <datalist id="optionlist">
-                                <option value="English">English</option>
-                                <option value="Cantonese">Cantonese</option>
-                                <option value="Mandarin">Mandarin</option>
-                                <option value="Japanese">Japanese</option>
-                                <option value="French">French</option>
-                                <option value="Spanish">Spanish</option>
-                            </datalist>
+                            <label>Type:</label>
+                            <input type="text" class="form-control" name="type" 
+                                value="Photo" required>
+                            
                         </div>
 
                         <div class="col-xl-6 col-form-label center">
-                            <label>Level:</label>
-                            <select id="level" name="level" class="form-control" required>
-                                <option value="<%=model.level%>" id="currentlevel" selected>
-                                    Current: <%=model.level%>
-                                </option>
-                                <option value="Native" class="levellist">Native</option>
-                                <option value="Fluent" class="levellist">Fluent</option>
-                                <option value="Proficient" class="levellist">Proficient</option>
-                                <option value="Intermediate" class="levellist">Intermediate</option>
-                                <option value="Basic" class="levellist">Basic</option>
-                            </select>
+                            <label>Filename:</label>
+                            <input type="text" class="form-control" name="type" 
+                                value="personal.png" required>
                         </div>
                     </div>
                     <div>
-                        <!-- <a onclick="deleteEdu('<%= model.id %>')" class="btn btn-danger" style="color:white;float:right"><i class="fa fa-trash" aria-hidden="true"></i></a> -->
                         <button style="width: 30%;" type="submit" class="btn btn-primary center">Update</button>
                         <br>
                     </div>
@@ -96,8 +58,6 @@
                 </form>
             </div>
             <br>
-            <% }); %>
-                <br>
     </div>
 </body>
 

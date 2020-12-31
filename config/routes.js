@@ -72,6 +72,9 @@ module.exports.routes = {
   'POST /user/languageupdate/:id': 'UserController.userlanguageupdate',
   'POST /user/languagedelete/:id': 'UserController.userlanguagedelete',
 
+  'GET /user/multiupdate': 'UserController.usermultiupdate',
+  'POST /user/multiupdate/:id': 'UserController.usermultiupdate',
+  'POST /user/multidelete/:id': 'UserController.usermultidelete',
   
 
   'GET /user/pwupdate': 'UserController.userpwupdate',
@@ -88,10 +91,15 @@ module.exports.routes = {
 
   'GET /user/languageadd': 'UserController.userlanguageadd',
   'POST /user/languageadd': 'UserController.userlanguageadd',
+
+  'GET /user/multiadd': 'UserController.usermultiadd',
+  'POST /user/multiadd': 'UserController.userlmultiadd',
   
 
   //Adminindex
   ' /admin/index': 'UserController.adminindex',
+  'GET /admin/useradd': 'UserController.adminuseradd',
+  'POST /admin/useradd': 'UserController.adminuseradd',
 
 
   

@@ -132,9 +132,37 @@ module.exports = {
 
         }
 
-        if(req.method=="POST"){
+        if (req.method == "POST") {
 
             return res.redirect('/user/index2');
+
+        }
+    },
+
+    usermultiupdate: async function (req, res) {
+        if (req.method == "GET") {
+
+            return res.view('user/multiupdate');
+
+        }
+
+        if (req.method == "POST") {
+
+            return res.redirect('/user/index2');
+
+        }
+    },
+
+    usermultiadd: async function (req, res) {
+        if (req.method == "GET") {
+
+            return res.view('user/multiadd');
+
+        }
+
+        if (req.method == "POST") {
+
+            return res.redirect('/user/multiadd');
 
         }
     },
@@ -193,6 +221,13 @@ module.exports = {
     adminindex: async function (req, res) {
         return res.view('admin/index');
     },
+
+    adminuseradd: async function (req, res) {
+        if (req.method == "GET") {
+            return res.view('admin/useradd');
+        }
+    },
+
 
     useredu: async function (req, res) {
         if (req.method == "GET") {

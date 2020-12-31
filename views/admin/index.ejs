@@ -7,9 +7,58 @@
         </ul>
     </nav>
 
-    <div>
-        <p class="intro">Adminindex</p>
-        <img class="center" src="https://upload.cc/i1/2020/10/13/Gu6oJk.png">
+    <h2 class="intro">Manage User</h2>
+
+    <div class="menubar">
+
+
+        <br>
+        <form action="/admin/useradd" method="GET">
+            <button type="submit" style="float:right" class="btn btn-secondary"><i class="fa fa-plus-circle"
+                    aria-hidden="true" style="padding-right:10px;"></i>Add User</button>
+        </form>
+        <br>
+
+        <button class="btn btn-danger" style="color:white;float:left"><i class="fa fa-trash"
+                aria-hidden="true"></i></button>
+        <br>
+        <div style="border-style: double;">
+            <form method="POST" onsubmit="return validupdate()">
+                <div class="form-group row">
+                    <div class="col-xl-6 col-form-label center">
+                        <label>Username:</label>
+                        <input type="text" class="form-control" name="type" value="ja01" required>
+                    </div>
+
+                </div>
+                <div>
+                    <button style="width: 30%;" type="submit" class="btn btn-primary center">View</button>
+                    <br>
+                </div>
+
+            </form>
+        </div>
+        <br>
+        <button class="btn btn-danger" style="color:white;float:left"><i class="fa fa-trash"
+                aria-hidden="true"></i></button>
+        <br>
+        <div style="border-style: double;">
+            <form method="POST" onsubmit="return validupdate()">
+                <div class="form-group row">
+                    <div class="col-xl-6 col-form-label center">
+                        <label>Username:</label>
+                        <input type="text" class="form-control" name="type" value="ja02" required>
+
+                    </div>
+
+                </div>
+                <div>
+                    <button style="width: 30%;" type="submit" class="btn btn-primary center">View</button>
+                    <br>
+                </div>
+
+            </form>
+        </div>
     </div>
 
 </body>
