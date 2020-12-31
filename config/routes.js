@@ -28,6 +28,8 @@ module.exports.routes = {
   'GET /visitor/register': 'UserController.register',
   'POST /visitor/register': 'UserController.register',
   'GET /visitor/registernotok': 'UserController.registernotok',
+  ' /visitor/guide': 'UserController.visitorguide',
+  ' /visitor/template': 'UserController.visitortemplate',
 
   //Login
   'GET /visitor/login': 'UserController.login',
@@ -48,6 +50,8 @@ module.exports.routes = {
   'POST /user/skill': 'UserController.userskill',
   'GET /user/language': 'UserController.userlanguage',
   'POST /user/language': 'UserController.userlanguage',
+  'GET /user/multimedia': 'UserController.usermultimedia',
+  'POST /user/language': 'UserController.userlanguage',
 
   'GET /user/basicupdate': 'UserController.userbasicupdate',
   'POST /user/basicupdate': 'UserController.userbasicupdate',
@@ -67,6 +71,8 @@ module.exports.routes = {
   'GET /user/languageupdate': 'UserController.userlanguageupdate',
   'POST /user/languageupdate/:id': 'UserController.userlanguageupdate',
   'POST /user/languagedelete/:id': 'UserController.userlanguagedelete',
+
+  
 
   'GET /user/pwupdate': 'UserController.userpwupdate',
   'POST /user/pwupdate/:id': 'UserController.userpwupdate',

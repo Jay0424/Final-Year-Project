@@ -8,6 +8,7 @@
         <ul>
             <li><a href="#">User Guide</a></li>
             <li><a href="#">CV Template</a></li>
+            <li><a class="nav-button" href="/user/multiupdate">Multimedia</a></li>
             <li><a class="nav-button" href="/user/basicupdate">Profile</a></li>
             <li><a class="nav-button" href="/user/logout">Logout</a></li>
         </ul>
@@ -20,8 +21,8 @@
 
         <div class="btnbar">
 
-            <button onclick="showTab(1)"><i class="fa fa-id-card-o" aria-hidden="true"></i>View Paper CV</button>
-            <button onclick="showTab(2)"><i class="fa fa-desktop" aria-hidden="true"></i>
+            <button onclick="showTab(1); showcurrent(0)" class="buttongroup" style="color:violet"><i class="fa fa-id-card-o" aria-hidden="true"></i>View Paper CV</button>
+            <button onclick="showTab(2); showcurrent(1)" class="buttongroup"><i class="fa fa-desktop" aria-hidden="true"></i>
                 View Digital CV</button>
         </div>
 
@@ -43,7 +44,7 @@
             <br>
             <h4>4. Click the back button to edit information of the previous page</h4>
             <br>
-            <h4>5. After submitting, you can edit CV in the account</h4>
+            <h4>5. After submitting, you can edit CV in profile</h4>
             <br>
             <form action="/user/basic" method="GET">
                 <button id="create-button" type="submit" class="btn btn-primary">Start</button>
@@ -62,11 +63,11 @@
             <br>
             <h4>1. Paper CV will be displayed in the new page</h4>
             <br>
-            <h4>2. Edit informaction in the account in case it has wrong informaction</h4>
+            <h4>2. Edit informaction in profile in case it has wrong informaction</h4>
             <br>
-            <h4>3. Right click of your mouse will display the print function</h4>
+            <h4>3. Right click of your mouse will display the print and save functions</h4>
             <br>
-            <h4>4. Press ctrl+p to print the papercv</h4>
+            <h4>4. Press ctrl+p to print or save the papercv</h4>
             <br>
 
             <button id="create-button" type="submit" class="btn btn-primary center"
@@ -129,6 +130,19 @@
         for (i = 0; i < x.length; i++) {
             if (i != n) {
                 x[i].style.display = "none";
+            }
+        }
+    }
+
+    var currenbutton=0;
+    showcurrent(currentbutton);
+
+    function showcurrent(n){
+        var x = document.getElementsByClassName("buttongroup");
+        x[n].style.color = "violet";
+        for (i = 0; i < x.length; i++) {
+            if (i != n) {
+                x[i].style.color = "black";
             }
         }
     }

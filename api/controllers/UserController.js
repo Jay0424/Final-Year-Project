@@ -19,7 +19,7 @@ module.exports = {
         if (thatAccount) {
             return res.redirect("/visitor/registernotok");
         }
-        
+
         if (req.method == "POST") {
 
             const salt = await sails.bcrypt.genSalt(10);
@@ -98,6 +98,14 @@ module.exports = {
         });
     },
 
+    visitorguide: async function (req, res) {
+        return res.view('visitor/guide');
+    },
+
+    visitortemplate: async function (req, res) {
+        return res.view('visitor/template');
+    },
+
     userindex: async function (req, res) {
 
         var thatUser = await User.findOne(req.session.userid);
@@ -115,6 +123,20 @@ module.exports = {
 
         return res.view('user/index2');
 
+    },
+
+    usermultimedia: async function (req, res) {
+        if (req.method == "GET") {
+
+            return res.view('user/multimedia');
+
+        }
+
+        if(req.method=="POST"){
+
+            return res.redirect('/user/index2');
+
+        }
     },
 
 
@@ -410,7 +432,7 @@ module.exports = {
                 }).fetch();
             }
         }
-        return res.redirect('/user/index2');
+        return res.redirect('/user/multimedia');
     },
 
     userbasicupdate: async function (req, res) {
