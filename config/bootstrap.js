@@ -38,14 +38,14 @@ module.exports.bootstrap = async function() {
   }
 
   await User.createEach([
-    {username:"jay01", password:hash, userrole:"user", name:"", email:"", phoneno:""},
-    {username:"jay02", password:hash, userrole:"user", name:"", email:"", phoneno:""},
-    {username:"jay03", password:hash, userrole:"user", name:"", email:"", phoneno:""},
-    {username:"jay04", password:hash, userrole:"user", name:"", email:"", phoneno:""},
-    {username:"jay05", password:hash, userrole:"user", name:"", email:"", phoneno:""},
-    {username:"jay06", password:hash, userrole:"user", name:"", email:"", phoneno:""},
-    {username:"admin01", password:hash, userrole:"admin", name:"", email:"", phoneno:""},
-    {username:"admin02", password:hash, userrole:"admin", name:"", email:"", phoneno:""},
+    {username:"jay01", password:hash, userrole:"user"},
+    {username:"jay02", password:hash, userrole:"user"},
+    {username:"jay03", password:hash, userrole:"user"},
+    {username:"jay04", password:hash, userrole:"user"},
+    {username:"jay05", password:hash, userrole:"user"},
+    {username:"jay06", password:hash, userrole:"user"},
+    {username:"admin01", password:hash, userrole:"admin"},
+    {username:"admin02", password:hash, userrole:"admin"},
 
     // etc.
   ]);

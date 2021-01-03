@@ -194,6 +194,31 @@ module.exports = {
 
     },
 
+    adminpapercv: async function (req, res) {
+        var thatUser = await User.findOne(req.params.id);
+
+        var userid = thatUser.id;
+
+        var educations = await User.findOne(userid).populate("ownEdu", { sort: "syear DESC" });
+
+        var works = await User.findOne(userid).populate("ownWork", { sort: "start DESC" });
+
+        var skills = await User.findOne(userid).populate("ownSkill", { sort: "id ASC" });
+
+        var languages = await User.findOne(userid).populate("ownLanguage", { sort: "degree DESC" });
+
+        if (!thatUser) return res.notFound();
+
+        return res.view('admin/papercv', {
+            user: thatUser,
+            education: educations.ownEdu,
+            work: works.ownWork,
+            skill: skills.ownSkill,
+            language: languages.ownLanguage,
+        });
+
+    },
+
 
 
     userbasic: async function (req, res) {
@@ -219,13 +244,65 @@ module.exports = {
     },
 
     adminindex: async function (req, res) {
-        return res.view('admin/index');
+        var alluser = await User.find({ userrole: "user" })
+        if (req.method == "GET") {
+            return res.view('admin/index', { user: alluser });
+        }
     },
 
     adminuseradd: async function (req, res) {
+
         if (req.method == "GET") {
             return res.view('admin/useradd');
         }
+
+        var thatAccount = await User.findOne({ username: req.body.username });
+
+        if (thatAccount) {
+            return res.redirect("/admin/useradderror");
+        }
+
+        if (req.method == "POST") {
+
+            const salt = await sails.bcrypt.genSalt(10);
+
+            const password = await req.body.password;
+
+            const hash = await sails.bcrypt.hash(password, salt);
+
+            await User.create(
+                {
+                    userrole: req.body.userrole,
+                    username: req.body.username,
+                    password: hash,
+                });
+
+            return res.redirect("/admin/index");
+
+        }
+    },
+    
+    adminuseradderror: async function (req, res) {
+        return res.view('admin/useradderror');
+    },
+
+
+    // action - delete 
+    adminuserdelete: async function (req, res) {
+
+        if (req.method == "GET") return res.forbidden();
+
+        var models = await User.destroy(req.params.id).fetch();
+
+        if (models.length == 0) return res.notFound();
+
+        if (req.wantsJSON) {
+            return res.json({ message: "This user is already deleted", url: '/admin/index' });
+        } else {
+
+            return res.redirect('/admin/index');
+        }
+
     },
 
 

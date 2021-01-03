@@ -1,7 +1,7 @@
 <body onload="pageLoaded()">
 
     <nav>
-        <a class="logo disable" href="/">3D CV</a>
+        <a class="logo disable" href="/admin/index">3D CV</a>
         <ul>
             <li><a class="nav-button" href="/user/logout">Logout</a></li>
         </ul>
@@ -11,34 +11,62 @@
 
     <div class="menubar">
 
-
-        <br>
         <form action="/admin/useradd" method="GET">
             <button type="submit" style="float:right" class="btn btn-secondary"><i class="fa fa-plus-circle"
                     aria-hidden="true" style="padding-right:10px;"></i>Add User</button>
         </form>
         <br>
 
-        <button class="btn btn-danger" style="color:white;float:left"><i class="fa fa-trash"
-                aria-hidden="true"></i></button>
-        <br>
-        <div style="border-style: double;">
-            <form method="POST" onsubmit="return validupdate()">
-                <div class="form-group row">
-                    <div class="col-xl-6 col-form-label center">
-                        <label>Username:</label>
-                        <input type="text" class="form-control" name="type" value="ja01" required>
-                    </div>
+        <div class="container">
 
-                </div>
-                <div>
-                    <button style="width: 30%;" type="submit" class="btn btn-primary center">View</button>
-                    <br>
-                </div>
+            <table class="table ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th></th>
+                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% user.forEach(function(model) { %>
 
-            </form>
+                        <tr>
+                            <td>
+                                <button class="btn btn-danger" onclick="deleteUser('<%= model.id %>')" style="color:white;float:left"><i class="fa fa-trash"
+                                        aria-hidden="true"></i></button>
+                            </td>
+                            <td>
+                                <%=model.username%>
+                            </td>
+                            <td>
+                                <%=model.name%>
+                            </td>
+                            <td>
+                                <%=model.email%>
+                            </td>
+                            <td>
+                                <%=model.phoneno%>
+                            </td>
+                            <td>
+                                <button type="submit" onclick=" window.open('/admin/papercv/<%=model.id%>','_blank')"
+                                    class="btn btn-primary">Paper CV</button>
+                                
+                            </td>
+                            <td>
+                                <button class="btn btn-primary">Digital CV</button>
+                            </td>
+
+                        </tr>
+
+                        <% }); %>
+                </tbody>
+            </table>
         </div>
-        <br>
+        <!-- <br>
         <button class="btn btn-danger" style="color:white;float:left"><i class="fa fa-trash"
                 aria-hidden="true"></i></button>
         <br>
@@ -55,10 +83,36 @@
                 <div>
                     <button style="width: 30%;" type="submit" class="btn btn-primary center">View</button>
                     <br>
-                </div>
+                </div> -->
 
-            </form>
-        </div>
+        </form>
+    </div>
     </div>
 
 </body>
+
+<script>
+    async function deleteUser(id) {
+        var r = confirm("Confirm Delete?");
+
+        if (r) {
+
+            var response = await fetch("/admin/userdelete/" + id, {
+                method: "POST",
+                credentials: 'same-origin',
+            });
+
+            if (response.ok) {
+                var data = await response.json();
+                alert(data.message);
+                window.location = data.url;
+            } else {
+                alert(response.status + ": " + response.statusText);
+            }
+
+        } else {
+            alert("Cancel");
+        }
+    }
+
+</script>

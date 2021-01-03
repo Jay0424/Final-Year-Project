@@ -40,22 +40,22 @@ module.exports = {
 
     name: {
       type: "string",
-      defaultsTo: "",
+      defaultsTo: "Not submitted",
     },
 
     email: {
       type: "string",
-      defaultsTo: "",
+      defaultsTo: "Not submitted",
     },
 
     phoneno: {
       type: "string",
-      defaultsTo: "",
+      defaultsTo: "Not submitted",
     },
 
     availability: {
       type: "string",
-      defaultsTo: "",
+      defaultsTo: "Not submitted",
     },
 
     salary: {
@@ -89,6 +89,7 @@ module.exports = {
 
     summary: {
       type: "string",
+      defaultsTo: "Not submitted",
     }
 
 

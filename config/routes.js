@@ -36,10 +36,10 @@ module.exports.routes = {
   'POST /visitor/login': 'UserController.login',
 
 
-  //Userindex
+  //User Page
   ' /user/index': 'UserController.userindex',
   ' /user/index2': 'UserController.userindex2',
-  ' /user/papercv': 'UserController.userpapercv',
+  '/user/papercv': 'UserController.userpapercv',
   'GET /user/basic': 'UserController.userbasic',
   'POST /user/basic': 'UserController.userbasic',
   'GET /user/edu': 'UserController.useredu',
@@ -96,10 +96,17 @@ module.exports.routes = {
   'POST /user/multiadd': 'UserController.userlmultiadd',
   
 
-  //Adminindex
+  //Admin Page
   ' /admin/index': 'UserController.adminindex',
   'GET /admin/useradd': 'UserController.adminuseradd',
   'POST /admin/useradd': 'UserController.adminuseradd',
+  ' /admin/useradderror': 'UserController.adminuseradderror',
+  '/admin/papercv/:id': 'UserController.adminpapercv',
+  'POST /admin/userdelete/:id': 'UserController.adminuserdelete',
+
+
+
+ 
 
 
   

@@ -1,0 +1,138 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+    .papercv {
+        background-color: white;
+        background-image: none;
+    }
+
+    .pmain {
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        font-size:30px;
+    }
+
+    .ptitle {
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        font-size: 25px;
+    }
+
+    .pcontent {
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        font-size: 23px;
+    }
+
+    .pdescription {
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+    }
+
+    .pcenter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .phr {
+        height: 2px;
+        border-width: 0;
+        color: gray;
+        background-color: gray
+    }
+
+</style>
+
+<body class="papercv">
+    <div class="container">
+        <br>
+        <h2 class="pmain pcenter"><%=user.name%></h2>
+        <h2 class="pmain pcenter">Email:<%=user.email%></h2>
+        <h2 class="pmain pcenter">Phone number:<%=user.phoneno%></h2>
+
+        <hr class="phr">
+
+        <h2 class="pmain">Summary</h2>
+        <h2 class="ptitle"><%=user.summary%></h2>
+        
+        <hr class="phr">
+
+
+        <h2 class="pmain">Education</h2>
+        <% var i=1%>
+        <% education.forEach(function(model) { %>
+        
+        <h2 class="ptitle"><%=model.certification%></h2>
+        <h2 class="pcontent"><%=model.school%></h2>
+        <h2 class="pcontent"><%=model.syear%>-<%=model.eyear%></h2>
+
+        <%if(i!=education.length){%>
+        <br id="oneline">
+        <% i++ %>
+        <%}%>
+        <% }); %>
+        
+        <hr class="phr">
+
+        <h2 class="pmain">Work Experience</h2>
+        <% var j=1%>
+        <% work.forEach(function(model) { %>
+        
+        <h2 class="ptitle"> <%=model.job%></h2>
+        <h2 class="pcontent"><%=model.company%> / <%=model.start%> - <%=model.end%></h2>
+        <h2 class="pdescription"><%=model.description%></h2>
+
+    
+        <%if(j!=work.length){%>
+        <br id="oneline">
+        <% j++ %>
+        <%}%>
+        <% }); %>
+
+        <hr class="phr">
+
+        <h2 class="pmain">Skill</h2>
+        <% skill.forEach(function(model) { %>
+        
+        <h2 class="ptitle"> <%=model.type%>: <%=model.content%></h2>
+    
+        <% }); %>
+
+        <hr class="phr">
+
+        <h2 class="pmain">Language</h2>
+        <% language.forEach(function(model) { %>
+        
+        <h2 class="ptitle"> <%=model.type%> (<%=model.level%>)</h2>
+    
+        <% }); %>
+
+        <hr class="phr">
+
+        <h2 class="pmain">Expected salary</h2>
+        <h2 class="ptitle">$<%=user.salary%></h2>
+        <hr class="phr">
+
+        <h2 class="pmain">Availability</h2>
+        <h2 class="ptitle"><%=user.availability%></h2>
+        <hr class="phr">
+
+        <!-- <h2 class="pmain">Skills</h2>
+        <h2 class="pcontent">Experienced Human Resources Manager with over 5 years of experience.</h2>
+        <hr class="phr">
+        <h2 class="pmain">Work Experiences</h2>
+        <h2 class="pcontent">Experienced Human Resources Manager with over 5 years of experience.</h2>
+        <hr class="phr">
+        <h2 class="pmain">Projects</h2>
+        <h2 class="pcontent">Experienced Human Resources Manager with over 5 years of experience.</h2>
+        <hr class="phr"> -->
+    </div>
+</body>
+
+<script>
+
+
+</script>
