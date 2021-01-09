@@ -23,78 +23,74 @@ module.exports.routes = {
 
   //Visitor
   '/': { view: 'visitor/index' },
+  ' /visitor/guide': 'UserController.visitorguide',
+  ' /visitor/template': 'UserController.visitortemplate',
 
   //Register
   'GET /visitor/register': 'UserController.register',
   'POST /visitor/register': 'UserController.register',
   'GET /visitor/registernotok': 'UserController.registernotok',
-  ' /visitor/guide': 'UserController.visitorguide',
-  ' /visitor/template': 'UserController.visitortemplate',
 
-  //Login
+  //Login & Logout
   'GET /visitor/login': 'UserController.login',
   'POST /visitor/login': 'UserController.login',
+  'POST /user/logout': 'UserController.logout',
 
 
-  //User Page
+  //User Page & Basic
   ' /user/index': 'UserController.userindex',
   ' /user/index2': 'UserController.userindex2',
   '/user/papercv': 'UserController.userpapercv',
   'GET /user/basic': 'UserController.userbasic',
   'POST /user/basic': 'UserController.userbasic',
-  'GET /user/edu': 'UserController.useredu',
-  'POST /user/edu': 'UserController.useredu',
-  'GET /user/work': 'UserController.userwork',
-  'POST /user/work': 'UserController.userwork',
-  'GET /user/skill': 'UserController.userskill',
-  'POST /user/skill': 'UserController.userskill',
-  'GET /user/language': 'UserController.userlanguage',
-  'POST /user/language': 'UserController.userlanguage',
-  'GET /user/multimedia': 'UserController.usermultimedia',
-  'POST /user/language': 'UserController.userlanguage',
-
   'GET /user/basicupdate': 'UserController.userbasicupdate',
   'POST /user/basicupdate': 'UserController.userbasicupdate',
-
-  'GET /user/eduupdate': 'UserController.usereduupdate',
-  'POST /user/eduupdate/:id': 'UserController.usereduupdate',
-  'POST /user/edudelete/:id': 'UserController.useredudelete',
-
-  'GET /user/workupdate': 'UserController.userworkupdate',
-  'POST /user/workupdate/:id': 'UserController.userworkupdate',
-  'POST /user/workdelete/:id': 'UserController.userworkdelete',
-
-  'GET /user/skillupdate': 'UserController.userskillupdate',
-  'POST /user/skillupdate/:id': 'UserController.userskillupdate',
-  'POST /user/skilldelete/:id': 'UserController.userskilldelete',
-
-  'GET /user/languageupdate': 'UserController.userlanguageupdate',
-  'POST /user/languageupdate/:id': 'UserController.userlanguageupdate',
-  'POST /user/languagedelete/:id': 'UserController.userlanguagedelete',
-
-  'GET /user/multiupdate': 'UserController.usermultiupdate',
-  'POST /user/multiupdate/:id': 'UserController.usermultiupdate',
-  'POST /user/multidelete/:id': 'UserController.usermultidelete',
-  
-
   'GET /user/pwupdate': 'UserController.userpwupdate',
   'POST /user/pwupdate/:id': 'UserController.userpwupdate',
 
-  'GET /user/eduadd': 'UserController.usereduadd',
-  'POST /user/eduadd': 'UserController.usereduadd',
+  //User Education
+  'GET /user/edu': 'EducationController.useredu',
+  'POST /user/edu': 'EducationController.useredu',
+  'GET /user/eduupdate': 'EducationController.usereduupdate',
+  'POST /user/eduupdate/:id': 'EducationController.usereduupdate',
+  'POST /user/edudelete/:id': 'EducationController.useredudelete',
+  'GET /user/eduadd': 'EducationController.usereduadd',
+  'POST /user/eduadd': 'EducationController.usereduadd',
 
-  'GET /user/workadd': 'UserController.userworkadd',
-  'POST /user/workadd': 'UserController.userworkadd',
+  //User Work
+  'GET /user/work': 'WorkController.userwork',
+  'POST /user/work': 'WorkController.userwork',
+  'GET /user/workupdate': 'WorkController.userworkupdate',
+  'POST /user/workupdate/:id': 'WorkController.userworkupdate',
+  'POST /user/workdelete/:id': 'WorkController.userworkdelete',
+  'GET /user/workadd': 'WorkController.userworkadd',
+  'POST /user/workadd': 'WorkController.userworkadd',
 
-  'GET /user/skilladd': 'UserController.userskilladd',
-  'POST /user/skilladd': 'UserController.userskilladd',
+  //User Skill
+  'GET /user/skill': 'SkillController.userskill',
+  'POST /user/skill': 'SkillController.userskill',
+  'GET /user/skillupdate': 'SkillController.userskillupdate',
+  'POST /user/skillupdate/:id': 'SkillController.userskillupdate',
+  'POST /user/skilldelete/:id': 'SkillController.userskilldelete',
+  'GET /user/skilladd': 'SkillController.userskilladd',
+  'POST /user/skilladd': 'SkillController.userskilladd',
 
-  'GET /user/languageadd': 'UserController.userlanguageadd',
-  'POST /user/languageadd': 'UserController.userlanguageadd',
+  //User Language
+  'GET /user/language': 'LanguageController.userlanguage',
+  'POST /user/language': 'LanguageController.userlanguage',
+  'GET /user/languageupdate': 'LanguageController.userlanguageupdate',
+  'POST /user/languageupdate/:id': 'LanguageController.userlanguageupdate',
+  'POST /user/languagedelete/:id': 'LanguageController.userlanguagedelete',
+  'GET /user/languageadd': 'LanguageController.userlanguageadd',
+  'POST /user/languageadd': 'LanguageController.userlanguageadd',
 
+  //User Multimedia
+  'GET /user/multimedia': 'UserController.usermultimedia',
+  'GET /user/multiupdate': 'UserController.usermultiupdate',
+  'POST /user/multiupdate/:id': 'UserController.usermultiupdate',
+  'POST /user/multidelete/:id': 'UserController.usermultidelete',
   'GET /user/multiadd': 'UserController.usermultiadd',
   'POST /user/multiadd': 'UserController.userlmultiadd',
-  
 
   //Admin Page
   ' /admin/index': 'UserController.adminindex',

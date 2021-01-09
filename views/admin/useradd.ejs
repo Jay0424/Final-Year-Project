@@ -19,7 +19,7 @@
         <h2 class="intro">Add User</h2>
         <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_iXKIMU.json" background="transparent"
             speed="0.8" style="width: 200px; height: 200px;" class="center" loop autoplay></lottie-player>
-        <form action="/admin/useradd" method="POST">
+        <form action="/admin/useradd" method="POST" onsubmit="return validupdate()">
             <div class="form-group row">
 
                 <div class="col-xl-12 col-form-label center">
@@ -34,15 +34,22 @@
                 <div class="col-xl-12 col-form-label center">
                     <label>Username:</label>
                     <input type="text" class="form-control" name="username" id="username"
-                        placeholder="Enter your username" required>
+                        placeholder="Enter username" required>
 
                 </div>
 
                 <div class="col-xl-12 col-form-label">
                     <label>Password:</label>
-                    <input type="password" class="form-control" name="password" placeholder="Enter your password"
+                    <input type="password" class="form-control" name="password" id="password"
+                        placeholder="Enter password" required>
+                </div>
+
+                <div class="col-xl-12 col-form-label">
+                    <label>Confirm Password:</label>
+                    <input type="password" class="form-control" id="password2" placeholder="Enter password again"
                         required>
                 </div>
+
             </div>
             <button type="submit" class="btn btn-primary center" style="width:100%">Submit</button>
         </form>
@@ -50,12 +57,22 @@
 
 </body>
 
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="sweetalert2.all.min.js"></script>
-
-
 <script>
-    
+
+    function validupdate() {
+        var valid = true;
+        var pw1 = document.getElementById("password").value;
+        var pw2 = document.getElementById("password2").value;
+        if (pw2 == pw1) {
+            alert("The account is created");
+            valid = true;
+        } else {
+            alert("Make sure you input the same password!")
+            valid = false;
+        }
+
+        return valid;
+
+    }
 
 </script>

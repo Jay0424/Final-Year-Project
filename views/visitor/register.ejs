@@ -16,7 +16,7 @@
         <h2 class="intro">Register</h2>
         <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_iXKIMU.json" background="transparent"
             speed="0.8" style="width: 300px; height: 300px;" class="center" loop autoplay></lottie-player>
-        <form action="/visitor/register" method="POST">
+        <form action="/visitor/register" method="POST" onsubmit="return validupdate()">
             <div class="form-group row">
                 <div class="col-xl-12 col-form-label center">
                     <label>Username:</label>
@@ -27,9 +27,16 @@
 
                 <div class="col-xl-12 col-form-label">
                     <label>Password:</label>
-                    <input type="password" class="form-control" name="password" placeholder="Enter your password"
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password"
                         required>
                 </div>
+
+                <div class="col-xl-12 col-form-label">
+                    <label>Confirm Password:</label>
+                    <input type="password" class="form-control" id="password2"
+                        placeholder="Enter your password again" required>
+                </div>
+
             </div>
             <button type="submit" class="btn btn-primary center" style="width:100%">Submit</button>
         </form>
@@ -37,12 +44,22 @@
 
 </body>
 
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="sweetalert2.all.min.js"></script>
-
-
 <script>
-    
+
+    function validupdate(){
+        var valid=true;
+        var pw1=document.getElementById("password").value;
+        var pw2=document.getElementById("password2").value;
+        if(pw2==pw1){
+            alert("Your account is created"); 
+            valid=true;
+        }else{
+            alert("Make sure you input the same password!")
+            valid=false;
+        }
+
+        return valid;
+        
+    }
 
 </script>
