@@ -99,6 +99,8 @@ module.exports.routes = {
   ' /admin/useradderror': 'UserController.adminuseradderror',
   '/admin/papercv/:id': 'UserController.adminpapercv',
   'POST /admin/userdelete/:id': 'UserController.adminuserdelete',
+  'GET /admin/pwupdate': 'UserController.adminpwupdate',
+  'POST /admin/pwupdate/:id': 'UserController.adminpwupdate',
 
 
 
