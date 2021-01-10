@@ -56,11 +56,17 @@ module.exports = {
 
             var user = await User.findOne({ username: req.body.username });
 
-            if (!user) return res.status(401).send("User not found");
+            if (!user) {
+                req.addFlash('error1', 'User not found');
+                return res.redirect('/visitor/login');
+            }
 
             const match = await sails.bcrypt.compare(req.body.password, user.password);
 
-            if (!match) return res.status(401).send("Wrong Password");
+            if (!match) { 
+                req.addFlash('error2', 'Wrong password');
+                return res.redirect('/visitor/login');
+            }
 
             req.session.regenerate(function (err) {
 
@@ -281,7 +287,7 @@ module.exports = {
 
         }
     },
-    
+
     adminuseradderror: async function (req, res) {
         return res.view('admin/useradderror');
     },

@@ -1,5 +1,17 @@
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
+<style>
+    .errormessage {
+        width: 100%;
+        border: 1px double red;
+        border-radius: 3px;
+        margin-top: 5px;
+        height: 30px;
+        background-color: rgb(255, 0, 0, 0.1);
+        text-align: center;
+    }
+</style>
+
 <body onload="pageLoaded()">
     <nav>
         <a class="logo disable" href="/">3D CV</a>
@@ -10,12 +22,14 @@
             <li><a class="nav-button" href="/visitor/login">Login</a></li>
         </ul>
     </nav>
-    
+
+
     <div class="container" style="width: 30%;">
         <h2 class="intro">Login</h2>
         <lottie-player
             src="https://assets6.lottiefiles.com/datafiles/XRVoUu3IX4sGWtiC3MPpFnJvZNq7lVWDCa8LSqgS/profile.json"
-            background="transparent" speed="4" style="width: 300px; height: 300px;"  class="center"  loop autoplay></lottie-player>
+            background="transparent" speed="4" style="width: 300px; height: 300px;" class="center" loop autoplay>
+        </lottie-player>
         <form action="/visitor/login" method="POST">
             <div>
                 <div>
@@ -24,11 +38,27 @@
                         placeholder="Enter your username" required>
                 </div>
 
-                <div>
-                    <label>Password:</label>
-                    <input type="password" class="form-control" name="password" id="password"
-                        placeholder="Enter your password" required>
-                </div>
+                <% flash.get('error1').forEach(function (message) { %>
+                    <div class="errormessage">
+                        <strong style="color:red;font-size: 18px;">
+                            <%= message %>
+                        </strong>
+                    </div>
+                    <% }) %>
+
+
+                        <div>
+                            <label>Password:</label>
+                            <input type="password" class="form-control" name="password" id="password"
+                                placeholder="Enter your password" required>
+                        </div>
+                        <% flash.get('error2').forEach(function (message) { %>
+                            <div class="errormessage">
+                                <strong style="color:red;font-size: 18px;">
+                                    <%= message %>
+                                </strong>
+                            </div>
+                            <% }) %>
             </div>
             <br>
             <button type="submit" class="btn btn-primary center" style="width: 100%;">Submit</button>
