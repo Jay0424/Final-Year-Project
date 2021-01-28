@@ -91,6 +91,8 @@ module.exports.routes = {
   'POST /user/multidelete/:id': 'UserController.usermultidelete',
   'GET /user/multiadd': 'UserController.usermultiadd',
   'POST /user/multiadd': 'UserController.userlmultiadd',
+  'POST /user/uploadimage': 'MultimediaController.uploadimage',
+  'POST /user/photo': 'UserController.userphoto',
 
   //Admin Page
   ' /admin/index': 'UserController.adminindex',

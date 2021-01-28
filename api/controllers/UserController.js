@@ -63,7 +63,7 @@ module.exports = {
 
             const match = await sails.bcrypt.compare(req.body.password, user.password);
 
-            if (!match) { 
+            if (!match) {
                 req.addFlash('error2', 'Wrong password');
                 return res.redirect('/visitor/login');
             }
@@ -378,6 +378,23 @@ module.exports = {
 
             return res.redirect("/admin/pwupdate");
         }
+    },
+
+    userphoto: async function (req, res) {
+        var thatUser = await User.findOne(req.session.userid);
+
+        req.file('avatarfile').upload({ maxBytes: 10000000 }, async function whenDone(err, uploadedFiles) {
+            if (err) { return res.serverError(err); }
+            if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+            const  datauri = require('datauri');
+            await User.update(thatUser.id).set({
+                photoPath:uploadedFiles[0].fd,
+                photo: await datauri(uploadedFiles[0].fd)
+            });
+
+            return res.redirect('/user/multimedia');
+        });
     },
 
 }

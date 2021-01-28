@@ -82,6 +82,11 @@ module.exports = {
       via: "LanguageownBy"
     },
 
+    ownMultimedia: {
+      collection: "Multimedia",
+      via: "MultimediaownBy"
+    },
+
     paperstatus: {
       type: "string",
       defaultsTo: "notsubmit"
@@ -90,6 +95,14 @@ module.exports = {
     summary: {
       type: "string",
       defaultsTo: "Not submitted",
+    },
+
+    photo:{
+      type:"string",
+    },
+
+    photoPath:{
+      type:"string"
     }
 
 

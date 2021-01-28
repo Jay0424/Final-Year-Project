@@ -12,42 +12,70 @@
         </ul>
     </nav>
 
-    <div class="container">
+    <div class="container" style="width:60%">
 
         <h2 class="intro"> <i class="fa fa-file" aria-hidden="true" style="padding-right: 20px;"></i>Multimedia</h2>
+        <h4>Uploading File:</h4>
+        <h4>1. Everytime you can only upload one file</h4>
+        <h4>2. After uploading the file, the page will be refreshed for you to upload another one</h4>
+        <h4>3. Information and file can be edited by clicking the upper right links after submitting the full form</h4>
 
+
+        <div class="form-group row">
+            <div class="col-xl-12 col-form-label center" style="border-style: solid;">
+                <form action="/user/photo" method="POST" enctype="multipart/form-data" onsubmit="return validphoto()">
+                    <label>Personal Photo: (Only accept one submit, second submit will replace the previous one)</label>
+                    <br>
+                    <input type="file" accept="image/*" name="avatarfile" />
+                    <button type="submit" class="btn btn-dark" style="float:right">Upload</button>
+                </form>
+            </div>
+
+            <div class="col-xl-12 col-form-label center" style="border-style: solid;">
+                <form action="/user/uploadimage" method="POST" enctype="multipart/form-data" onsubmit="return validimage()">
+                    <label>Photo:</label>
+
+                    <input type="text" class="form-control" placeholder="Enter the image name" name="name"
+                        required>
+                    <br>
+                    <input type="file" accept="image/*" name="avatarfile" />
+                    <button type="submit" class="btn btn-dark" style="float:right">Upload</button>
+                </form>
+            </div>
+
+            <br>
+
+            <div class="col-xl-12 col-form-label center" style="border-style: solid;">
+                <form action="/user/uploadimage" method="post" enctype="multipart/form-data" onsubmit="return validvideo()">
+                    <label>Video:</label>
+                    <input type="text" class="form-control" placeholder="Enter the image name" name="imagename"
+                        required>
+                    <br>
+                    <input type="file" accept="image/*" name="avatarfile" />
+                    <button type="submit" class="btn btn-dark" style="float:right">Upload</button>
+                </form>
+            </div>
+
+            <br>
+
+            <div class="col-xl-12 col-form-label center" style="border-style: solid;">
+                <form action="/user/uploadimage" method="post" enctype="multipart/form-data" onsubmit="return validpdf()">
+                    <label>PDF:</label>
+                    <input type="text" class="form-control" placeholder="Enter the image name" name="imagename"
+                    required>
+                    <br>
+                    <input type="file" accept="image/*" name="avatarfile" />
+                    <button type="submit" class="btn btn-dark" style="float:right">Upload</button>
+                </form>
+            </div>
+
+
+        </div>
 
         <form action="/user/index2" method="GET">
-            <div class="form-group row">
-
-                <div class="col-xl-12 col-form-label center" style="border-style: solid;">
-                    <label>Photo:</label>
-                    <button type="submit" class="btn btn-dark" style="float:right">Upload</button>
-                </div>
-                <div>
-                <br>
-            </div>
-
-                <div class="col-xl-12 col-form-label center" style="border-style: solid;">
-                    <label>Video:</label>
-                    <button type="submit" class="btn btn-dark" style="float:right">Upload</button>
-                </div>
-
-                <br>
-                
-                <div class="col-xl-12 col-form-label center" style="border-style: solid;">
-                    <label>PDF:</label>
-                    <button type="submit" class="btn btn-dark" style="float:right">Upload</button>
-                </div>
-
-                <div class="col-xl-12 col-form-label center" style="border-style: solid;">
-                    <label>Other:</label>
-                    <button type="submit" class="btn btn-dark" style="float:right">Upload</button>
-                </div>
-                
-            </div>
-            <button type="submit" class="btn btn-primary" style="float:right">Finish</button>
+            <button type="submit" class="btn btn-primary" style="float:right">Finish CV form</button>
         </form>
+
 
         <button onclick="goBack()" style="float:left" class="btn btn-primary">Back to Language</button>
 
@@ -57,56 +85,24 @@
 </body>
 
 <script>
-    var currentTab = 0; // Current tab is set to be the first tab (0)
-    showTab(currentTab); // Display the current tab
-
-    function showTab(n) {
-        var x = document.getElementsByClassName("tab");
-        x[n].style.display = "block";
-        for (i = 0; i < x.length; i++) {
-            if (i != n) {
-                x[i].style.display = "none";
-            }
-        }
-    }
-
-    function goBack() {
-        window.history.back();
-    }
-
-    function validskill2() {
-        const type = document.getElementById("type2");
-        const content = document.getElementById("content2");
-        
+    function validphoto() {
         var valid = true;
-
-        if (type.value == "" && content.value == "") {
-            valid = true;
-        } else if (type.value != "" && content.value != "") {
-            valid = true;
-        } else {
-            alert("Make sure you enter all the elements of one skill record");
-            valid = false;
-        }
-        return valid;
+        alert("Personal Photo is uploaded")
     }
 
-    function validskill3() {
-        const type = document.getElementById("type3");
-        const content = document.getElementById("content3");
-        
+    function validimage() {
         var valid = true;
-
-        if (type.value == "" && content.value == "") {
-            valid = true;
-        } else if (type.value != "" && content.value != "") {
-            valid = true;
-        } else {
-            alert("Make sure you enter all the elements of one skill record");
-            valid = false;
-        }
-        return valid;
+        alert("Image is uploaded")
     }
 
+    function validvideo() {
+        var valid = true;
+        alert("Video is uploaded")
+    }
+
+    function validpdf() {
+        var valid = true;
+        alert("PDF is uploaded")
+    }
 
 </script>
