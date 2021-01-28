@@ -32,7 +32,7 @@ module.exports = {
                 {
                     username: req.body.username,
                     password: hash,
-
+                    photo:"https://upload.cc/i1/2021/01/28/SyUtXK.png"
                 });
 
             return res.redirect("/visitor/login");
@@ -146,9 +146,10 @@ module.exports = {
     },
 
     usermultiupdate: async function (req, res) {
+        var thatUser = await User.findOne(req.session.userid);
         if (req.method == "GET") {
 
-            return res.view('user/multiupdate');
+            return res.view('user/multiupdate', { user: thatUser });
 
         }
 
@@ -281,6 +282,7 @@ module.exports = {
                     userrole: req.body.userrole,
                     username: req.body.username,
                     password: hash,
+                    photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png"
                 });
 
             return res.redirect("/admin/index");
@@ -387,14 +389,45 @@ module.exports = {
             if (err) { return res.serverError(err); }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 
-            const  datauri = require('datauri');
+            const datauri = require('datauri');
             await User.update(thatUser.id).set({
-                photoPath:uploadedFiles[0].fd,
+                photoPath: uploadedFiles[0].fd,
                 photo: await datauri(uploadedFiles[0].fd)
             });
 
             return res.redirect('/user/multimedia');
         });
     },
+
+    userphotoupdate: async function (req, res) {
+        var thatUser = await User.findOne(req.session.userid);
+
+        req.file('avatarfile').upload({ maxBytes: 10000000 }, async function whenDone(err, uploadedFiles) {
+            if (err) { return res.serverError(err); }
+            if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+            const datauri = require('datauri');
+            await User.update(thatUser.id).set({
+                photoPath: uploadedFiles[0].fd,
+                photo: await datauri(uploadedFiles[0].fd)
+            });
+
+            return res.redirect('/user/multiupdate');
+        });
+    },
+
+    userphotoremove: async function (req, res) {
+        var thatUser = await User.findOne(req.session.userid);
+
+            await User.update(thatUser.id).set({
+                photoPath: "",
+                photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png"
+
+            });
+
+            return res.redirect('/user/multiupdate');
+        
+    },
+    
 
 }

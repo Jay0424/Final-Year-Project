@@ -7,7 +7,7 @@
 
 module.exports = {
 
-    uploadimage: async function (req, res) {
+    useruploadimage: async function (req, res) {
 
         var thatUser = await User.findOne(req.session.userid);
 

@@ -1,0 +1,30 @@
+<body>
+
+    <nav>
+        <a class="logo disable" href="/user/index2">3D CV</a>
+        <ul>
+            <li><a href="#">User Guide</a></li>
+            <li><a href="#">CV Template</a></li>
+            <li><a class="update-button" href="/user/basicupdate">Profile</a></li>
+            <li><a class="update-button" href="/user/multiupdate">Multimedia</a></li>
+            <li><a class="nav-button" href="/user/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="menubar">
+
+        <div class="btnbar">
+            <form action="/user/multiupdate" method="GET">
+                <button style="color: violet;"><i class="fa fa-user" aria-hidden="true"></i>Personal Photo</button>
+            </form>
+            <form action="/user/imgupdate" method="GET">
+                <button><i class="fa fa-picture-o" aria-hidden="true"></i></i>Image</button>
+            </form>
+            <form action="/user/videoupdate" method="GET">
+                <button><i class="fa fa-video-camera" aria-hidden="true"></i></i>Video</button>
+            </form>
+            <form action="/user/pdfupdate" method="GET">
+                <button><i class="fa fa-file-pdf-o" aria-hidden="true"></i>PDF</button>
+            </form>
+        </div>

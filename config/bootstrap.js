@@ -38,14 +38,14 @@ module.exports.bootstrap = async function() {
   }
 
   await User.createEach([
-    {username:"jay01", password:hash, userrole:"user"},
-    {username:"jay02", password:hash, userrole:"user"},
-    {username:"jay03", password:hash, userrole:"user"},
-    {username:"jay04", password:hash, userrole:"user"},
-    {username:"jay05", password:hash, userrole:"user"},
-    {username:"jay06", password:hash, userrole:"user"},
-    {username:"admin01", password:hash, userrole:"admin"},
-    {username:"admin02", password:hash, userrole:"admin"},
+    {username:"jay01", password:hash, userrole:"user", photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png"},
+    {username:"jay02", password:hash, userrole:"user", photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png"},
+    {username:"jay03", password:hash, userrole:"user", photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png"},
+    {username:"jay04", password:hash, userrole:"user", photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png"},
+    {username:"jay05", password:hash, userrole:"user", photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png"},
+    {username:"jay06", password:hash, userrole:"user", photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png"},
+    {username:"admin01", password:hash, userrole:"admin", photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png"},
+    {username:"admin02", password:hash, userrole:"admin", photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png"},
 
     // etc.
   ]);

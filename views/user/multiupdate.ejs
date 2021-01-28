@@ -1,5 +1,9 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 <style>
     #currentlevel {
         display: none;
@@ -13,92 +17,82 @@
         <ul>
             <li><a href="#">User Guide</a></li>
             <li><a href="#">CV Template</a></li>
-            <li><a class="nav-button" href="/user/basicupdate">Profile</a></li>
-            <li><a class="nav-button" href="/user/multiupdate">Multimedia</a></li>
+            <li><a class="update-button" href="/user/basicupdate">Profile</a></li>
+            <li><a class="update-button" href="/user/multiupdate">Multimedia</a></li>
             <li><a class="nav-button" href="/user/logout">Logout</a></li>
         </ul>
     </nav>
 
-    <h2 class="intro">Manage Multimedia</h2>
 
     <div class="menubar">
 
+        <div class="btnbar">
+            <form action="/user/multiupdate" method="GET">
+                <button style="color: violet;"><i class="fa fa-user" aria-hidden="true"></i>Personal Photo</button>
+            </form>
+            <form action="/user/imgupdate" method="GET">
+                <button><i class="fa fa-picture-o" aria-hidden="true"></i></i>Image</button>
+            </form>
+            <form action="/user/videoupdate" method="GET">
+                <button><i class="fa fa-video-camera" aria-hidden="true"></i></i>Video</button>
+            </form>
+            <form action="/user/pdfupdate" method="GET">
+                <button><i class="fa fa-file-pdf-o" aria-hidden="true"></i>PDF</button>
+            </form>
+        </div>
 
-        <br>
-        <form action="/user/multiadd" method="GET">
-            <button type="submit" style="float:right" class="btn btn-secondary"><i class="fa fa-plus-circle"
-                    aria-hidden="true" style="padding-right:10px;"></i>Add Multimedia</button>
-        </form>
-        <br>
-
-            <button class="btn btn-danger" style="color:white;float:left"><i
-                    class="fa fa-trash" aria-hidden="true"></i></button>
-            <br>
-            <div style="border-style: double;">
-                <form method="POST" onsubmit="return validupdate()">
-                    <div class="form-group row">
-                        <div class="col-xl-6 col-form-label center">
-                            <label>Type:</label>
-                            <input type="text" class="form-control" name="type" 
-                                value="Photo" required>
-                            
-                        </div>
-
-                        <div class="col-xl-6 col-form-label center">
-                            <label>Filename:</label>
-                            <input type="text" class="form-control" name="type" 
-                                value="personal.png" required>
-                        </div>
-                    </div>
-                    <div>
-                        <button style="width: 30%;" type="submit" class="btn btn-primary center">Update</button>
-                        <br>
-                    </div>
-
-                </form>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 m-auto">
+                    <h2 style="text-align: center;">Current Photo</h2>
+                    <img class="center" src=<%=user.photo%> style="width: 70%;
+                    height:auto;margin-left:auto;margin-right:auto;>
+                    <br>
+                </div>
             </div>
-            <br>
+
+            <div class="row">
+                <div class="col-xl-10 m-auto">
+                    <form action="/user/photoupdate" method="POST" enctype="multipart/form-data" onsubmit="return validupdate()">
+                        <br>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" accept="image/*" name="avatarfile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                        <button type="submit" class="btn btn-dark btn-block">Update</button>
+                    </form>
+
+                    <br>
+
+                    <form action="/user/photoremove" method="POST" onsubmit="return validremove()">
+                        <button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash"
+                                style="padding-right: 10px" aria-hidden="true"></i>Remove current</button>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+
     </div>
 </body>
 
 <script>
+    document.querySelector(".custom-file-input").onchange = function () {
+        document.querySelector(".custom-file-label").textContent = this.files[0].name;
+    }
+
     function validupdate() {
         var valid = true;
-        alert("This record is updated");
+        alert("Your personal photo is updated");
         return valid;
     }
 
-    async function deleteLanguage(id) {
-        var r = confirm("Confirm Delete?");
-
-        if (r) {
-
-            var response = await fetch("/user/languagedelete/" + id, {
-                method: "POST",
-                credentials: 'same-origin',
-            });
-
-            if (response.ok) {
-                var data = await response.json();
-                alert(data.message);
-                window.location = data.url;
-            } else {
-                alert(response.status + ": " + response.statusText);
-            }
-
-        } else {
-            alert("Cancel");
-        }
+    function validremove() {
+        var valid = true;
+        alert("Your personal photo is removed and set to the default photo");
+        return valid;
     }
 
-    function removesame() {
-        var current = document.getElementById("currentlevel");
-        var list = document.getElementsByClassName("levellist");
-        for (i = 0; i < list.length; i++) {
-            if (list[i].value == current.value) {
-                list[i].hidden = true
-            }
-        }
-    }
 
 </script>
