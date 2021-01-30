@@ -1,0 +1,104 @@
+<body>
+
+    <nav>
+        <a class="logo disable" href="/user/index2">3D CV</a>
+        <ul>
+            <li><a href="#">User Guide</a></li>
+            <li><a href="#">CV Template</a></li>
+            <li><a class="update-button" href="/user/basicupdate">Profile</a></li>
+            <li><a class="update-button" href="/user/multiupdate">Multimedia</a></li>
+            <li><a class="nav-button" href="/user/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="menubar">
+
+        <div class="btnbar">
+            <form action="/user/multiupdate" method="GET">
+                <button><i class="fa fa-user" aria-hidden="true"></i>Personal Photo</button>
+            </form>
+            <form action="/user/imgupdate" method="GET">
+                <button><i class="fa fa-picture-o" aria-hidden="true"></i></i>Image</button>
+            </form>
+            <form action="/user/videoupdate" method="GET">
+                <button style="color: violet;"><i class="fa fa-video-camera" aria-hidden="true"></i></i>Video</button>
+            </form>
+            <form action="/user/pdfupdate" method="GET">
+                <button><i class="fa fa-file-pdf-o" aria-hidden="true"></i>PDF</button>
+            </form>
+            <form action="/user/videoadd" method="GET">
+                <button type="submit" style="color:orangered;float:right;"><i class="fa fa-plus-circle"
+                        aria-hidden="true"></i>Add Video</button>
+            </form>
+        </div>
+        <div class="row">
+            <% video.forEach(function(model) { %>
+                <div class="card col-xl-6 control-label">
+
+                    <h2 style="text-align: center;">Video:<%=model.name%>
+                    </h2>
+                    <video controls>
+                        <source src="<%=model.file%>">
+                    </video>
+                    <form action="/user/videoupdate/<%=model.id%>" method="POST" enctype="multipart/form-data"
+                        onsubmit="return validupdate()">
+                        <br>
+                        <labe>Video name:</labe>
+                        <input type="text" class="form-control" name="videoname" value=<%=model.name%> id="imgname"
+                        required>
+                        <div class="custom-file">
+                            <input type="file" accept="video/*" name="avatarfile" id="avatarfile" />
+                        </div>
+
+                        <button type="submit" class="btn btn-dark btn-block">Update</button>
+                    </form>
+                    <br>
+                    <button onclick="deleteVideo('<%= model.id %>')" class="btn btn-danger"
+                        style="color:white;float:left"><i class="fa fa-trash" aria-hidden="true"
+                            style="padding-right:5px"></i>Delete Video</button>
+                    <br>
+
+                </div>
+                <% }); %>
+        </div>
+    </div>
+</body>
+
+<script>
+    function validupdate() {
+        var valid = true;
+        var video = document.getElementById("avatarfile").value;
+        if (video == "") {
+            valid = false;
+            alert("You have not select the video for update");
+        }
+        else {
+            alert("Video update successfully");
+        }
+        return valid
+    }
+
+    async function deleteVideo(id) {
+        var r = confirm("Confirm Delete?");
+
+        if (r) {
+
+            var response = await fetch("/user/videodelete/" + id, {
+                method: "POST",
+                credentials: 'same-origin',
+            });
+
+            if (response.ok) {
+                var data = await response.json();
+                alert(data.message);
+                window.location = data.url;
+            } else {
+                alert(response.status + ": " + response.statusText);
+            }
+
+        } else {
+            alert("Cancel");
+        }
+    }
+</script>

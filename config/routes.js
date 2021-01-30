@@ -92,6 +92,7 @@ module.exports.routes = {
   'GET /user/multiadd': 'UserController.usermultiadd',
   'POST /user/multiadd': 'UserController.userlmultiadd',
   'POST /user/uploadimage': 'MultimediaController.useruploadimage',
+  'POST /user/uploadvideo': 'MultimediaController.useruploadvideo',
   'POST /user/photo': 'UserController.userphoto',
   'POST /user/photoupdate': 'UserController.userphotoupdate',
   'POST /user/photoremove': 'UserController.userphotoremove',
@@ -100,6 +101,11 @@ module.exports.routes = {
   'POST /user/imgdelete/:id': 'MultimediaController.userimgdelete',
   'GET /user/imgadd': 'MultimediaController.userimgadd',
   'POST /user/imgadd': 'MultimediaController.userimgadd',
+  'GET /user/videoupdate': 'MultimediaController.uservideoupdate',
+  'POST /user/videoupdate/:id': 'MultimediaController.uservideoupdate',
+  'POST /user/videodelete/:id': 'MultimediaController.uservideodelete',
+  'GET /user/videoadd': 'MultimediaController.uservideoadd',
+  'POST /user/videoadd': 'MultimediaController.uservideoadd',
 
   //Admin Page
   ' /admin/index': 'UserController.adminindex',

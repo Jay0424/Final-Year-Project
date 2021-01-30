@@ -48,7 +48,7 @@
             <div class="col-xl-12 col-form-label center" style="border-style: solid;">
                 <form action="/user/uploadvideo" method="post" enctype="multipart/form-data" onsubmit="return validvideo()">
                     <label>Video:</label>
-                    <input type="text" class="form-control" placeholder="Enter the video name" name="videoname"
+                    <input type="text" class="form-control" placeholder="Enter the video name" name="name"
                         required>
                     <br>
                     <input type="file" accept="video/*" name="avatarfile" />
@@ -59,7 +59,7 @@
             <br>
 
             <div class="col-xl-12 col-form-label center" style="border-style: solid;">
-                <form action="/user/uploadimage" method="post" enctype="multipart/form-data" onsubmit="return validpdf()">
+                <form action="/user/uploadpdf" method="post" enctype="multipart/form-data" onsubmit="return validpdf()">
                     <label>PDF:</label>
                     <input type="text" class="form-control" placeholder="Enter the image name" name="imagename"
                     required>
