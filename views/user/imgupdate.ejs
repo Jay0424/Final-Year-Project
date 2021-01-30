@@ -16,10 +16,10 @@
 
         <div class="btnbar">
             <form action="/user/multiupdate" method="GET">
-                <button style="color: violet;"><i class="fa fa-user" aria-hidden="true"></i>Personal Photo</button>
+                <button><i class="fa fa-user" aria-hidden="true"></i>Personal Photo</button>
             </form>
             <form action="/user/imgupdate" method="GET">
-                <button><i class="fa fa-picture-o" aria-hidden="true"></i></i>Image</button>
+                <button style="color: violet;"><i class="fa fa-picture-o" aria-hidden="true"></i></i>Image</button>
             </form>
             <form action="/user/videoupdate" method="GET">
                 <button><i class="fa fa-video-camera" aria-hidden="true"></i></i>Video</button>
@@ -27,4 +27,88 @@
             <form action="/user/pdfupdate" method="GET">
                 <button><i class="fa fa-file-pdf-o" aria-hidden="true"></i>PDF</button>
             </form>
+            <form action="/user/imgadd" method="GET">
+                <button type="submit" style="color:orangered;float:right;"><i class="fa fa-plus-circle"
+                        aria-hidden="true"></i>Add Image</button>
+            </form>
         </div>
+
+        <div class="row">
+            <% image.forEach(function(model) { %>
+                <div class="card col-xl-4 control-label">
+
+                    <h2 style="text-align: center;">Image:<%=model.name%>
+                    </h2>
+                    <img src=<%=model.file%> >
+                    <form action="/user/imgupdate/<%=model.id%>" method="POST" enctype="multipart/form-data"
+                        onsubmit="return validupdate()">
+                        <br>
+                        <labe>Image name:</labe>
+                        <input type="text" class="form-control" name="imgname" value=<%=model.name%> id="imgname"
+                        required>
+                        <div class="custom-file">
+                            <input type="file" accept="image/*" name="avatarfile" id="avatarfile"/>
+                        </div>
+
+                        <button type="submit" class="btn btn-dark btn-block">Update</button>
+                    </form>
+                    <br>
+                    <button onclick="deleteImg('<%= model.id %>')" class="btn btn-danger"
+                        style="color:white;float:left"><i class="fa fa-trash" aria-hidden="true"
+                            style="padding-right:5px"></i>Delete Image</button>
+                    <br>
+                </div>
+                <% }); %>
+                    <br>
+        </div>
+
+
+        <!-- <% image.forEach(function(model) { %>
+            <button onclick="deleteEdu('<%= model.id %>')" class="btn btn-danger" style="color:white;float:left"><i
+                    class="fa fa-trash" aria-hidden="true"></i></button>
+            <img src=<%=model.file%> style="width:70%;height:auto">
+            <%=model.name%>
+        <% }); %> -->
+        <!-- </div> -->
+</body>
+
+<script>
+
+    function validupdate() {
+        var valid = true;
+        var image = document.getElementById("avatarfile").value;
+        var imgname = document.getElementById("imgname").value;
+        if (image == "") {
+            valid = false;
+            alert("You have not select the image for update");
+        }
+        else {
+            alert("Image update successfully");
+        }
+        return valid
+    }
+
+    async function deleteImg(id) {
+        var r = confirm("Confirm Delete?");
+
+        if (r) {
+
+            var response = await fetch("/user/imgdelete/" + id, {
+                method: "POST",
+                credentials: 'same-origin',
+            });
+
+            if (response.ok) {
+                var data = await response.json();
+                alert(data.message);
+                window.location = data.url;
+            } else {
+                alert(response.status + ": " + response.statusText);
+            }
+
+        } else {
+            alert("Cancel");
+        }
+    }
+
+</script>

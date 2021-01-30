@@ -46,12 +46,12 @@
             <br>
 
             <div class="col-xl-12 col-form-label center" style="border-style: solid;">
-                <form action="/user/uploadimage" method="post" enctype="multipart/form-data" onsubmit="return validvideo()">
+                <form action="/user/uploadvideo" method="post" enctype="multipart/form-data" onsubmit="return validvideo()">
                     <label>Video:</label>
-                    <input type="text" class="form-control" placeholder="Enter the image name" name="imagename"
+                    <input type="text" class="form-control" placeholder="Enter the video name" name="videoname"
                         required>
                     <br>
-                    <input type="file" accept="image/*" name="avatarfile" />
+                    <input type="file" accept="video/*" name="avatarfile" />
                     <button type="submit" class="btn btn-dark" style="float:right">Upload</button>
                 </form>
             </div>

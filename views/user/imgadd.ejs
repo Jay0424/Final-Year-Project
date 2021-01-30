@@ -1,0 +1,49 @@
+<body>
+
+    <nav>
+        <a class="logo disable" href="/user/index2">3D CV</a>
+        <ul>
+            <li><a href="#">User Guide</a></li>
+            <li><a href="#">CV Template</a></li>
+            <li><a class="update-button" href="/user/basicupdate">Profile</a></li>
+            <li><a class="update-button" href="/user/multiupdate">Multimedia</a></li>
+            <li><a class="nav-button" href="/user/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2 class="intro"> <i class="fa fa-picture-o" aria-hidden="true" style="padding-right: 20px;"></i>Image</h2>
+        <h4>Uploading Image</h4>
+        <h4>1. Everytime you can only upload one image</h4>
+        <h4>2. After uploading, the page will be refreshed for you to upload another one</h4>
+        <h4>3. Multimedia button (upper right) can let you to edit your image</h4>
+        <h4>4. Image preview will be shown below</h4>
+        <br>
+
+        <form action="/user/imgadd" method="POST"enctype="multipart/form-data" onsubmit="return validadd()">
+            <br>
+            <labe>Image name:</labe>
+            <input type="text" class="form-control" name="imgname" id="imgname" required>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" accept="image/*" name="avatarfile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+
+            <button type="submit" class="btn btn-dark btn-block">Upload</button>
+        </form>
+
+    </div>
+</body>
+
+<script>
+    document.querySelector(".custom-file-input").onchange = function () {
+        document.querySelector(".custom-file-label").textContent = this.files[0].name;
+    }
+
+    function validadd() {
+        var valid = true;
+        alert("Image is uploaded");
+        return valid;
+    }
+
+</script>
