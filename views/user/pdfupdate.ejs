@@ -1,3 +1,8 @@
+
+
+
+
+
 <body>
 
     <nav>
@@ -22,64 +27,65 @@
                 <button><i class="fa fa-picture-o" aria-hidden="true"></i></i>Image</button>
             </form>
             <form action="/user/videoupdate" method="GET">
-                <button style="color: violet;"><i class="fa fa-video-camera" aria-hidden="true"></i></i>Video</button>
+                <button><i class="fa fa-video-camera" aria-hidden="true"></i></i>Video</button>
             </form>
             <form action="/user/pdfupdate" method="GET">
-                <button><i class="fa fa-file-pdf-o" aria-hidden="true"></i>PDF</button>
+                <button style="color: violet;"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>PDF</button>
             </form>
-            <form action="/user/videoadd" method="GET">
+            <form action="/user/pdfadd" method="GET">
                 <button type="submit" style="color:orangered;float:right;"><i class="fa fa-plus-circle"
-                        aria-hidden="true"></i>Add Video</button>
+                        aria-hidden="true"></i>Add PDF</button>
             </form>
         </div>
+
+
         <div class="row">
-            <% video.forEach(function(model) { %>
+            <% pdf.forEach(function(model) { %>
                 <div class="card col-xl-6 control-label">
 
-                    <h2 style="text-align: center;">Video:<%=model.name%>
-                    </h2>
-                    <video controls>
-                        <source src="<%=model.file%>">
-                    </video>
-                    <form action="/user/videoupdate/<%=model.id%>" method="POST" enctype="multipart/form-data"
+                    <a style="text-align: center; font-size: 30px; text-decoration: underline;" href="/user/pdfview/<%=model.id%>" target="_blank">View PDF: <%=model.name%></a>
+
+                    <form action="/user/pdfupdate/<%=model.id%>" method="POST" enctype="multipart/form-data"
                         onsubmit="return validupdate()">
                         <br>
-                        <labe>Video name:</labe>
-                        <input type="text" class="form-control" name="videoname" value=<%=model.name%> id="imgname"
-                        required>
+                        <label>PDF name:</label>
+                        <input type="text" class="form-control" name="pdfname" value=<%=model.name%> required>
                         <div class="custom-file">
-                            <input type="file" accept="video/*" name="avatarfile" id="avatarfile" required/>
+                            <input type="file" accept="application/pdf" name="avatarfile" id="avatarfile" value=<%model.file%> required/>
                         </div>
 
                         <button type="submit" class="btn btn-dark btn-block">Update</button>
                     </form>
                     <br>
-                    <button onclick="deleteVideo('<%= model.id %>')" class="btn btn-danger"
+                    <button class="btn btn-danger" onclick="deletePDF('<%= model.id %>')"
                         style="color:white;float:left"><i class="fa fa-trash" aria-hidden="true"
-                            style="padding-right:5px"></i>Delete Video</button>
+                            style="padding-right:5px"></i>Delete PDF</button>
                     <br>
 
                 </div>
                 <% }); %>
         </div>
+
     </div>
+
 </body>
 
 <script>
+
     function validupdate() {
         var valid = true;
-
-        alert("Video update successfully");
-
-        return valid
+        
+        alert("PDF update successfully");
+        
+        return valid;
     }
 
-    async function deleteVideo(id) {
+    async function deletePDF(id) {
         var r = confirm("Confirm Delete?");
 
         if (r) {
 
-            var response = await fetch("/user/videodelete/" + id, {
+            var response = await fetch("/user/pdfdelete/" + id, {
                 method: "POST",
                 credentials: 'same-origin',
             });
@@ -96,4 +102,5 @@
             alert("Cancel");
         }
     }
+
 </script>

@@ -230,6 +230,131 @@ module.exports = {
         }
     },
 
+    useruploadpdf: async function (req, res) {
+
+        var thatUser = await User.findOne(req.session.userid);
+
+        var pdf = await Multimedia.create(
+            {
+                type: "pdf",
+                name: req.body.name,
+            }).fetch();
+
+        await User.addToCollection(thatUser.id, "ownMultimedia").members(pdf.id);
+
+        req.file('avatarfile').upload({ maxBytes: 10000000 }, async function whenDone(err, uploadedFiles) {
+            if (err) { return res.serverError(err); }
+            if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+            const datauri = require('datauri');
+            await Multimedia.update(pdf.id).set({
+                filePath: uploadedFiles[0].fd,
+                file: await datauri(uploadedFiles[0].fd)
+            }).fetch();
+
+            return res.redirect('/user/multimedia');
+        });
+    },
+
+    userpdfupdate: async function (req, res) {
+        var thatUser = await User.findOne(req.session.userid);
+        if (req.method == "GET") {
+
+            var thatUser = await User.findOne(req.session.userid);
+
+            var userid = thatUser.id;
+
+            var pdfs = await User.findOne(userid).populate("ownMultimedia", {
+                where: {
+                    type: "pdf"
+                },
+                sort: 'id DESC'
+            });
+
+            return res.view('user/pdfupdate', {
+                pdf: pdfs.ownMultimedia,
+            });
+        }
+
+        if (req.method == "POST") {
+            var pdf = await Multimedia.findOne(req.params.id);
+            req.file('avatarfile').upload({ maxBytes: 10000000000000 }, async function whenDone(err, uploadedFiles) {
+                if (err) { return res.serverError(err); }
+                if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+                const datauri = require('datauri');
+                await Multimedia.update(pdf.id).set({
+                    name: req.body.pdfname,
+                    filePath: uploadedFiles[0].fd,
+                    file: await datauri(uploadedFiles[0].fd)
+                });
+                return res.redirect('/user/pdfupdate');
+            });
+        }
+
+    },
+
+    userpdfdelete: async function (req, res) {
+
+        if (req.method == "GET") return res.forbidden();
+
+        var models = await Multimedia.destroy(req.params.id).fetch();
+
+        if (models.length == 0) return res.notFound();
+
+        if (req.wantsJSON) {
+            return res.json({ message: "This PDF is already deleted", url: '/user/pdfupdate' });
+        } else {
+
+            return res.redirect("/user/pdfupdate");
+        }
+
+    },
+
+    userpdfview: async function (req, res) {
+        
+            var thisPDF=await Multimedia.findOne(req.params.id)
+
+            return res.view('user/pdfview', {
+                pdf: thisPDF,
+            });
+
+    },
+
+    userpdfadd: async function (req, res) {
+        if (req.method == "GET") {
+            return res.view('user/pdfadd')
+        }
+
+        if (req.method == "POST") {
+            var thatUser = await User.findOne(req.session.userid);
+
+            var pdf = await Multimedia.create(
+                {
+                    type: "pdf",
+                    name: req.body.pdfname,
+                }).fetch();
+
+            await User.addToCollection(thatUser.id, "ownMultimedia").members(pdf.id);
+
+            req.file('avatarfile').upload({ maxBytes: 10000000000000 }, async function whenDone(err, uploadedFiles) {
+                if (err) { return res.serverError(err); }
+                if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+                const datauri = require('datauri');
+                await Multimedia.update(pdf.id).set({
+                    filePath: uploadedFiles[0].fd,
+                    file: await datauri(uploadedFiles[0].fd)
+                }).fetch();
+
+                return res.redirect('/user/pdfadd');
+            });
+        }
+    },
+
+    
+
+
 
 
 

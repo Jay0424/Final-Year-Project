@@ -12,19 +12,19 @@
     </nav>
 
     <div class="container">
-        <h2 class="intro"> <i class="fa fa-video-camera" aria-hidden="true" style="padding-right: 20px;"></i>Video</h2>
-        <h4>Uploading Video</h4>
-        <h4>1. Everytime you can only upload one video</h4>
+        <h2 class="intro"> <i class="fa fa-file-pdf-o" aria-hidden="true" style="padding-right: 20px;"></i>PDF</h2>
+        <h4>Uploading PDF</h4>
+        <h4>1. Everytime you can only upload one PDF</h4>
         <h4>2. After uploading, the page will be refreshed for you to upload another one</h4>
-        <h4>3. Multimedia button (upper right) can let you to edit your video</h4>
+        <h4>3. Multimedia button (upper right) can let you to edit your PDF</h4>
         <br>
 
-        <form action="/user/videoadd" method="POST"enctype="multipart/form-data" onsubmit="return validadd()">
+        <form action="/user/pdfadd" method="POST"enctype="multipart/form-data" onsubmit="return validadd()">
             <br>
-            <labe>Video name:</labe>
-            <input type="text" class="form-control" name="videoname" id="videoname" required>
+            <labe>PDF name:</labe>
+            <input type="text" class="form-control" name="pdfname" id="pdfname" required>
             <div class="custom-file">
-                <input type="file" class="custom-file-input" accept="video/*" name="avatarfile" required>
+                <input type="file" class="custom-file-input"accept="application/pdf" name="avatarfile" required>
                 <label class="custom-file-label" for="customFile">Choose file</label>
             </div>
 
@@ -41,7 +41,7 @@
 
     function validadd() {
         var valid = true;
-        alert("Video is uploaded");
+        alert("PDF is uploaded");
         return valid;
     }
 

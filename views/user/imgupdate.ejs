@@ -47,7 +47,7 @@
                         <input type="text" class="form-control" name="imgname" value=<%=model.name%> id="imgname"
                         required>
                         <div class="custom-file">
-                            <input type="file" accept="image/*" name="avatarfile" id="avatarfile"/>
+                            <input type="file" accept="image/*" name="avatarfile" id="avatarfile" required/>
                         </div>
 
                         <button type="submit" class="btn btn-dark btn-block">Update</button>
@@ -76,15 +76,9 @@
 
     function validupdate() {
         var valid = true;
-        var image = document.getElementById("avatarfile").value;
-        var imgname = document.getElementById("imgname").value;
-        if (image == "") {
-            valid = false;
-            alert("You have not select the image for update");
-        }
-        else {
-            alert("Image update successfully");
-        }
+       
+        alert("Image update successfully");
+        
         return valid
     }
 

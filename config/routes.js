@@ -91,21 +91,33 @@ module.exports.routes = {
   'POST /user/multidelete/:id': 'UserController.usermultidelete',
   'GET /user/multiadd': 'UserController.usermultiadd',
   'POST /user/multiadd': 'UserController.userlmultiadd',
+
   'POST /user/uploadimage': 'MultimediaController.useruploadimage',
   'POST /user/uploadvideo': 'MultimediaController.useruploadvideo',
+  'POST /user/uploadpdf': 'MultimediaController.useruploadpdf',
+
   'POST /user/photo': 'UserController.userphoto',
   'POST /user/photoupdate': 'UserController.userphotoupdate',
   'POST /user/photoremove': 'UserController.userphotoremove',
+
   'GET /user/imgupdate': 'MultimediaController.userimgupdate',
   'POST /user/imgupdate/:id': 'MultimediaController.userimgupdate',
   'POST /user/imgdelete/:id': 'MultimediaController.userimgdelete',
   'GET /user/imgadd': 'MultimediaController.userimgadd',
   'POST /user/imgadd': 'MultimediaController.userimgadd',
+
   'GET /user/videoupdate': 'MultimediaController.uservideoupdate',
   'POST /user/videoupdate/:id': 'MultimediaController.uservideoupdate',
   'POST /user/videodelete/:id': 'MultimediaController.uservideodelete',
   'GET /user/videoadd': 'MultimediaController.uservideoadd',
   'POST /user/videoadd': 'MultimediaController.uservideoadd',
+
+  'GET /user/pdfupdate': 'MultimediaController.userpdfupdate',
+  'POST /user/pdfupdate/:id': 'MultimediaController.userpdfupdate',
+  'POST /user/pdfdelete/:id': 'MultimediaController.userpdfdelete',
+  'GET /user/pdfadd': 'MultimediaController.userpdfadd',
+  'POST /user/pdfadd': 'MultimediaController.userpdfadd',
+  ' /user/pdfview/:id': 'MultimediaController.userpdfview',
 
   //Admin Page
   ' /admin/index': 'UserController.adminindex',
