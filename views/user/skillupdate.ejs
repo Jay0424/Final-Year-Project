@@ -59,7 +59,13 @@
                         <div class="col-xl-6 col-form-label center">
                             <label>Type:</label>
                             <input type="text" class="form-control" name="type" id="type" value="<%=model.type%>"
-                                required>
+                                list="optionlist" required>
+                            <datalist id="optionlist">
+                                <option value="Personal Skills">Personal Skills</option>
+                                <option value="Microsoft Office">Microsoft Office</option>
+                                <option value="Software Skills">Software Skills</option>
+                                <option value="Programming Languages">Programming Languages</option>
+                            </datalist>
                         </div>
 
                         <div class="col-xl-6 col-form-label center">

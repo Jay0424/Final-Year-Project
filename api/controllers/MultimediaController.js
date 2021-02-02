@@ -56,6 +56,8 @@ module.exports = {
 
         if (req.method == "POST") {
             var image = await Multimedia.findOne(req.params.id);
+
+
             req.file('avatarfile').upload({ maxBytes: 10000000 }, async function whenDone(err, uploadedFiles) {
                 if (err) { return res.serverError(err); }
                 if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
@@ -68,6 +70,7 @@ module.exports = {
                 });
                 return res.redirect('/user/imgupdate');
             });
+
         }
     },
 
@@ -312,12 +315,12 @@ module.exports = {
     },
 
     userpdfview: async function (req, res) {
-        
-            var thisPDF=await Multimedia.findOne(req.params.id)
 
-            return res.view('user/pdfview', {
-                pdf: thisPDF,
-            });
+        var thisPDF = await Multimedia.findOne(req.params.id)
+
+        return res.view('user/pdfview', {
+            pdf: thisPDF,
+        });
 
     },
 
@@ -352,7 +355,7 @@ module.exports = {
         }
     },
 
-    
+
 
 
 

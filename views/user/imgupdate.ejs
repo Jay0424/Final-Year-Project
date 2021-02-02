@@ -40,17 +40,19 @@
                     <h2 style="text-align: center;">Image:<%=model.name%>
                     </h2>
                     <img src=<%=model.file%> >
-                    <form action="/user/imgupdate/<%=model.id%>" method="POST" enctype="multipart/form-data"
-                        onsubmit="return validupdate()">
+                    <br>
+                    <form action="/user/imgupdate/<%=model.id%>" method="POST"
+                        enctype="multipart/form-data" onsubmit="return validupdate()">
                         <br>
-                        <labe>Image name:</labe>
-                        <input type="text" class="form-control" name="imgname" value=<%=model.name%> id="imgname"
-                        required>
-                        <div class="custom-file">
-                            <input type="file" accept="image/*" name="avatarfile" id="avatarfile" required/>
+                        <div>
+                            <labe>Image name:</labe>
+                            <input type="text" class="form-control" name="imgname" value=<%=model.name%> id="imgname"
+                            required>
+                            <div class="custom-file">
+                                <input type="file" accept="image/*" name="avatarfile" id="avatarfile" required />
+                            </div>
+                            <button type="submit" class="btn btn-dark btn-block">Update</button>
                         </div>
-
-                        <button type="submit" class="btn btn-dark btn-block">Update</button>
                     </form>
                     <br>
                     <button onclick="deleteImg('<%= model.id %>')" class="btn btn-danger"
@@ -76,9 +78,9 @@
 
     function validupdate() {
         var valid = true;
-       
+
         alert("Image update successfully");
-        
+
         return valid
     }
 

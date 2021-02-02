@@ -22,14 +22,19 @@
         <h4>Type: Personal skill / Skills: Leadership, Good communication</h4>
 
 
-        <form action="/user/skilladd" id="skillform" method="POST"
-            onsubmit="return (validskill1()&&validskill2())">
+        <form action="/user/skilladd" id="skillform" method="POST" onsubmit="return (validskill1()&&validskill2())">
             <div class="form-group row">
 
                 <div class="col-xl-3 col-form-label center">
                     <label>Type:</label>
                     <input type="text" class="form-control" placeholder="Enter the type of skill" name="type1"
-                        id="type1" required>
+                        id="type1" list="optionlist" required>
+                    <datalist id="optionlist">
+                        <option value="Personal Skills">Personal Skills</option>
+                        <option value="Microsoft Office">Microsoft Office</option>
+                        <option value="Software Skills">Software Skills</option>
+                        <option value="Programming Languages">Programming Languages</option>
+                    </datalist>
                 </div>
 
                 <div class="col-xl-9 col-form-label center">
@@ -42,7 +47,13 @@
                 <div class="col-xl-3 col-form-label center">
                     <label>Type:</label>
                     <input type="text" class="form-control" placeholder="Enter the type of skill" name="type2"
-                        id="type2">
+                    list="optionlist" id="type2">
+                    <datalist id="optionlist">
+                        <option value="Personal Skills">Personal Skills</option>
+                        <option value="Microsoft Office">Microsoft Office</option>
+                        <option value="Software Skills">Software Skills</option>
+                        <option value="Programming Languages">Programming Languages</option>
+                    </datalist>
                 </div>
 
                 <div class="col-xl-9 col-form-label center">
@@ -55,7 +66,13 @@
                 <div class="col-xl-3 col-form-label center">
                     <label>Type:</label>
                     <input type="text" class="form-control" placeholder="Enter the type of skill" name="type3"
-                        id="type3">
+                    list="optionlist" id="type3">
+                    <datalist id="optionlist">
+                        <option value="Personal Skills">Personal Skills</option>
+                        <option value="Microsoft Office">Microsoft Office</option>
+                        <option value="Software Skills">Software Skills</option>
+                        <option value="Programming Languages">Programming Languages</option>
+                    </datalist>
                 </div>
 
                 <div class="col-xl-9 col-form-label center">
@@ -64,9 +81,9 @@
                         placeholder="Enter all the skills separate with symbol comma ',' " name="content3"
                         id="content3">
                 </div>
-                
+
             </div>
-            <button type="submit" class="btn btn-primary center" >Add Record</button>
+            <button type="submit" class="btn btn-primary center">Add Record</button>
         </form>
 
     </div>
@@ -94,7 +111,7 @@
     function validskill2() {
         const type = document.getElementById("type2");
         const content = document.getElementById("content2");
-        
+
         var valid = true;
 
         if (type.value == "" && content.value == "") {
@@ -111,7 +128,7 @@
     function validskill3() {
         const type = document.getElementById("type3");
         const content = document.getElementById("content3");
-        
+
         var valid = true;
 
         if (type.value == "" && content.value == "") {

@@ -1,3 +1,9 @@
+<style>
+    .availabilityChoice {
+        display: none;
+    }
+</style>
+
 <body onload="pageLoaded()">
 
     <nav>
@@ -39,14 +45,26 @@
 
                 <div class="col-xl-12 col-form-label center">
                     <label>Expected salary (HK dollor for month):</label>
-                    <input type="number" class="form-control" placeholder="Enter your expected salary (month) for the job" name="salary"
-                        min=0 required>
+                    <input type="number" class="form-control"
+                        placeholder="Enter your expected salary (month) for the job" name="salary" min=0 required>
                 </div>
+
+                <!-- <div class="col-xl-12 col-form-label center">
+                    <label>Availability:</label>
+                    <input type="text" class="form-control"
+                        placeholder="Enter the date you can start working. Example: Immediate / One month's notice"
+                        name="availability" required>
+                </div> -->
 
                 <div class="col-xl-12 col-form-label center">
                     <label>Availability:</label>
-                    <input type="text" class="form-control" placeholder="Enter the date you can start working. Example: Immediate / One month's notice" name="availability"
-                        required>
+                    <input type="text" class="form-control" name="availability" list="optionlist" placeholder="Enter your availability" required>
+                    <datalist id="optionlist">
+                        <option value="Immediate">Immediate</option>
+                        <option value="One month's notice">One month's notice</option>
+                        <option value="Three month's notice">Three month's notice</option>
+                        <option value="Six month's notice">Six month's notice</option>
+                    </datalist>
                 </div>
 
             </div>
@@ -105,6 +123,5 @@
             }
         }
     }
-
 
 </script>

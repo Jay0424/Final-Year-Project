@@ -32,7 +32,7 @@ module.exports = {
                 {
                     username: req.body.username,
                     password: hash,
-                    photo:"https://upload.cc/i1/2021/01/28/SyUtXK.png"
+                    photo: "https://upload.cc/i1/2021/01/28/SyUtXK.png"
                 });
 
             return res.redirect("/visitor/login");
@@ -242,7 +242,6 @@ module.exports = {
                     summary: req.body.summary,
                     salary: req.body.salary,
                     availability: req.body.availability,
-
                 }).fetch();
             }
 
@@ -419,15 +418,15 @@ module.exports = {
     userphotoremove: async function (req, res) {
         var thatUser = await User.findOne(req.session.userid);
 
-            await User.update(thatUser.id).set({
-                photoPath: "",
-                photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png"
+        await User.update(thatUser.id).set({
+            photoPath: "",
+            photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png"
 
-            });
+        });
 
-            return res.redirect('/user/multiupdate');
-        
+        return res.redirect('/user/multiupdate');
+
     },
-    
+
 
 }

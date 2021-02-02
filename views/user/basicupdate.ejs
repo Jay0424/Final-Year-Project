@@ -72,7 +72,13 @@
 
                 <div class="col-xl-12 col-form-label center">
                     <label>Availability:</label>
-                    <input type="text" class="form-control" name="availability" value="<%=user.availability%>" required>
+                    <input type="text" class="form-control" name="availability" list="optionlist" value="<%=user.availability%>" list="optionlist" required>
+                    <datalist id="optionlist">
+                        <option value="Immediate">Immediate</option>
+                        <option value="One month's notice">One month's notice</option>
+                        <option value="Three month's notice">Three month's notice</option>
+                        <option value="Six month's notice">Six month's notice</option>
+                    </datalist>
                 </div>
 
             </div>

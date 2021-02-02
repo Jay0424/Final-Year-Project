@@ -28,8 +28,17 @@
 
                 <div class="col-xl-4 col-form-label center">
                     <label>School:</label>
-                    <input type="text" class="form-control" placeholder="Enter school name" name="school1" id="school1"
-                        required>
+                    <input type="text" class="form-control" placeholder="Enter school name" name="school1" id="school1" list="optionlist" required>
+                        <datalist id="optionlist">
+                            <option value="City University of Hong Kong">City University of Hong Kong</option>
+                            <option value="Hong Kong Baptist University">Hong Kong Baptist University</option>
+                            <option value="Lingnan University">Lingnan University</option>
+                            <option value="The Chinese University of Hong Kong">The Chinese University of Hong Kong</option>
+                            <option value="The Education University of Hong Kong">The Education University of Hong Kong</option>
+                            <option value="The Hong Kong Polytechnic University">The Hong Kong Polytechnic University</option>
+                            <option value="The Hong Kong University of Science and Technology">The Hong Kong University of Science and Technology</option>
+                            <option value="The University of Hong Kong">The University of Hong Kong</option>
+                        </datalist>
                 </div>
 
                 <div class="col-xl-4 col-form-label center">
@@ -52,7 +61,17 @@
 
                 <div class="col-xl-4 col-form-label center">
                     <label>School:</label>
-                    <input type="text" class="form-control" placeholder="Enter school name" name="school2" id="school2">
+                    <input type="text" class="form-control" placeholder="Enter school name" name="school2" id="school2" list="optionlist">
+                    <datalist id="optionlist">
+                        <option value="City University of Hong Kong">City University of Hong Kong</option>
+                        <option value="Hong Kong Baptist University">Hong Kong Baptist University</option>
+                        <option value="Lingnan University">Lingnan University</option>
+                        <option value="The Chinese University of Hong Kong">The Chinese University of Hong Kong</option>
+                        <option value="The Education University of Hong Kong">The Education University of Hong Kong</option>
+                        <option value="The Hong Kong Polytechnic University">The Hong Kong Polytechnic University</option>
+                        <option value="The Hong Kong University of Science and Technology">The Hong Kong University of Science and Technology</option>
+                        <option value="The University of Hong Kong">The University of Hong Kong</option>
+                    </datalist>
                 </div>
 
                 <div class="col-xl-4 col-form-label center">
@@ -73,7 +92,17 @@
 
                 <div class="col-xl-4 col-form-label center">
                     <label>School:</label>
-                    <input type="text" class="form-control" placeholder="Enter school name" name="school3" id="school3">
+                    <input type="text" class="form-control" placeholder="Enter school name" name="school3" id="school3" list="optionlist">
+                    <datalist id="optionlist">
+                        <option value="City University of Hong Kong">City University of Hong Kong</option>
+                        <option value="Hong Kong Baptist University">Hong Kong Baptist University</option>
+                        <option value="Lingnan University">Lingnan University</option>
+                        <option value="The Chinese University of Hong Kong">The Chinese University of Hong Kong</option>
+                        <option value="The Education University of Hong Kong">The Education University of Hong Kong</option>
+                        <option value="The Hong Kong Polytechnic University">The Hong Kong Polytechnic University</option>
+                        <option value="The Hong Kong University of Science and Technology">The Hong Kong University of Science and Technology</option>
+                        <option value="The University of Hong Kong">The University of Hong Kong</option>
+                    </datalist>
                 </div>
 
                 <div class="col-xl-4 col-form-label center">
@@ -91,6 +120,9 @@
                     <label>To:</label>
                     <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (end)" name="eyear3" id="eyear3">
                 </div>
+
+
+            </div>
 
 
             </div>
