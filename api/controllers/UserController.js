@@ -130,6 +130,15 @@ module.exports = {
 
     },
 
+    userguide: async function (req, res) {
+        var thatUser = await User.findOne(req.session.userid);
+
+        return res.view('user/guide', {
+            user: thatUser,
+        });
+
+    },
+
     usermultimedia: async function (req, res) {
         var thatUser = await User.findOne(req.session.userid);
         var name = thatUser.name;

@@ -39,6 +39,7 @@ module.exports.routes = {
   //User Page & Basic
   ' /user/index': 'UserController.userindex',
   ' /user/index2': 'UserController.userindex2',
+  ' /user/guide': 'UserController.userguide',
   '/user/papercv/:id': 'UserController.userpapercv',
   'GET /user/basic': 'UserController.userbasic',
   'POST /user/basic': 'UserController.userbasic',
