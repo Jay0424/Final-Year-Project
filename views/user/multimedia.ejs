@@ -12,7 +12,7 @@
         </ul>
     </nav>
 
-    <div class="container" style="width:60%">
+    <div class="container" style="width:60%;padding-bottom: 80px;">
 
         <h2 class="intro"> <i class="fa fa-file" aria-hidden="true" style="padding-right: 20px;"></i>Multimedia</h2>
         <h4>Uploading File:</h4>
@@ -33,10 +33,12 @@
 
             <div class="col-xl-12 col-form-label center" style="border-style: solid;">
                 <form action="/user/uploadimage" method="POST" enctype="multipart/form-data" onsubmit="return validimage()">
-                    <label>Photo:</label>
+                    <label>Image description:</label>
 
-                    <input type="text" class="form-control" placeholder="Enter the image name" name="name"
-                        required>
+                    <textarea type="text" class="form-control"
+                        placeholder="Briefly introduce the image. For example: In this image, I was cooperating with my colleagues for developing and providing maintenance for 20+ .NET websites during my internship."
+                        name="description" rows="3" required></textarea>
+
                     <br>
                     <input type="file" accept="image/*" name="avatarfile" />
                     <button type="submit" class="btn btn-dark" style="float:right">Upload</button>
@@ -47,9 +49,10 @@
 
             <div class="col-xl-12 col-form-label center" style="border-style: solid;">
                 <form action="/user/uploadvideo" method="post" enctype="multipart/form-data" onsubmit="return validvideo()">
-                    <label>Video:</label>
-                    <input type="text" class="form-control" placeholder="Enter the video name" name="name"
-                        required>
+                    <label>Video description:</label>
+                    <textarea type="text" class="form-control"
+                        placeholder="Briefly introduce the video. For example: Self-introduction video"
+                        name="description" rows="1" required></textarea>
                     <br>
                     <input type="file" accept="video/*" name="avatarfile" />
                     <button type="submit" class="btn btn-dark" style="float:right">Upload</button>

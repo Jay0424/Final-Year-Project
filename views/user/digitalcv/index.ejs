@@ -1,0 +1,284 @@
+<style>
+    .digtial1logo {
+        color: white;
+        font-size: 50px;
+        line-height: 80px;
+        padding: 0px 80px;
+        font-weight: bold;
+    }
+
+    .imgcenter {
+        display: block;
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    .container1 {
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .educationbox {
+        width: 60%;
+        margin: auto;
+    }
+
+    .educationbox::after {
+        content: "";
+        display: block;
+        height: 0px;
+    }
+
+    .timeline {
+        padding-bottom: 250px;
+    }
+
+    .timeline li {
+        width: 50%;
+        padding: 20px 0px;
+        text-align: center;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .timeline a {
+        text-decoration: none;
+        display: block;
+        border-color: black;
+        border: 1px solid;
+        border-radius: 10px;
+        box-shadow: 2px 2px 4px;
+        background-color: rgb(231, 114, 114);
+    }
+
+    .timeline a:hover {
+        background-color: lightcyan;
+    }
+
+    .timeline li:nth-child(odd) {
+        float: left;
+        padding-right: 50px;
+    }
+
+    .timeline li:nth-child(odd)::after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        top: 0px;
+        right: 0px;
+        background-color: black;
+    }
+
+    .timeline li:before {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: black;
+        top: 0px;
+        bottom: 0px;
+        margin: auto;
+    }
+
+    .timeline li:nth-child(odd)::before {
+        right: -9px;
+    }
+
+    .timeline li:nth-child(even)::before {
+        left: -10px;
+    }
+
+    .timeline li:nth-child(even) {
+        float: right;
+        padding-left: 50px;
+        transform: translateY(50%);
+    }
+
+    .timeline li:last-child::after {
+        height: 50%;
+    }
+
+    .timeline a h2,
+    .timeline a h3 {
+        color: white;
+    }
+
+
+    .timeline a:hover h2,
+    .timeline a:hover h3 {
+        color: black;
+    }
+
+    .timeline h2::after {
+        content: "";
+        position: absolute;
+        height: 1px;
+        width: 50px;
+        background-color: black;
+        top: 0px;
+        bottom: 0px;
+        margin: auto;
+    }
+
+    .timeline li:nth-child(odd) h2::after {
+        right: 0px;
+    }
+
+    .timeline li:nth-child(even) h2::after {
+        left: 0px;
+    }
+
+    .workbox {
+        padding-top: 200px;
+        width: 60%;
+        margin: auto;
+    }
+
+    .skillbox {
+        padding-top: 30px;
+        width: 60%;
+        margin: auto;
+    }
+
+    .langbox {
+        padding-top: 30px;
+        width: 60%;
+        margin: auto;
+    }
+
+    .circle {
+        width: 200px;
+        height: 200px;
+        line-height: 200px;
+        border-radius: 50%;
+        font-size: 25px;
+        color: #fff;
+        text-align: center;
+        background: cornflowerblue;
+    }
+
+    .bar {
+        background-color: wheat;
+        display: block;
+        height: 20px;
+        border: 1px solid;
+        border-radius: 5px;
+        box-shadow: 2px 2px 4px;
+
+    }
+
+    .bar span {
+        background-color: blue;
+        display: block;
+        height: 20px;
+        border-radius: 5px;
+        animation: testing 5s;
+    }
+
+    @keyframes testing{
+        0%{
+            width:0%;
+        }
+    }
+
+    .workbox a h2:hover,
+    .workbox a h3:hover,
+    .workbox a h4:hover{
+        color:blue;
+    }
+
+
+</style>
+
+<body class="cv1">
+  
+    <nav class="digital1">
+        <a class="digtial1logo disable" href="#" onclick="window.location.reload(true);">My CV</a>
+        <ul>
+            <li><a href="#edu">Education</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="/user/<%=user.id%>/digitalcv/skill">Skill</a></li>
+            <% if (image.length>0||video.length>0) {%> 
+            <li><a href="/user/<%=user.id%>/digitalcv/multi">Multimedia</a></li>
+            <%}%>
+            <% if (pdf.length>0) {%> 
+            <li><a href="/user/<%=user.id%>/digitalcv/cert">Certificate</a></li>
+            <%}%>
+            <li><a href="/user/<%=user.id%>/digitalcv/contact">Contact</a></li>
+        </ul>
+    </nav>
+    <br>
+    <br>
+    <div class="container1" style="width:100%">
+        <img src=<%=user.photo%> align="left" style="width:30%; height:100%">
+        <div style="padding-left: 70px; width:40%">
+            <h2>
+                Hello I am <%=user.name%>
+            </h2>
+            <h3>
+                <%=user.summary%>
+            </h3>
+            <br>
+            <iframe src="/user/papercv/<%=user.id%>" style="display:none;" name="frame"></iframe>
+            <button style="width:100%" type="submit" style="width:500px" class="btn btn-dark"
+                onclick="frames['frame'].print()" target="_blank">Download CV</button>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="educationbox" id="edu">
+        <h2 class="intro"> <i class="fa fa-graduation-cap" aria-hidden="true" style="padding-right: 20px;"></i>Education
+        </h2>
+        <ul class="timeline">
+            <% education.forEach(function(model) { %>
+                <li>
+                    <a href="https://google.com/search?q=<%=model.school%>" target="_blank">
+                        <h2>
+                            <%=model.syear%>-<%=model.eyear%>
+                        </h2>
+                        <h3>
+                            <%=model.certification%>
+                        </h3>
+                        <h3>
+                            <%=model.school%>
+                        </h3>
+                    </a>
+                </li>
+                <% }); %>
+        </ul>
+    </div>
+    <div class="workbox" id="work">
+        <h2 class="intro"> <i class="fa fa-briefcase" aria-hidden="true" style="padding-right: 20px;"></i>Work</h2>
+
+        <% work.forEach(function(model) { %>
+            <div class="card">
+                <a href="https://google.com/search?q=<%=model.company%>" target="_blank" style="color:black">
+                <div class="card-header">
+                    <h2>
+                        <%=model.start%> to <%=model.end%> &nbsp;
+                                <%=model.company%>
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">
+                        <%=model.job%>
+                    </h3>
+                    <h4 class="card-text" style="font-weight: 300;">
+                        <%=model.description%>
+                    </h4>
+                </div>
+            </a>
+            </div>
+            <br>
+            <% }); %>
+    </div>
+
+</body>
+
+<script>
+
+</script>

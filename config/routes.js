@@ -40,7 +40,7 @@ module.exports.routes = {
   //User Page & Basic
   ' /user/index': 'UserController.userindex',
   ' /user/index2': 'UserController.userindex2',
-  '/user/papercv': 'UserController.userpapercv',
+  '/user/papercv/:id': 'UserController.userpapercv',
   'GET /user/basic': 'UserController.userbasic',
   'POST /user/basic': 'UserController.userbasic',
   'GET /user/basicupdate': 'UserController.userbasicupdate',
@@ -128,6 +128,15 @@ module.exports.routes = {
   'POST /admin/userdelete/:id': 'UserController.adminuserdelete',
   'GET /admin/pwupdate': 'UserController.adminpwupdate',
   'POST /admin/pwupdate/:id': 'UserController.adminpwupdate',
+
+  //User Digital CV
+  ' /user/:id/digitalcv/index': 'UserController.digitalcvindex',
+  ' /user/:id/digitalcv/skill': 'UserController.digitalcvskill',
+  ' /user/:id/digitalcv/multi': 'UserController.digitalcvmulti',
+  ' /user/:id/digitalcv/cert': 'UserController.digitalcvcert',
+  ' /user/:id/digitalcv/contact': 'UserController.digitalcvcontact',
+  ' /user/:id/digitalcv/pdf/:pid': 'UserController.digitalcvpdf',
+
 
 
 

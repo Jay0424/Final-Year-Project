@@ -37,17 +37,15 @@
             <% image.forEach(function(model) { %>
                 <div class="card col-xl-4 control-label">
 
-                    <h2 style="text-align: center;">Image:<%=model.name%>
                     </h2>
                     <img src=<%=model.file%> >
                     <br>
-                    <form action="/user/imgupdate/<%=model.id%>" method="POST"
-                        enctype="multipart/form-data" onsubmit="return validupdate()">
-                        <br>
+                    <form action="/user/imgupdate/<%=model.id%>" method="POST" enctype="multipart/form-data"
+                        onsubmit="return validupdate()">
                         <div>
-                            <labe>Image name:</labe>
-                            <input type="text" class="form-control" name="imgname" value=<%=model.name%> id="imgname"
-                            required>
+                            <label>Image description:</label>
+                            <textarea type="text" class="form-control"
+                            name="description" rows="3" required><%=model.description%></textarea>
                             <div class="custom-file">
                                 <input type="file" accept="image/*" name="avatarfile" id="avatarfile" required />
                             </div>

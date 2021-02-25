@@ -1,0 +1,145 @@
+<style>
+    .digtial1logo {
+        color: white;
+        font-size: 50px;
+        line-height: 80px;
+        padding: 0px 80px;
+        font-weight: bold;
+    }
+
+    .skillbox {
+        width: 60%;
+        margin: auto;
+    }
+
+    .langbox {
+        padding-bottom: 100px;
+        width: 60%;
+        margin: auto;
+    }
+
+    .circle {
+        width: 200px;
+        height: 200px;
+        line-height: 200px;
+        border-radius: 50%;
+        font-size: 25px;
+        color: #fff;
+        text-align: center;
+        background: cornflowerblue;
+    }
+
+    .bar {
+        background-color: wheat;
+        display: block;
+        height: 20px;
+        border: 1px solid;
+        border-radius: 5px;
+        box-shadow: 2px 2px 4px;
+
+    }
+
+    .bar span {
+        background-color: blue;
+        display: block;
+        height: 20px;
+        border-radius: 5px;
+        animation: testing 5s;
+    }
+
+    @keyframes testing {
+        0% {
+            width: 0%;
+        }
+    }
+
+    .skillbox {
+        width: 60%;
+        margin: auto;
+    }
+
+    .imgbox {
+        width: 80%;
+        margin: auto;
+    }
+
+
+
+    .row1 {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 4px;
+    }
+
+    .column {
+        flex: 25%;
+        max-width: 25%;
+        padding: 0 4px;
+    }
+</style>
+
+
+<body class="cv1">
+
+    <nav class="digital1">
+        <a class="digtial1logo disable" href="/user/<%=user.id%>/digitalcv/index">My CV</a>
+        <ul>
+            <li><a href="/user/<%=user.id%>/digitalcv/index#edu">Education</a></li>
+            <li><a href="/user/<%=user.id%>/digitalcv/index#work">Work</a></li>
+            <li><a href="/user/<%=user.id%>/digitalcv/skill">Skill</a></li>
+            <li><a href="#" onclick="window.location.reload(true);">Multimedia</a></li>
+            <% if (pdf.length>0) {%> 
+                <li><a href="/user/<%=user.id%>/digitalcv/cert">Certificate</a></li>
+            <%}%>
+            <li><a href="/user/<%=user.id%>/digitalcv/contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div style="width:65%;margin:auto">
+        <br>
+        <% var i=1%>
+            <% image.forEach(function(model) { %>
+                <% if (i%2==1){%>
+                    <div class="row">
+                        <div class="card col-xl-6" style="border: none;">
+                            <img src="<%=model.file%>">
+                        </div>
+                        <div class="card col-xl-6" style="border: none;">
+                            <h3>
+                                <%=model.description%>
+                            </h3>
+                        </div>
+                    </div>
+                    <br>
+                    <% i++} else if (i%2==0){%>
+                        <div class="row">
+                            <div class="card col-xl-6" style="border: none;">
+                                <h3>
+                                    <%=model.description%>
+                                </h3>
+                            </div>
+                            <div class="card col-xl-6" style="border: none;">
+
+                                <img src="<%=model.file%>">
+
+                            </div>
+                        </div>
+                        <br>
+                        <% i++} });%>
+
+    </div>
+
+    <div style="width:50%;margin:auto">
+
+        <% video.forEach(function(model) { %>
+            <video controls style="width:100%;margin:auto">
+                <source src="<%=model.file%>">
+            </video>
+            <h2 style="text-align: center;">
+                <%=model.description%>
+            </h2>
+            <br>
+            <%});%>
+
+    </div>
+
+</body>

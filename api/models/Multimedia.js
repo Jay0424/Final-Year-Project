@@ -38,6 +38,10 @@ module.exports = {
       type: 'string'
     },
 
+    description:{
+      type:'string'
+    },
+
     MultimediaownBy:{
       collection:"User",
       via:"ownMultimedia"

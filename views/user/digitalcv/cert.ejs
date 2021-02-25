@@ -1,0 +1,60 @@
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<style>
+    .digtial1logo {
+        color: white;
+        font-size: 50px;
+        line-height: 80px;
+        padding: 0px 80px;
+        font-weight: bold;
+    }
+
+    .pdfbox {
+        width: 50%;
+        margin: auto;
+    }
+</style>
+
+
+<body class="cv1">
+
+    <nav class="digital1">
+        <a class="digtial1logo disable" href="/user/<%=user.id%>/digitalcv/index" >My CV</a>
+        <ul>
+            <li><a href="/user/<%=user.id%>/digitalcv/index#edu">Education</a></li>
+            <li><a href="/user/<%=user.id%>/digitalcv/index#work">Work</a></li>
+            <li><a href="/user/<%=user.id%>/digitalcv/skill">Skill</a></li>
+            <% if (image.length>0||video.length>0) {%> 
+            <li><a href="/user/<%=user.id%>/digitalcv/multi">Multimedia</a></li>
+            <%}%>
+            <li><a href="#" onclick="window.location.reload(true);">Certificate</a></li>
+            <li><a href="/user/<%=user.id%>/digitalcv/contact">Contact</a></li>
+        </ul>
+    </nav>
+    <br>
+    <br>
+    <h2 style="text-align: center;">
+       By clicking  <i class="fa fa-mouse-pointer" aria-hidden="true" style="padding-left: 10px; padding-right: 10px;"></i>the name of the
+        PDF, you can view the entire PDF
+    </h2>
+    
+    <br>
+    <br>
+    <div class="pdfbox">
+        <div class="row">
+            <div class="card col-xl-6" style="border: none;">
+                <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_18N5Dm.json" background="transparent"
+                    speed="0.4" style="width: 450px; height: 450px;" loop autoplay></lottie-player>
+            </div>
+            <div class="card col-xl-5" style="border: none;">
+                <% pdf.forEach(function(model) { %>
+                    <a style="font-size: 40px;" href="/user/<%=user.id%>/digitalcv/pdf/<%=model.id%>" target="_blank">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                        <%=model.name%>
+                    </a>
+
+                    <% }); %>
+            </div>
+
+        </div>
+
+</body>

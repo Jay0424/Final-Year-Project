@@ -21,8 +21,10 @@
 
         <div class="btnbar">
 
-            <button onclick="showTab(1); showcurrent(0)" class="buttongroup" style="color:violet"><i class="fa fa-id-card-o" aria-hidden="true"></i>View Paper CV</button>
-            <button onclick="showTab(2); showcurrent(1)" class="buttongroup"><i class="fa fa-desktop" aria-hidden="true"></i>
+            <button onclick="showTab(1); showcurrent(0)" class="buttongroup" style="color:violet"><i
+                    class="fa fa-id-card-o" aria-hidden="true"></i>View Paper CV</button>
+            <button onclick="showTab(2); showcurrent(1)" class="buttongroup"><i class="fa fa-desktop"
+                    aria-hidden="true"></i>
                 View Digital CV</button>
         </div>
 
@@ -55,8 +57,9 @@
 
         <div class="tab">
             <div style="float: right;">
-                <lottie-player class="ani" src="https://assets7.lottiefiles.com/packages/lf20_d0KDSI.json" background="transparent"
-                    speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+                <lottie-player class="ani" src="https://assets7.lottiefiles.com/packages/lf20_d0KDSI.json"
+                    background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
+                </lottie-player>
             </div>
             <h3><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Reminders:</h3>
 
@@ -71,13 +74,13 @@
             <br>
 
             <button id="create-button" type="submit" class="btn btn-primary center"
-                onclick="window.open('/user/papercv','_blank')" target="_blank">View Paper CV</button>
+                onclick="window.open('/user/papercv/<%=user.id%>','_blank')" target="_blank">View Paper CV</button>
 
         </div>
 
         <div class="tab">
             <div style="float: right;">
-                <lottie-player  class="ani" src="https://assets3.lottiefiles.com/packages/lf20_huzedm21.json"
+                <lottie-player class="ani" src="https://assets3.lottiefiles.com/packages/lf20_huzedm21.json"
                     background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
                 </lottie-player>
             </div>
@@ -94,7 +97,8 @@
             <h4>4. The website link can be used for interview</h4>
             <br>
 
-            <button id="create-button" type="submit" class="btn btn-primary center">View Digital CV</button>
+            <button id="create-button" type="submit" class="btn btn-primary center"
+                onclick="window.open('/user/<%=user.id%>/digitalcv/index','_blank')" target="_blank">View Digital CV</button>
         </div>
 
         <!-- <form action="/user/basic" method="GET">
@@ -134,10 +138,10 @@
         }
     }
 
-    var currenbutton=0;
+    var currenbutton = 0;
     showcurrent(currentbutton);
 
-    function showcurrent(n){
+    function showcurrent(n) {
         var x = document.getElementsByClassName("buttongroup");
         x[n].style.color = "violet";
         for (i = 0; i < x.length; i++) {

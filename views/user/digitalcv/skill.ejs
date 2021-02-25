@@ -1,0 +1,114 @@
+<style>
+    .digtial1logo {
+        color: white;
+        font-size: 50px;
+        line-height: 80px;
+        padding: 0px 80px;
+        font-weight: bold;
+    }
+
+    .skillbox {
+        width: 60%;
+        margin: auto;
+    }
+
+    .langbox {
+        padding-bottom: 100px;
+        width: 60%;
+        margin: auto;
+    }
+
+    .circle {
+        width: 200px;
+        height: 200px;
+        line-height: 200px;
+        border-radius: 50%;
+        font-size: 25px;
+        color: #fff;
+        text-align: center;
+        background: cornflowerblue;
+    }
+
+    .bar {
+        background-color: wheat;
+        display: block;
+        height: 20px;
+        border: 1px solid;
+        border-radius: 5px;
+        box-shadow: 2px 2px 4px;
+
+    }
+
+    .bar span {
+        background-color: blue;
+        display: block;
+        height: 20px;
+        border-radius: 5px;
+        animation: level 3s;
+    }
+
+    @keyframes level {
+        0% {
+            width: 0%;
+        }
+    }
+</style>
+
+
+<body class="cv1">
+
+    <nav class="digital1">
+        <a class="digtial1logo disable" href="/user/<%=user.id%>/digitalcv/index">My CV</a>
+        <ul>
+            <li><a href="/user/<%=user.id%>/digitalcv/index#edu">Education</a></li>
+            <li><a href="/user/<%=user.id%>/digitalcv/index#work">Work</a></li>
+            <li><a href="#" onclick="window.location.reload(true);">Skill</a></li>
+            <% if (image.length>0||video.length>0) {%>
+                <li><a href="/user/<%=user.id%>/digitalcv/multi">Multimedia</a></li>
+            <%}%>
+            <% if (pdf.length>0) {%>
+            <li><a href="/user/<%=user.id%>/digitalcv/cert">Certificate</a></li>
+            <%}%>
+            <li><a href="/user/<%=user.id%>/digitalcv/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="skillbox" id="skill">
+        <h2 class="intro"> <i class="fa fa-star" aria-hidden="true" style="padding-right: 20px;"></i>Skill</h2>
+        <div class="row">
+            <% skill.forEach(function(model) { %>
+                <div class="card col-xl-4" style="border: 0px; background: transparent;">
+                    <div class="circle center">
+                        <%=model.type%>
+                    </div>
+                    <h4 style="text-align: center;">
+                        <%=model.content%>
+                    </h4>
+                </div>
+                <% }); %>
+        </div>
+    </div>
+
+    <div class="langbox">
+        <h2 class="intro"> <i class="fa fa-language" aria-hidden="true" style="padding-right: 20px;"></i>Language</h2>
+        <% language.forEach(function(model) { %>
+            <h2>
+                <%=model.type%>
+            </h2>
+            <span class="bar">
+                <%if (model.degree==5){%>
+                    <span style="width:100%"></span>
+                    <%} else if (model.degree==4){%>
+                        <span style="width:80%"></span>
+                        <%} else if (model.degree==3){%>
+                            <span style="width:60%"></span>
+                            <% } else if (model.degree==2){%>
+                                <span style="width:40%"></span>
+                                <% } else{%>
+                                    <span style="width:20%"></span>
+                                    <%};%>
+            </span>
+
+            <% }); %>
+    </div>
+</body>

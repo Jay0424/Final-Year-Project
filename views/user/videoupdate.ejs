@@ -35,20 +35,17 @@
         <div class="row">
             <% video.forEach(function(model) { %>
                 <div class="card col-xl-6 control-label">
-
-                    <h2 style="text-align: center;">Video:<%=model.name%>
-                    </h2>
                     <video controls>
                         <source src="<%=model.file%>">
                     </video>
+                    <br>
                     <form action="/user/videoupdate/<%=model.id%>" method="POST" enctype="multipart/form-data"
                         onsubmit="return validupdate()">
-                        <br>
-                        <labe>Video name:</labe>
-                        <input type="text" class="form-control" name="videoname" value=<%=model.name%> id="imgname"
-                        required>
+                        <label>Video description:</label>
+                        <textarea type="text" class="form-control"
+                            name="description" rows="1" required><%=model.description%></textarea>
                         <div class="custom-file">
-                            <input type="file" accept="video/*" name="avatarfile" id="avatarfile" required/>
+                            <input type="file" accept="video/*" name="avatarfile" id="avatarfile" required />
                         </div>
 
                         <button type="submit" class="btn btn-dark btn-block">Update</button>

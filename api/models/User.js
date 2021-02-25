@@ -103,6 +103,10 @@ module.exports = {
 
     photoPath:{
       type:"string"
+    },
+
+    pdfcv:{
+       type:"string"
     }
 
 

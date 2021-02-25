@@ -19,10 +19,11 @@
         <h4>3. Multimedia button (upper right) can let you to edit your image</h4>
         <br>
 
-        <form action="/user/imgadd" method="POST"enctype="multipart/form-data" onsubmit="return validadd()">
-            <br>
-            <labe>Image name:</labe>
-            <input type="text" class="form-control" name="imgname" id="imgname" required>
+        <form action="/user/imgadd" method="POST" enctype="multipart/form-data" onsubmit="return validadd()">
+            <label>Image description:</label>
+            <textarea type="text" class="form-control"
+                placeholder="Briefly introduce the image. For example: In this image, I was cooperating with my colleagues for developing and providing maintenance for 20+ .NET websites during my internship."
+                name="description" rows="3" required></textarea>
             <div class="custom-file">
                 <input type="file" class="custom-file-input" accept="image/*" name="avatarfile" required>
                 <label class="custom-file-label" for="customFile">Choose file</label>

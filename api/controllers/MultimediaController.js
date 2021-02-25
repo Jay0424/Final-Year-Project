@@ -14,7 +14,7 @@ module.exports = {
         var image = await Multimedia.create(
             {
                 type: "image",
-                name: req.body.name,
+                description: req.body.description,
             }).fetch();
 
         await User.addToCollection(thatUser.id, "ownMultimedia").members(image.id);
@@ -64,7 +64,7 @@ module.exports = {
 
                 const datauri = require('datauri');
                 await Multimedia.update(image.id).set({
-                    name: req.body.imgname,
+                    description: req.body.description,
                     filePath: uploadedFiles[0].fd,
                     file: await datauri(uploadedFiles[0].fd)
                 });
@@ -102,7 +102,7 @@ module.exports = {
             var image = await Multimedia.create(
                 {
                     type: "image",
-                    name: req.body.imgname,
+                    description: req.body.description,
                 }).fetch();
 
             await User.addToCollection(thatUser.id, "ownMultimedia").members(image.id);
@@ -129,12 +129,12 @@ module.exports = {
         var video = await Multimedia.create(
             {
                 type: "video",
-                name: req.body.name,
+                description:req.body.description,
             }).fetch();
 
         await User.addToCollection(thatUser.id, "ownMultimedia").members(video.id);
 
-        req.file('avatarfile').upload({ maxBytes: 10000000 }, async function whenDone(err, uploadedFiles) {
+        req.file('avatarfile').upload({ maxBytes: 10000000000 }, async function whenDone(err, uploadedFiles) {
             if (err) { return res.serverError(err); }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 
@@ -170,13 +170,13 @@ module.exports = {
 
         if (req.method == "POST") {
             var video = await Multimedia.findOne(req.params.id);
-            req.file('avatarfile').upload({ maxBytes: 10000000000000 }, async function whenDone(err, uploadedFiles) {
+            req.file('avatarfile').upload({ maxBytes: 10000000000 }, async function whenDone(err, uploadedFiles) {
                 if (err) { return res.serverError(err); }
                 if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 
                 const datauri = require('datauri');
                 await Multimedia.update(video.id).set({
-                    name: req.body.videoname,
+                    description:req.body.description,
                     filePath: uploadedFiles[0].fd,
                     file: await datauri(uploadedFiles[0].fd)
                 });
@@ -213,7 +213,7 @@ module.exports = {
             var video = await Multimedia.create(
                 {
                     type: "video",
-                    name: req.body.videoname,
+                    description:req.body.description,
                 }).fetch();
 
             await User.addToCollection(thatUser.id, "ownMultimedia").members(video.id);
