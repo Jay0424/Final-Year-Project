@@ -17,7 +17,8 @@ module.exports = {
         var thatAccount = await User.findOne({ username: req.body.username });
 
         if (thatAccount) {
-            return res.redirect("/visitor/registernotok");
+            req.addFlash('error1', 'Username is already used');
+            return res.redirect('/visitor/register');
         }
 
         if (req.method == "POST") {
@@ -37,12 +38,6 @@ module.exports = {
 
             return res.redirect("/visitor/login");
 
-        }
-    },
-
-    registernotok: async function (req, res) {
-        if (req.method == "GET") {
-            return res.view('visitor/registernotok');
         }
     },
 
@@ -271,7 +266,8 @@ module.exports = {
         var thatAccount = await User.findOne({ username: req.body.username });
 
         if (thatAccount) {
-            return res.redirect("/admin/useradderror");
+            req.addFlash('error1', 'Username is already used');
+            return res.redirect('/admin/useradd');
         }
 
         if (req.method == "POST") {
@@ -294,11 +290,6 @@ module.exports = {
 
         }
     },
-
-    adminuseradderror: async function (req, res) {
-        return res.view('admin/useradderror');
-    },
-
 
     // action - delete 
     adminuserdelete: async function (req, res) {

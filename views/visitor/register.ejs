@@ -1,5 +1,17 @@
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
+<style>
+    .errormessage {
+        width: 95%;
+        border: 1px double red;
+        border-radius: 3px;
+        height: 30px;
+        background-color: rgb(255, 0, 0, 0.1);
+        text-align: center;
+        margin:auto;
+    }
+</style>
+
 
 <body onload="pageLoaded()">
     <nav>
@@ -22,8 +34,15 @@
                     <label>Username:</label>
                     <input type="text" class="form-control" name="username" id="username"
                         placeholder="Enter your username" required>
-
                 </div>
+
+                <% flash.get('error1').forEach(function (message) { %>
+                    <div class="errormessage">
+                        <strong style="color:red;font-size: 18px;">
+                            <%= message %>
+                        </strong>
+                    </div>
+                <% }) %>
 
                 <div class="col-xl-12 col-form-label">
                     <label>Password:</label>
@@ -50,10 +69,7 @@
         var valid=true;
         var pw1=document.getElementById("password").value;
         var pw2=document.getElementById("password2").value;
-        if(pw2==pw1){
-            alert("Your account is created"); 
-            valid=true;
-        }else{
+        if(pw2!=pw1){
             alert("Make sure you input the same password!")
             valid=false;
         }

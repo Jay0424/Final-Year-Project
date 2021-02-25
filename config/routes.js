@@ -29,7 +29,6 @@ module.exports.routes = {
   //Register
   'GET /visitor/register': 'UserController.register',
   'POST /visitor/register': 'UserController.register',
-  'GET /visitor/registernotok': 'UserController.registernotok',
 
   //Login & Logout
   'GET /visitor/login': 'UserController.login',
@@ -123,7 +122,6 @@ module.exports.routes = {
   ' /admin/index': 'UserController.adminindex',
   'GET /admin/useradd': 'UserController.adminuseradd',
   'POST /admin/useradd': 'UserController.adminuseradd',
-  ' /admin/useradderror': 'UserController.adminuseradderror',
   '/admin/papercv/:id': 'UserController.adminpapercv',
   'POST /admin/userdelete/:id': 'UserController.adminuserdelete',
   'GET /admin/pwupdate': 'UserController.adminpwupdate',
