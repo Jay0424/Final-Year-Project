@@ -1,4 +1,4 @@
-# fy-pcoding
+# fyp-coding
 
 a [Sails v1](https://sailsjs.com) application
 
