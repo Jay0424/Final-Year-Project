@@ -101,21 +101,6 @@ module.exports = {
       type:"string",
     },
 
-    photoPath:{
-      type:"string"
-    },
-
-    pdfcv:{
-       type:"string"
-    }
-
-
-
-
-
-
-
-
   },
 
 };

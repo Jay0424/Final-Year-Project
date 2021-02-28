@@ -26,10 +26,6 @@ module.exports = {
       type: "string"
     },
 
-    filePath: {
-      type: 'string'
-    },
-
     file:{
       type: 'string'
     },

@@ -25,9 +25,15 @@ module.exports = {
 
             const datauri = require('datauri');
             await Multimedia.update(image.id).set({
-                filePath: uploadedFiles[0].fd,
                 file: await datauri(uploadedFiles[0].fd)
             }).fetch();
+
+
+            const fs = require('fs');
+
+            fs.unlink(uploadedFiles[0].fd, function (err) {
+                if (err) return console.log(err);
+            });
 
             return res.redirect('/user/multimedia');
         });
@@ -67,8 +73,13 @@ module.exports = {
 
                 const datauri = require('datauri');
                 await Multimedia.update(image.id).set({
-                    filePath: uploadedFiles[0].fd,
                     file: await datauri(uploadedFiles[0].fd)
+                });
+
+                const fs = require('fs');
+
+                fs.unlink(uploadedFiles[0].fd, function (err) {
+                    if (err) return console.log(err);
                 });
             });
             const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -117,9 +128,14 @@ module.exports = {
 
                 const datauri = require('datauri');
                 await Multimedia.update(image.id).set({
-                    filePath: uploadedFiles[0].fd,
                     file: await datauri(uploadedFiles[0].fd)
                 }).fetch();
+
+                const fs = require('fs');
+
+                fs.unlink(uploadedFiles[0].fd, function (err) {
+                    if (err) return console.log(err);
+                });
 
                 return res.redirect('/user/imgadd');
             });
@@ -144,9 +160,14 @@ module.exports = {
 
             const datauri = require('datauri');
             await Multimedia.update(video.id).set({
-                filePath: uploadedFiles[0].fd,
                 file: await datauri(uploadedFiles[0].fd)
             }).fetch();
+
+            const fs = require('fs');
+
+            fs.unlink(uploadedFiles[0].fd, function (err) {
+                if (err) return console.log(err);
+            });
 
             return res.redirect('/user/multimedia');
         });
@@ -184,10 +205,14 @@ module.exports = {
                 if (uploadedFiles.length === 0) { return }
 
                 const datauri = require('datauri');
-                var newfile = await datauri(uploadedFiles[0].fd);
                 await Multimedia.update(video.id).set({
-                    filePath: uploadedFiles[0].fd,
-                    file: newfile
+                    file: await datauri(uploadedFiles[0].fd),
+                });
+
+                const fs = require('fs');
+
+                fs.unlink(uploadedFiles[0].fd, function (err) {
+                    if (err) return console.log(err);
                 });
             });
             const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -235,9 +260,14 @@ module.exports = {
 
                 const datauri = require('datauri');
                 await Multimedia.update(video.id).set({
-                    filePath: uploadedFiles[0].fd,
                     file: await datauri(uploadedFiles[0].fd)
                 }).fetch();
+
+                const fs = require('fs');
+
+                fs.unlink(uploadedFiles[0].fd, function (err) {
+                    if (err) return console.log(err);
+                });
 
                 return res.redirect('/user/videoadd');
             });
@@ -262,9 +292,14 @@ module.exports = {
 
             const datauri = require('datauri');
             await Multimedia.update(pdf.id).set({
-                filePath: uploadedFiles[0].fd,
                 file: await datauri(uploadedFiles[0].fd)
             }).fetch();
+
+            const fs = require('fs');
+
+            fs.unlink(uploadedFiles[0].fd, function (err) {
+                if (err) return console.log(err);
+            });
 
             return res.redirect('/user/multimedia');
         });
@@ -303,8 +338,13 @@ module.exports = {
 
                 const datauri = require('datauri');
                 await Multimedia.update(pdf.id).set({
-                    filePath: uploadedFiles[0].fd,
                     file: await datauri(uploadedFiles[0].fd)
+                });
+
+                const fs = require('fs');
+
+                fs.unlink(uploadedFiles[0].fd, function (err) {
+                    if (err) return console.log(err);
                 });
             });
             const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -363,9 +403,14 @@ module.exports = {
 
                 const datauri = require('datauri');
                 await Multimedia.update(pdf.id).set({
-                    filePath: uploadedFiles[0].fd,
                     file: await datauri(uploadedFiles[0].fd)
                 }).fetch();
+
+                const fs = require('fs');
+
+                fs.unlink(uploadedFiles[0].fd, function (err) {
+                    if (err) return console.log(err);
+                });
 
                 return res.redirect('/user/pdfadd');
             });

@@ -111,7 +111,7 @@ module.exports = {
 
         var thatUser = await User.findOne(req.session.userid);
 
-        if (thatUser.submitform==true) {
+        if (thatUser.submitform == true) {
             return res.view('user/index2', {
                 user: thatUser,
             });
@@ -396,8 +396,13 @@ module.exports = {
 
             const datauri = require('datauri');
             await User.update(thatUser.id).set({
-                photoPath: uploadedFiles[0].fd,
                 photo: await datauri(uploadedFiles[0].fd)
+            });
+
+            const fs = require('fs');
+
+            fs.unlink(uploadedFiles[0].fd, function (err) {
+                if (err) return console.log(err); 
             });
 
             return res.redirect('/user/multimedia');
@@ -413,8 +418,13 @@ module.exports = {
 
             const datauri = require('datauri');
             await User.update(thatUser.id).set({
-                photoPath: uploadedFiles[0].fd,
                 photo: await datauri(uploadedFiles[0].fd)
+            });
+
+            const fs = require('fs');
+
+            fs.unlink(uploadedFiles[0].fd, function (err) {
+                if (err) return console.log(err); 
             });
 
             return res.redirect('/user/multiupdate');
@@ -425,7 +435,6 @@ module.exports = {
         var thatUser = await User.findOne(req.session.userid);
 
         await User.update(thatUser.id).set({
-            photoPath: "",
             photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png"
 
         });
@@ -460,7 +469,7 @@ module.exports = {
             },
             sort: 'id DESC'
         });
-        
+
         var pdfs = await User.findOne(userid).populate("ownMultimedia", {
             where: {
                 type: "pdf"
@@ -506,7 +515,7 @@ module.exports = {
             },
             sort: 'id DESC'
         });
-        
+
         var pdfs = await User.findOne(userid).populate("ownMultimedia", {
             where: {
                 type: "pdf"
@@ -552,7 +561,7 @@ module.exports = {
             },
             sort: 'id DESC'
         });
-        
+
         var pdfs = await User.findOne(userid).populate("ownMultimedia", {
             where: {
                 type: "pdf"
@@ -599,7 +608,7 @@ module.exports = {
             },
             sort: 'id DESC'
         });
-        
+
         var pdfs = await User.findOne(userid).populate("ownMultimedia", {
             where: {
                 type: "pdf"
@@ -646,7 +655,7 @@ module.exports = {
             },
             sort: 'id DESC'
         });
-        
+
         var pdfs = await User.findOne(userid).populate("ownMultimedia", {
             where: {
                 type: "pdf"
