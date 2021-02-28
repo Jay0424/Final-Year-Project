@@ -85,7 +85,7 @@ module.exports = {
                 }
 
                 await User.update(thatUser.id).set({
-                    paperstatus: "submit"
+                    submitform:true,
                 }).fetch();
             }
         }

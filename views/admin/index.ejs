@@ -55,7 +55,7 @@
                                 <%=model.phoneno%>
                             </td>
                             <td>
-                                <% if(model.paperstatus=="submit" ){ %>
+                                <% if(model.submitform==true){ %>
                                     <button type="submit"
                                         onclick=" window.open('/admin/papercv/<%=model.id%>','_blank')"
                                         class="btn btn-primary">Paper CV</button>
@@ -65,7 +65,7 @@
 
                             </td>
                             <td>
-                                <% if(model.paperstatus=="submit" ){ %>
+                                <% if(model.submitform==true){ %>
                                     <button type="submit"
                                         onclick=" window.open('/user/<%=model.id%>/digitalcv/index','_blank')"
                                         class="btn btn-primary">Digital CV</button>

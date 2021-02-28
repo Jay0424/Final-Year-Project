@@ -111,7 +111,7 @@ module.exports = {
 
         var thatUser = await User.findOne(req.session.userid);
 
-        if (thatUser.paperstatus == "submit") {
+        if (thatUser.submitform==true) {
             return res.view('user/index2', {
                 user: thatUser,
             });

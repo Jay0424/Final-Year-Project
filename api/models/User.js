@@ -87,9 +87,9 @@ module.exports = {
       via: "MultimediaownBy"
     },
 
-    paperstatus: {
-      type: "string",
-      defaultsTo: "notsubmit"
+    submitform: {
+      type:"boolean",
+      defaultsTo:false,
     },
 
     summary: {
