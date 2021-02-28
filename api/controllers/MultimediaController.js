@@ -57,19 +57,23 @@ module.exports = {
         if (req.method == "POST") {
             var image = await Multimedia.findOne(req.params.id);
 
+            await Multimedia.update(image.id).set({
+                description: req.body.description,
+            });
 
             req.file('avatarfile').upload({ maxBytes: 10000000 }, async function whenDone(err, uploadedFiles) {
                 if (err) { return res.serverError(err); }
-                if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+                if (uploadedFiles.length === 0) { return }
 
                 const datauri = require('datauri');
                 await Multimedia.update(image.id).set({
-                    description: req.body.description,
                     filePath: uploadedFiles[0].fd,
                     file: await datauri(uploadedFiles[0].fd)
                 });
-                return res.redirect('/user/imgupdate');
             });
+            const delay = ms => new Promise(res => setTimeout(res, ms));
+            await delay(1000);
+            return res.redirect('/user/imgupdate');
 
         }
     },
@@ -129,7 +133,7 @@ module.exports = {
         var video = await Multimedia.create(
             {
                 type: "video",
-                description:req.body.description,
+                description: req.body.description,
             }).fetch();
 
         await User.addToCollection(thatUser.id, "ownMultimedia").members(video.id);
@@ -170,18 +174,25 @@ module.exports = {
 
         if (req.method == "POST") {
             var video = await Multimedia.findOne(req.params.id);
+
+            await Multimedia.update(video.id).set({
+                description: req.body.description,
+            }).fetch();
+
             req.file('avatarfile').upload({ maxBytes: 10000000000 }, async function whenDone(err, uploadedFiles) {
                 if (err) { return res.serverError(err); }
-                if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+                if (uploadedFiles.length === 0) { return }
 
                 const datauri = require('datauri');
+                var newfile = await datauri(uploadedFiles[0].fd);
                 await Multimedia.update(video.id).set({
-                    description:req.body.description,
                     filePath: uploadedFiles[0].fd,
-                    file: await datauri(uploadedFiles[0].fd)
+                    file: newfile
                 });
-                return res.redirect('/user/videoupdate');
             });
+            const delay = ms => new Promise(res => setTimeout(res, ms));
+            await delay(1000);
+            return res.redirect('/user/videoupdate');
         }
     },
 
@@ -213,7 +224,7 @@ module.exports = {
             var video = await Multimedia.create(
                 {
                     type: "video",
-                    description:req.body.description,
+                    description: req.body.description,
                 }).fetch();
 
             await User.addToCollection(thatUser.id, "ownMultimedia").members(video.id);
@@ -281,18 +292,24 @@ module.exports = {
 
         if (req.method == "POST") {
             var pdf = await Multimedia.findOne(req.params.id);
+
+            await Multimedia.update(pdf.id).set({
+                name: req.body.pdfname,
+            });
+
             req.file('avatarfile').upload({ maxBytes: 10000000000000 }, async function whenDone(err, uploadedFiles) {
                 if (err) { return res.serverError(err); }
-                if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+                if (uploadedFiles.length === 0) { return }
 
                 const datauri = require('datauri');
                 await Multimedia.update(pdf.id).set({
-                    name: req.body.pdfname,
                     filePath: uploadedFiles[0].fd,
                     file: await datauri(uploadedFiles[0].fd)
                 });
-                return res.redirect('/user/pdfupdate');
             });
+            const delay = ms => new Promise(res => setTimeout(res, ms));
+            await delay(1000);
+            return res.redirect('/user/pdfupdate');
         }
 
     },

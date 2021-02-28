@@ -4,7 +4,7 @@
         <a class="logo disable" href="/admin/index">3D CV</a>
         <ul>
             <li style="color:white;font-size: 25px;padding-right: 10px;">Admin</li>
-            <li><a class="nav-button" href="/admin/pwupdate">Account</a></li>
+            <li><a class="update-button" href="/admin/pwupdate">Account</a></li>
             <li><a class="nav-button" href="/user/logout">Logout</a></li>
         </ul>
     </nav>
@@ -17,7 +17,7 @@
             <button type="submit" style="float:right" class="btn btn-secondary"><i class="fa fa-plus-circle"
                     aria-hidden="true" style="padding-right:10px; "></i>Add User</button>
         </form>
-        <br>
+        
 
         <div class="container">
 
@@ -38,7 +38,8 @@
 
                         <tr>
                             <td>
-                                <button class="btn btn-danger" onclick="deleteUser('<%= model.id %>')" style="color:white;float:left"><i class="fa fa-trash"
+                                <button class="btn btn-danger" onclick="deleteUser('<%= model.id %>')"
+                                    style="color:white;float:left"><i class="fa fa-trash"
                                         aria-hidden="true"></i></button>
                             </td>
                             <td>
@@ -54,12 +55,23 @@
                                 <%=model.phoneno%>
                             </td>
                             <td>
-                                <button type="submit" onclick=" window.open('/admin/papercv/<%=model.id%>','_blank')"
-                                    class="btn btn-primary">Paper CV</button>
-                                
+                                <% if(model.paperstatus=="submit" ){ %>
+                                    <button type="submit"
+                                        onclick=" window.open('/admin/papercv/<%=model.id%>','_blank')"
+                                        class="btn btn-primary">Paper CV</button>
+                                    <%}else{ %>
+                                        <button class="btn btn-danger">Not submitted</button>
+                                        <%} %>
+
                             </td>
                             <td>
-                                <button class="btn btn-primary">Digital CV</button>
+                                <% if(model.paperstatus=="submit" ){ %>
+                                    <button type="submit"
+                                        onclick=" window.open('/user/<%=model.id%>/digitalcv/index','_blank')"
+                                        class="btn btn-primary">Digital CV</button>
+                                    <%}else{ %>
+                                        <button class="btn btn-danger">Not submitted</button>
+                                        <%} %>
                             </td>
 
                         </tr>

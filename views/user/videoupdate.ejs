@@ -39,13 +39,12 @@
                         <source src="<%=model.file%>">
                     </video>
                     <br>
-                    <form action="/user/videoupdate/<%=model.id%>" method="POST" enctype="multipart/form-data"
-                        onsubmit="return validupdate()">
+                    <form action="/user/videoupdate/<%=model.id%>" method="POST" enctype="multipart/form-data" onsubmit="validupdate()">
                         <label>Video description:</label>
-                        <textarea type="text" class="form-control"
-                            name="description" rows="1" required><%=model.description%></textarea>
+                        <textarea type="text" class="form-control" name="description"
+                            rows="1"><%=model.description%></textarea>
                         <div class="custom-file">
-                            <input type="file" accept="video/*" name="avatarfile" id="avatarfile" required />
+                            <input type="file" accept="video/*" name="avatarfile" id="avatarfile"/>
                         </div>
 
                         <button type="submit" class="btn btn-dark btn-block">Update</button>
@@ -64,11 +63,9 @@
 
 <script>
     function validupdate() {
-        var valid = true;
 
         alert("Video update successfully");
 
-        return valid
     }
 
     async function deleteVideo(id) {
@@ -93,4 +90,5 @@
             alert("Cancel");
         }
     }
+
 </script>

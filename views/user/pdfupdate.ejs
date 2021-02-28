@@ -44,9 +44,9 @@
                         onsubmit="return validupdate()">
                         <br>
                         <label>PDF name:</label>
-                        <input type="text" class="form-control" name="pdfname" value=<%=model.name%> required>
+                        <input type="text" class="form-control" name="pdfname" value=<%=model.name%>>
                         <div class="custom-file">
-                            <input type="file" accept="application/pdf" name="avatarfile" id="avatarfile" value=<%model.file%> required/>
+                            <input type="file" accept="application/pdf" name="avatarfile" id="avatarfile" value=<%model.file%> />
                         </div>
 
                         <button type="submit" class="btn btn-dark btn-block">Update</button>

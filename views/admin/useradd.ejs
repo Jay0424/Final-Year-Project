@@ -21,7 +21,7 @@
         <a class="logo disable" href="/admin/index">3D CV</a>
         <ul>
             <li style="color:white;font-size: 25px;padding-right: 10px;">Admin</li>
-            <li><a class="nav-button" href="/admin/pwupdate">Account</a></li>
+            <li><a class="update-button" href="/admin/pwupdate">Account</a></li>
             <li><a class="nav-button" href="/user/logout">Logout</a></li>
         </ul>
     </nav>
@@ -30,7 +30,7 @@
         <h2 class="intro">Add User</h2>
         <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_iXKIMU.json" background="transparent"
             speed="0.8" style="width: 200px; height: 200px;" class="center" loop autoplay></lottie-player>
-        <form action="/admin/useradd" method="POST" onsubmit="return validupdate()">
+        <form action="/admin/useradd" method="POST" onsubmit="return pwvalid()">
             <div class="form-group row">
 
                 <div class="col-xl-12 col-form-label center">
@@ -77,17 +77,32 @@
 
 <script>
 
-    function validupdate() {
-        var valid = true;
-        var pw1 = document.getElementById("password").value;
+function pwvalid(){
+        var valid=true;
+        var pw1=document.getElementById("password").value;
         var pw2 = document.getElementById("password2").value;
-        if (pw2 != pw1) {
+        if(pw1.length<8){
+            alert("Password should be at least 8 characters")
+            valid=false;
+        }
+        else if(pw1.search(/[a-z]/)<0){
+            alert("Password should contain at least 1 lowercase letter")
+            valid=false;
+        }
+        else if(pw1.search(/[A-Z]/)<0){
+            alert("Password should contain at least 1 uppercase letter")
+            valid=false;
+        }
+        else if(pw1.search(/[0-9]/)<0){
+            alert("Password should contain at least 1 number")
+            valid=false;
+        }
+        else if (pw2 != pw1) {
             alert("Make sure you input the same password!")
             valid = false;
         }
 
         return valid;
-
     }
 
 </script>

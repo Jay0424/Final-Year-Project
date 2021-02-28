@@ -45,24 +45,35 @@
         <div class="container" style="width: 30%;">
             <h2 class="center" style="text-align: center;">New Password</h2>
             <lottie-player src="https://assets2.lottiefiles.com/datafiles/Y00QYvz2RSOfBnQ/data.json"
-                background="transparent" speed="0.75" style="width: 300px; height: 300px;" class="center" loop autoplay>
+                background="transparent" speed="0.75" style="width: 250px; height: 250px;" class="center" loop autoplay>
             </lottie-player>
-            <form action="/user/pwupdate/<%=user.id%>" method="POST" onsubmit="return validupdate()">
+            <form action="/user/pwupdate/<%=user.id%>" method="POST" onsubmit="return pwvalid()">
 
-                <div>
-                    <div>
+                <div class="form-group row">
+                    <div class="col-xl-12 col-form-label">
                         <label>Password:</label>
                         <input type="password" class="form-control" name="password" id="password"
                             placeholder="Enter new password" required>
                     </div>
 
-                    <div>
+                    <div class="col-xl-12 col-form-label">
                         <label>Confirm Password:</label>
                         <input type="password" class="form-control" id="password2"
                             placeholder="Enter new password again" required>
                     </div>
+
+                    <div class="col-xl-12">
+                        <label>Password requirments:</label>
+                        <br>
+                        <label><i class="fa fa-certificate" aria-hidden="true"></i> At least 1 lowercase letter</label>
+                        <br>
+                        <label><i class="fa fa-certificate" aria-hidden="true"></i> At least 1 uppercase letter</label>
+                        <br>
+                        <label><i class="fa fa-certificate" aria-hidden="true"></i> At least 1 number</label>
+                        <br>
+                        <label><i class="fa fa-certificate" aria-hidden="true"></i> At least 8 characters</label>
+                    </div>
                 </div>
-                <br>
                 <button type="submit" class="btn btn-primary center" style="width: 100%;">Submit</button>
 
 
@@ -72,19 +83,30 @@
 </body>
 
 <script>
-    function validupdate(){
+    function pwvalid(){
         var valid=true;
         var pw1=document.getElementById("password").value;
-        var pw2=document.getElementById("password2").value;
-        if(pw2==pw1){
+        var pw2 = document.getElementById("password2").value;
+        if(pw1.length<8){
+            alert("Password should be at least 8 characters")
+            valid=false;
+        }else if(pw1.search(/[a-z]/)<0){
+            alert("Password should contain at least 1 lowercase letter")
+            valid=false;
+        }else if(pw1.search(/[A-Z]/)<0){
+            alert("Password should contain at least 1 uppercase letter")
+            valid=false;
+        }else if(pw1.search(/[0-9]/)<0){
+            alert("Password should contain at least 1 number")
+            valid=false;
+        }else if (pw2 != pw1) {
+            alert("Make sure you input the same password!")
+            valid = false;
+        }else{
             alert("Your password is updated"); 
             valid=true;
-        }else{
-            alert("Make sure you input the same new password!")
-            valid=false;
         }
 
         return valid;
-        
     }
 </script>

@@ -8,7 +8,7 @@
         height: 30px;
         background-color: rgb(255, 0, 0, 0.1);
         text-align: center;
-        margin:auto;
+        margin: auto;
     }
 </style>
 
@@ -27,8 +27,8 @@
     <div class="container" style="width: 30%;">
         <h2 class="intro">Register</h2>
         <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_iXKIMU.json" background="transparent"
-            speed="0.8" style="width: 300px; height: 300px;" class="center" loop autoplay></lottie-player>
-        <form action="/visitor/register" method="POST" onsubmit="return validupdate()">
+            speed="0.8" style="width: 250px; height: 250px;" class="center" loop autoplay></lottie-player>
+        <form action="/visitor/register" method="POST" onsubmit="return pwvalid()">
             <div class="form-group row">
                 <div class="col-xl-12 col-form-label center">
                     <label>Username:</label>
@@ -42,22 +42,33 @@
                             <%= message %>
                         </strong>
                     </div>
-                <% }) %>
+                    <% }) %>
 
-                <div class="col-xl-12 col-form-label">
-                    <label>Password:</label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password"
-                        required>
-                </div>
+                        <div class="col-xl-12 col-form-label">
+                            <label>Password:</label>
+                            <input type="password" class="form-control" name="password" id="password"
+                                placeholder="Enter your password" required>
+                        </div>
 
-                <div class="col-xl-12 col-form-label">
-                    <label>Confirm Password:</label>
-                    <input type="password" class="form-control" id="password2"
-                        placeholder="Enter your password again" required>
-                </div>
+                        <div class="col-xl-12 col-form-label">
+                            <label>Confirm Password:</label>
+                            <input type="password" class="form-control" id="password2"
+                                placeholder="Enter your password again" required>
+                        </div>
 
+                        <div class="col-xl-12">
+                            <label>Password requirments:</label>
+                            <br>
+                            <label><i class="fa fa-certificate" aria-hidden="true"></i> At least 1 lowercase letter</label>
+                            <br>
+                            <label><i class="fa fa-certificate" aria-hidden="true"></i> At least 1 uppercase letter</label>
+                            <br>
+                            <label><i class="fa fa-certificate" aria-hidden="true"></i> At least 1 number</label>
+                            <br>
+                            <label><i class="fa fa-certificate" aria-hidden="true"></i> At least 8 characters</label>
+                        </div>
             </div>
-            <button type="submit" class="btn btn-primary center" style="width:100%">Submit</button>
+            <button type=" submit" class="btn btn-primary center" style="width:100%">Submit</button>
         </form>
     </div>
 
@@ -65,17 +76,32 @@
 
 <script>
 
-    function validupdate(){
+    function pwvalid(){
         var valid=true;
         var pw1=document.getElementById("password").value;
-        var pw2=document.getElementById("password2").value;
-        if(pw2!=pw1){
-            alert("Make sure you input the same password!")
+        var pw2 = document.getElementById("password2").value;
+        if(pw1.length<8){
+            alert("Password should be at least 8 characters")
             valid=false;
+        }
+        else if(pw1.search(/[a-z]/)<0){
+            alert("Password should contain at least 1 lowercase letter")
+            valid=false;
+        }
+        else if(pw1.search(/[A-Z]/)<0){
+            alert("Password should contain at least 1 uppercase letter")
+            valid=false;
+        }
+        else if(pw1.search(/[0-9]/)<0){
+            alert("Password should contain at least 1 number")
+            valid=false;
+        }
+        else if (pw2 != pw1) {
+            alert("Make sure you input the same password!")
+            valid = false;
         }
 
         return valid;
-        
     }
 
 </script>
