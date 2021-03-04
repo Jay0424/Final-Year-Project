@@ -1,0 +1,246 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
+    rel="stylesheet">
+<style>
+    .papercv2 {
+        height: 100%;
+        background: -webkit-linear-gradient(360deg, #595F63 45%, white 45%);
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .left h2 {
+        color: white;
+        font-weight: 400;
+        font-size: 28px;
+    }
+
+    .right h2 {
+        color: black;
+        font-weight: 400;
+        font-size: 25px;
+    }
+
+    .swtitle {
+        color: black;
+        font-weight: 600;
+        font-size: 25px;
+    }
+
+    .left {
+        float: left;
+        width: 45%;
+        padding:0px;
+        margin: auto;
+    }
+
+    .right {
+        float: left;
+        width: 55%;
+    }
+
+    .left hr {
+        height: 5px;
+        width:90%;
+        border-width: 0;
+        color: white;
+        background-color: white;
+    }
+
+    .phr {
+        height: 5px;
+        border-width: 0;
+        color: black;
+        background-color: black;
+    }
+
+    .name {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 900;
+        font-size: 38px;
+        color: white;
+    }
+
+    .left h1 {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 700;
+        font-size: 35px;
+        color: #58B4F1;
+    }
+
+    .right h1 {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 700;
+        font-size: 35px;
+        color: #1E94E0;
+    }
+
+    .content {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 400;
+        font-size: 25px;
+    }
+
+    .circle {
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        border-radius: 50%;
+        font-size: 25px;
+        color: #fff;
+        text-align: center;
+        background: black;
+    }
+
+
+
+    .bar span {
+        background-color: white;
+        display: block;
+        height: 20px;
+        border-radius: 10px;
+    }
+
+    .dot {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: darkslategrey;
+    }
+
+    .line {
+        height: 120px;
+        width: 2px;
+        background: #D1D6E6;
+        margin-left: 8.3px;
+    }
+</style>
+
+
+<body class="papercv2">
+    <br>
+    <div class="container" style="width:100%;">
+        <div style="margin:auto;" class="left" >
+            <img src=<%=user.photo%> style="width:75%;height:auto">
+            <div>
+                <p class="name">
+                    <%=user.name%>
+                </p>
+            </div>
+            <hr class="phr">
+            <div>
+                <h1 class='title'>Contact</h1>
+                <h2><i class="fa fa-phone-square" aria-hidden="true" style="padding-right: 5px;"></i>
+                    <%=user.phoneno%>
+                </h2>
+                <h2><i class="fa fa-envelope" aria-hidden="true" style="padding-right: 5px;"></i>
+                    <%=user.email%>
+                </h2>
+            </div>
+            <hr class="phr">
+            <div>
+                <h1 class='title'>Skill</h1>
+                <% skill.forEach(function(model) { %>
+                    <h2><i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        <%=model.type%>
+                            <p class="content">
+                                <%=model.content%>
+                            </p>
+                    </h2>
+                    <%})%>
+            </div>
+            <hr class="phr">
+            <div>
+                <h1 class="title">Language</h1>
+                <% language.forEach(function(model) { %>
+                    <h2>
+                        <%=model.type%>
+                    </h2>
+                    <span class="bar">
+                        <%if (model.degree==5){%>
+                            <span style="width:90%"></span>
+                            <%} else if (model.degree==4){%>
+                                <span style="width:75%"></span>
+                                <%} else if (model.degree==3){%>
+                                    <span style="width:60%"></span>
+                                    <% } else if (model.degree==2){%>
+                                        <span style="width:45%"></span>
+                                        <% } else{%>
+                                            <span style="width:30%"></span>
+                                            <%};%>
+                    </span>
+                    <%})%>
+            </div>
+            <hr class="phr">
+            <div>
+                <h1 class="title">Availability</h1>
+                <h2>
+                    <%=user.availability%>
+                </h2>
+            </div>
+            <hr class="phr">
+            <div>
+                <h1 class="title">Expected salary</h1>
+                <h2>$<%=user.salary%>
+                </h2>
+            </div>
+            <hr class="phr">
+        </div>
+
+        <div class="right" style="padding-left: 30px;">
+            <div>
+                <h1 class="title">About me</h1>
+                <h2>
+                    <%=user.summary%>
+                </h2>
+            </div>
+            <hr class="phr">
+            <div>
+                <h1 class="title">Education</h1>
+                <% var i=1%>
+                    <% education.forEach(function(model) { %>
+                        <h3 class="swtitle">
+                            <%=model.certification%>
+                        </h3>
+                        <h2>
+                            <%=model.school%>
+                        </h2>
+                        <h2>
+                            <%=model.syear%>-<%=model.eyear%>
+                        </h2>
+                        <%if(i!=education.length){%>
+                            <br>
+                            <% i++ %>
+                                <%}%>
+                                    <%});%>
+
+            </div>
+            <hr class="phr">
+            <div>
+                <h1 class="title">Work Experience</h1>
+                <% var j=1%>
+                    <% work.forEach(function(model) { %>
+                        <h3 class="swtitle">
+                            <%=model.job%>
+                        </h3>
+                        <h2>
+                            <%=model.company%> | <%=model.start%>-<%=model.end%>
+                        </h2>
+                        <div>
+                            <h2 style="font-weight: 400;font-size: 21px;">
+                                <%=model.description%>
+                            </h2>
+                        </div>
+
+
+                        <%if(j!=work.length){%>
+                            <br>
+                            <% j++ %>
+                                <%}%>
+                                    <% }); %>
+            </div>
+            <hr class="phr">
+        </div>
+
+    </div>
+
+</body>

@@ -184,8 +184,6 @@ module.exports = {
         }
     },
 
-
-
     userpapercv: async function (req, res) {
         var thatUser = await User.findOne(req.params.id);
 
@@ -202,6 +200,31 @@ module.exports = {
         if (!thatUser) return res.notFound();
 
         return res.view('user/papercv', {
+            user: thatUser,
+            education: educations.ownEdu,
+            work: works.ownWork,
+            skill: skills.ownSkill,
+            language: languages.ownLanguage,
+        });
+
+    },
+
+    userpapercv2: async function (req, res) {
+        var thatUser = await User.findOne(req.params.id);
+
+        var userid = thatUser.id;
+
+        var educations = await User.findOne(userid).populate("ownEdu", { sort: "syear DESC" });
+
+        var works = await User.findOne(userid).populate("ownWork", { sort: "start DESC" });
+
+        var skills = await User.findOne(userid).populate("ownSkill", { sort: "id ASC" });
+
+        var languages = await User.findOne(userid).populate("ownLanguage", { sort: "degree DESC" });
+
+        if (!thatUser) return res.notFound();
+
+        return res.view('user/papercv2', {
             user: thatUser,
             education: educations.ownEdu,
             work: works.ownWork,
