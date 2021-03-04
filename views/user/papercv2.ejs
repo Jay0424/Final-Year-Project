@@ -4,12 +4,12 @@
 <style>
     .papercv2 {
         height: 100%;
-        background: -webkit-linear-gradient(360deg, #595F63 45%, white 45%);
+        background: white;
         font-family: 'Roboto', sans-serif;
     }
 
     .left h2 {
-        color: white;
+        color: black;
         font-weight: 400;
         font-size: 28px;
     }
@@ -28,23 +28,23 @@
 
     .left {
         float: left;
-        width: 45%;
+        width: 40%;
         padding:0px;
         margin: auto;
     }
 
     .right {
         float: left;
-        width: 55%;
+        width: 60%;
     }
 
-    .left hr {
+    /* .left hr {
         height: 5px;
         width:90%;
         border-width: 0;
         color: white;
         background-color: white;
-    }
+    } */
 
     .phr {
         height: 5px;
@@ -57,14 +57,14 @@
         font-family: 'Source Sans Pro', sans-serif;
         font-weight: 900;
         font-size: 38px;
-        color: white;
+        color: black;
     }
 
     .left h1 {
         font-family: 'Source Sans Pro', sans-serif;
         font-weight: 700;
         font-size: 35px;
-        color: #58B4F1;
+        color: #1E94E0;
     }
 
     .right h1 {
@@ -94,7 +94,7 @@
 
 
     .bar span {
-        background-color: white;
+        background-color:coral;
         display: block;
         height: 20px;
         border-radius: 10px;
@@ -120,7 +120,7 @@
     <br>
     <div class="container" style="width:100%;">
         <div style="margin:auto;" class="left" >
-            <img src=<%=user.photo%> style="width:75%;height:auto">
+            <img src=<%=user.photo%> style="width:80%;height:auto">
             <div>
                 <p class="name">
                     <%=user.name%>
@@ -157,15 +157,15 @@
                     </h2>
                     <span class="bar">
                         <%if (model.degree==5){%>
-                            <span style="width:90%"></span>
+                            <span style="width:100%"></span>
                             <%} else if (model.degree==4){%>
-                                <span style="width:75%"></span>
+                                <span style="width:80%"></span>
                                 <%} else if (model.degree==3){%>
                                     <span style="width:60%"></span>
                                     <% } else if (model.degree==2){%>
-                                        <span style="width:45%"></span>
+                                        <span style="width:40%"></span>
                                         <% } else{%>
-                                            <span style="width:30%"></span>
+                                            <span style="width:20%"></span>
                                             <%};%>
                     </span>
                     <%})%>
