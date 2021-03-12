@@ -31,7 +31,7 @@
     }
 
     .timeline {
-        padding-bottom: 250px;
+        padding-bottom: 200px;
     }
 
     .timeline li {
@@ -142,7 +142,7 @@
         width: 60%;
         margin: auto;
     }
- 
+
     .langbox {
         padding-top: 30px;
         width: 60%;
@@ -178,36 +178,34 @@
         animation: testing 5s;
     }
 
-    @keyframes testing{
-        0%{
-            width:0%;
+    @keyframes testing {
+        0% {
+            width: 0%;
         }
     }
 
     .workbox a h2:hover,
     .workbox a h3:hover,
-    .workbox a h4:hover{
-        color:blue;
+    .workbox a h4:hover {
+        color: blue;
     }
-
-
 </style>
 
 <body class="cv1">
-  
+
     <nav class="digital1">
         <a class="digtial1logo disable" href="#" onclick="window.location.reload(true);">My CV</a>
         <ul>
             <li><a href="#edu">Education</a></li>
-            <li><a href="#work">Work</a></li>
+            <li><a href="/user/<%=user.id%>/digitalcv/work">Work</a></li>
             <li><a href="/user/<%=user.id%>/digitalcv/skill">Skill</a></li>
-            <% if (image.length>0||video.length>0) {%> 
-            <li><a href="/user/<%=user.id%>/digitalcv/multi">Multimedia</a></li>
-            <%}%>
-            <% if (pdf.length>0) {%> 
-            <li><a href="/user/<%=user.id%>/digitalcv/cert">Certificate</a></li>
-            <%}%>
-            <li><a href="/user/<%=user.id%>/digitalcv/contact">Contact</a></li>
+            <% if (image.length>0||video.length>0) {%>
+                <li><a href="/user/<%=user.id%>/digitalcv/multi">Multimedia</a></li>
+                <%}%>
+                    <% if (pdf.length>0) {%>
+                        <li><a href="/user/<%=user.id%>/digitalcv/cert">Certificate</a></li>
+                        <%}%>
+                            <li><a href="/user/<%=user.id%>/digitalcv/contact">Contact</a></li>
         </ul>
     </nav>
     <br>
@@ -251,31 +249,7 @@
                 <% }); %>
         </ul>
     </div>
-    <div class="workbox" id="work">
-        <h2 class="intro"> <i class="fa fa-briefcase" aria-hidden="true" style="padding-right: 20px;"></i>Work</h2>
-
-        <% work.forEach(function(model) { %>
-            <div class="card">
-                <a href="https://google.com/search?q=<%=model.company%>" target="_blank" style="color:black">
-                <div class="card-header">
-                    <h2>
-                        <%=model.start%> to <%=model.end%> &nbsp;
-                                <%=model.company%>
-                    </h2>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">
-                        <%=model.job%>
-                    </h3>
-                    <h4 class="card-text" style="font-weight: 300;">
-                        <%=model.description%>
-                    </h4>
-                </div>
-            </a>
-            </div>
-            <br>
-            <% }); %>
-    </div>
+    
 
 </body>
 

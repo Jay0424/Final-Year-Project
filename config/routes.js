@@ -132,6 +132,7 @@ module.exports.routes = {
 
   //User Digital CV
   ' /user/:id/digitalcv/index': 'UserController.digitalcvindex',
+  ' /user/:id/digitalcv/work': 'UserController.digitalcvwork',
   ' /user/:id/digitalcv/skill': 'UserController.digitalcvskill',
   ' /user/:id/digitalcv/multi': 'UserController.digitalcvmulti',
   ' /user/:id/digitalcv/cert': 'UserController.digitalcvcert',
