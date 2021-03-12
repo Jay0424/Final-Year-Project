@@ -1,0 +1,270 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<style>
+    .papercv3 {
+        background-image: none;
+        background-size: auto;
+        background-color: white;
+        font-family: 'Lato', sans-serif;
+    }
+
+    .left {
+        float: left;
+        width: 60%;
+    }
+
+    .right {
+        float: left;
+        width: 40%;
+    }
+
+    .title {
+        font-weight: 900;
+        color: rgb(103, 28, 153);
+        text-align: center;
+    }
+
+    .lefttitle {
+        font-weight: 900;
+        color: rgb(103, 28, 153);
+    }
+
+    .content {
+        font-weight: 400;
+        font-size: 23px;
+    }
+
+    .ctitle {
+        font-weight: 700;
+        font-size: 23px;
+        text-align: center;
+    }
+
+    .ccontent {
+        font-weight: 400;
+        font-size: 23px;
+        text-align: center;
+    }
+
+    .phr {
+        height: 2px;
+        border-width: 0;
+        color: rgb(14, 161, 230);
+        background-color: rgb(14, 161, 230);
+        margin: auto;
+    }
+
+    .name {
+        font-weight: 900;
+        text-align: center;
+        font-size: 60px;
+        text-decoration: underline;
+    }
+
+    .timeline {
+        padding-top: 10px;
+    }
+
+    .timeline li {
+        box-sizing: border-box;
+        padding: 20px 0px;
+        padding-left: 10px;
+        position: relative;
+    }
+
+    .line::before {
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 100%;
+        background-color: black;
+    }
+
+    .line::before {
+        content: '';
+        position: absolute;
+        width: 5px;
+        top: 35px;
+        height: 100%;
+        background-color: black;
+    }
+
+    .timeline h2:before {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        top: 28px;
+        left: 2.5px;
+        border: solid 1px;
+        background-color: white;
+    }
+
+    .timeline h2{
+        font-weight: 900;
+    }
+
+    .wcontent{
+        font-weight: 700;
+    }
+    .wdescript{
+        font-weight: 400;
+    }
+</style>
+
+<body class="papercv3">
+    <br>
+    <br>
+    <div class="container">
+        <div class="left">
+            <br>
+            <br>
+            <h2 class="name">
+                <%=user.name%>
+            </h2>
+            <br>
+            <br>
+            <br>
+            <h2 class="lefttitle"><i class="fa fa-graduation-cap" aria-hidden="true"
+                    style="padding-right: 5px;"></i>EDUCATION</h2>
+            <ul class="timeline">
+                <% var i=1%>
+                    <% education.forEach(function(model) { %>
+                        <%if(i!=education.length){%>
+                            <li class="line">
+                                <div style="padding-left: 30px;">
+                                    <h2>
+                                        <%=model.syear%>-<%=model.eyear%>
+                                    </h2>
+                                    <h3>
+                                        <%=model.certification%>
+                                    </h3>
+                                    <h3>
+                                        <%=model.school%>
+                                    </h3>
+                                </div>
+                            </li>
+                            <% i++ %>
+                                <%} else {%>
+                                    <li>
+                                        <div style="padding-left: 30px;">
+                                            <h2>
+                                                <%=model.syear%>-<%=model.eyear%>
+                                            </h2>
+                                            <h3>
+                                                <%=model.certification%>
+                                            </h3>
+                                            <h3>
+                                                <%=model.school%>
+                                            </h3>
+                                        </div>
+                                    </li>
+                                    <% i++ %>
+                                        <% }}); %>
+            </ul>
+            <hr class="phr">
+            <br>
+            <h2 class="lefttitle"><i class="fa fa-briefcase" aria-hidden="true"
+                    style="padding-right: 10px;"></i>EXPERIENCE</h2>
+                    <ul class="timeline">
+                        <% var j=1%>
+                            <% work.forEach(function(model) { %>
+                                <%if(j!=work.length){%>
+                                    <li class="line">
+                                        <div style="padding-left: 30px;">
+                                            <h2>
+                                                <%=model.start%> - <%=model.end%>
+                                            </h2>
+                                            <h3 class="wcontent">
+                                                <%=model.job%>
+                                            </h3>
+                                            <h3 class="wcontent">
+                                                <%=model.company%>
+                                            </h3>
+                                            <h3 class="wdescript">
+                                                <%=model.description%>
+                                            </h3>
+                                        </div>
+                                    </li>
+                                    <% j++ %>
+                                        <%} else {%>
+                                            <li>
+                                                <div style="padding-left: 30px;">
+                                                    <h2>
+                                                        <%=model.start%> - <%=model.end%>
+                                                    </h2>
+                                                    <h3 class="wcontent">
+                                                        <%=model.job%>
+                                                    </h3>
+                                                    <h3 class="wcontent">
+                                                        <%=model.company%>
+                                                    </h3>
+                                                    <h3 class="wdescript">
+                                                        <%=model.description%>
+                                                    </h3>
+                                                </div>
+                                            </li>
+                                            <% j++ %>
+                                                <% }}); %>
+                    </ul>
+
+
+        </div>
+
+        <div class="right" style="padding-left: 35px;">
+            <img src=<%=user.photo%> style="width:100%">
+            <h2 class="title">MY PROFILE</h2>
+            <h3 style="text-align: center;" class="content">
+                <%=user.summary%>
+            </h3>
+            <hr class="phr">
+            <h2 style="text-align: center;color: skyblue; padding-top: 10px;"><i class="fa fa-user fa-lg"
+                    aria-hidden="true"></i></h2>
+            <h2 class="ctitle">Name</h2>
+            <h2 class="ccontent">
+                <%=user.name%>
+            </h2>
+            <h2 style="text-align: center;color: skyblue; padding-top: 15px;"><i class="fa fa-phone fa-lg"
+                    aria-hidden="true"></i></h2>
+            <h2 class="ctitle">Phone</h2>
+            <h2 class="ccontent">
+                <%=user.phoneno%>
+            </h2>
+            <h2 style="text-align: center;color: skyblue; padding-top: 15px;""><i class=" fa fa-envelope fa-lg"
+                aria-hidden="true"></i></h2>
+            <h2 class="ctitle">Email</h2>
+            <h2 class="ccontent">
+                <%=user.email%>
+            </h2>
+            <hr class="phr">
+            <h2 class="title" style="padding-top: 10px;"><i class="fa fa-ravelry" aria-hidden="true"
+                    style="padding-right: 5px;"></i>SKILL</h2>
+            <% skill.forEach(function(model) { %>
+                <h2 class="ctitle">
+                    <%=model.type%>
+                </h2>
+                <h2 class="ccontent">
+                    <%=model.content%>
+                </h2>
+                <%})%>
+                    <hr class="phr">
+                    <h2 class="title" style="padding-top: 10px;"><i class="fa fa-globe" aria-hidden="true"
+                            style="padding-right: 5px;"></i>LANGUAGE</h2>
+                    <% language.forEach(function(model) { %>
+                        <h2 class="ctitle">
+                            <%=model.type%>
+                                <% for(i=0;i<model.degree;i++){%>
+                                    <i class="fa fa-star" aria-hidden="true"
+                                        style="color:rgb(227, 238, 79);padding-left: 5px;"></i>
+                                    <%}%>
+                        </h2>
+                        <%})%>
+                            <hr class="phr">
+
+
+        </div>
+
+    </div>
+</body>
