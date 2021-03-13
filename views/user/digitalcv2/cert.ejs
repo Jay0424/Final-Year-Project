@@ -1,5 +1,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <style>
     .digital2 {
         background-image: none;
@@ -70,19 +71,12 @@
     .left {
         float: left;
         width: 50%;
-        background: linear-gradient(90deg, #2193b0, #6dd5ed);
-        padding-left: 50px;
-    }
-
-    .left2 {
-        float: left;
-        width: 50%;
-        background: black;
+        background: white;
         padding-left: 50px;
     }
 
     .left :is(h2, h3) {
-        color: white;
+        color: black;
         font-weight: 900;
     }
 
@@ -94,7 +88,7 @@
     .right {
         float: left;
         width: 50%;
-        background: linear-gradient(90deg, #ee9ca7, #ffdde1);
+        background: white;
         padding-left: 50px;
     }
 
@@ -234,13 +228,38 @@
     }
 
     .circle {
-        width: 250px;
-        height: 250px;
-        line-height: 250px;
+        width: 200px;
+        height: 200px;
+        line-height: 200px;
+        border-radius: 50%;
         font-size: 25px;
-        color: #fff;
+        color: white;
         text-align: center;
-        background: cornflowerblue;
+        background: grey;
+    }
+
+    .bar {
+        background-color: white;
+        display: block;
+        height: 20px;
+        border: 1px solid;
+        border-radius: 5px;
+        box-shadow: 2px 2px 4px;
+
+    }
+
+    .bar span {
+        background-color: #004e92;
+        display: block;
+        height: 20px;
+        border-radius: 5px;
+        animation: level 3s;
+    }
+
+    @keyframes level {
+        0% {
+            width: 0%;
+        }
     }
 
     @keyframes move {
@@ -252,21 +271,26 @@
             transform: scale(1.3) translateY(-50px) rotate(70deg);
         }
     }
+
+    .contactinfo{
+        font-weight: 700;
+    }
+    
 </style>
 
 <body class="digital2">
 
     <nav>
-        <a class="digital2logo" href="#" onclick="window.location.reload(true);">Home</a>
+        <a class="digital2logo" href="/user/<%=user.id%>/digitalcv2/index">Home</a>
         <ul>
-            <li><a href="#edu">Education</a></li>
-            <li><a href="#exp">Experience</a></li>
+            <li><a href="/user/<%=user.id%>/digitalcv2/index#edu">Education</a></li>
+            <li><a href="/user/<%=user.id%>/digitalcv2/index#exp">Experience</a></li>
             <li><a href="/user/<%=user.id%>/digitalcv2/skill">Skill</a></li>
             <% if (image.length>0||video.length>0) {%>
                 <li><a href="/user/<%=user.id%>/digitalcv2/skill#multi">Multimedia</a></li>
                 <%}%>
                     <% if (pdf.length>0) {%>
-                        <li><a href="/user/<%=user.id%>/digitalcv2/cert">Certificate</a></li>
+                        <li><a href="#" onclick="window.location.reload(true);">Certificate</a></li>
                         <%}%>
                             <li><a href="/user/<%=user.id%>/digitalcv2/cert#contact">Contact</a></li>
         </ul>
@@ -304,115 +328,59 @@
     </div>
 
     <br>
-    <br>
-    <br>
 
-    <div style="width:65%;margin: auto;padding-bottom: 50px;">
-        <img src=<%=user.photo%> align="left" style="width:50%; height:100%">
-        <div style="padding-left: 70px;">
-            <br>
-            <h2 class="title">
-                About Me
-            </h2>
-            <h3>
-                <%=user.summary%>
-            </h3>
-            <br>
-            <iframe src="/user/papercv/<%=user.id%>" style="display:none;" name="frame"></iframe>
-            <button style="width:50%" type="submit" class="btn btn-dark" onclick="frames['frame'].print()"
-                target="_blank">Download CV</button>
-            <br>
-            <br>
+    <div style="width:55%;margin: auto;" id="cert" >
+        <h2 class="intro" style="font-weight: 900;"> <i class="fa fa-certificate" aria-hidden="true"
+            style="padding-right: 20px;"></i>Certificate</h2>
+            <h2 style="text-align: center;">
+                By clicking  <i class="fa fa-mouse-pointer" aria-hidden="true" style="padding-left: 10px; padding-right: 10px;"></i>the name of the
+                 PDF, you can view the entire PDF
+             </h2>
+        <div class="row">
+            <div style="padding-left: 80px;">
+                <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_h59xofz0.json"
+                    background="transparent" speed="0.75" style="width: 450px; height: 450px;" loop autoplay>
+                </lottie-player>
+            </div>
+            <div >
+                <br>
+                <br>
+                <% pdf.forEach(function(model) { %>
+                    <a style="font-size: 40px;" href="/user/<%=user.id%>/digitalcv2/pdf/<%=model.id%>" target="_blank">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                       <%=model.name%>
+                    </a>
 
+                    <% }); %>
+            </div>
         </div>
     </div>
 
     <br>
-    <br>
-    <br>
-    <div style="width:100%;margin: auto;overflow: hidden;display: flex;">
-        <div class="left" id="edu">
-            <h2 class="intro"> <i class="fa fa-graduation-cap" aria-hidden="true"
-                    style="padding-right: 20px;"></i>Education
-            </h2>
-            <ul class="timeline">
-                <% var i=1%>
-                    <% education.forEach(function(model) { %>
-                        <%if(i!=education.length){%>
-                            <li class="line">
-                                <div style="padding-left: 30px;">
-                                    <h2>
-                                        <%=model.syear%>-<%=model.eyear%>
-                                    </h2>
-                                    <h3>
-                                        <%=model.certification%>
-                                    </h3>
-                                    <h3>
-                                        <%=model.school%>
-                                    </h3>
-                                </div>
-                            </li>
-                            <% i++ %>
-                                <%} else {%>
-                                    <li>
-                                        <div style="padding-left: 30px;">
-                                            <h2>
-                                                <%=model.syear%>-<%=model.eyear%>
-                                            </h2>
-                                            <h3>
-                                                <%=model.certification%>
-                                            </h3>
-                                            <h3>
-                                                <%=model.school%>
-                                            </h3>
-                                        </div>
-                                    </li>
-                                    <% i++ %>
-                                        <% }}); %>
-            </ul>
 
-        </div>
+    <div style="width:50%;margin: auto;border: 10px solid rgb(53, 2, 2);"id="contact">
+        <h2 class="intro" style="font-weight: 900;"><i class="fa fa-address-card-o" aria-hidden="true" style="padding-right: 20px;"></i>Contact</h2>
+        <div class="row">
+            <div style="padding-left: 50px;">
+                <lottie-player src="https://assets2.lottiefiles.com/temp/lf20_baStwL.json"  background="transparent"  speed="1"  style="width: 400px; height: 400px;"  loop  autoplay></lottie-player>
+            </div>
 
-        <div class="right" id="exp">
-            <h2 class="intro"> <i class="fa fa-briefcase" aria-hidden="true" style="padding-right: 20px;"></i>Experience
-            </h2>
-            <ul class="timeline">
-                <% var j=1%>
-                    <% work.forEach(function(model) { %>
-                        <%if(j!=work.length){%>
-                            <li class="line">
-                                <div style="padding-left: 30px;">
-                                    <h2>
-                                        <%=model.start%> - <%=model.end%>
-                                    </h2>
-                                    <h3 class="wcontent">
-                                        <%=model.job%> | <%=model.company%>
-                                    </h3>
-                                    <h3 class="wdescript">
-                                        <%=model.description%>
-                                    </h3>
-                                </div>
-                            </li>
-                            <% j++ %>
-                                <%} else {%>
-                                    <li>
-                                        <div style="padding-left: 30px;">
-                                            <h2>
-                                                <%=model.start%> - <%=model.end%>
-                                            </h2>
-                                            <h3 class="wcontent">
-                                                <%=model.job%> | <%=model.company%>
-                                            </h3>
-                                            <h3 class="wdescript">
-                                                <%=model.description%>
-                                            </h3>
-                                        </div>
-                                    </li>
-                                    <% j++ %>
-                                        <% }}); %>
-            </ul>
-        </div>
+            <div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h2 class="contactinfo"><i class="fa fa-user" aria-hidden="true" style="padding-right: 5px;"></i>
+                    <%=user.name%>
+                </h2>
+                <br>
+                <h2  class="contactinfo"><i class="fa fa-envelope" aria-hidden="true"  style="padding-right: 5px;"></i>
+                    <%=user.email%>
+                </h2>
+                <br>
+                <h2 class="contactinfo"><i class="fa fa-phone-square" aria-hidden="true"  style="padding-right: 5px;"></i>
+                    <%=user.phoneno%><h2>
+            </div>
     </div>
-
-    
+    <br>
 </body>

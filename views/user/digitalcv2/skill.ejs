@@ -70,19 +70,12 @@
     .left {
         float: left;
         width: 50%;
-        background: linear-gradient(90deg, #2193b0, #6dd5ed);
-        padding-left: 50px;
-    }
-
-    .left2 {
-        float: left;
-        width: 50%;
-        background: black;
+        background: white;
         padding-left: 50px;
     }
 
     .left :is(h2, h3) {
-        color: white;
+        color: black;
         font-weight: 900;
     }
 
@@ -94,7 +87,7 @@
     .right {
         float: left;
         width: 50%;
-        background: linear-gradient(90deg, #ee9ca7, #ffdde1);
+        background: white;
         padding-left: 50px;
     }
 
@@ -234,13 +227,38 @@
     }
 
     .circle {
-        width: 250px;
-        height: 250px;
-        line-height: 250px;
+        width: 200px;
+        height: 200px;
+        line-height: 200px;
+        border-radius: 50%;
         font-size: 25px;
-        color: #fff;
+        color: white;
         text-align: center;
-        background: cornflowerblue;
+        background: grey;
+    }
+
+    .bar {
+        background-color:white;
+        display: block;
+        height: 20px;
+        border: 1px solid;
+        border-radius: 5px;
+        box-shadow: 2px 2px 4px;
+
+    }
+
+    .bar span {
+        background-color:#004e92;
+        display: block;
+        height: 20px;
+        border-radius: 5px;
+        animation: level 3s;
+    }
+
+    @keyframes level {
+        0% {
+            width: 0%;
+        }
     }
 
     @keyframes move {
@@ -257,13 +275,13 @@
 <body class="digital2">
 
     <nav>
-        <a class="digital2logo" href="#" onclick="window.location.reload(true);">Home</a>
+        <a class="digital2logo" href="/user/<%=user.id%>/digitalcv2/index">Home</a>
         <ul>
-            <li><a href="#edu">Education</a></li>
-            <li><a href="#exp">Experience</a></li>
-            <li><a href="/user/<%=user.id%>/digitalcv2/skill">Skill</a></li>
+            <li><a href="/user/<%=user.id%>/digitalcv2/index#edu">Education</a></li>
+            <li><a href="/user/<%=user.id%>/digitalcv2/index#exp">Experience</a></li>
+            <li><a href="#" onclick="window.location.reload(true);">Skill</a></li>
             <% if (image.length>0||video.length>0) {%>
-                <li><a href="/user/<%=user.id%>/digitalcv2/skill#multi">Multimedia</a></li>
+                <li><a href="#multi">Multimedia</a></li>
                 <%}%>
                     <% if (pdf.length>0) {%>
                         <li><a href="/user/<%=user.id%>/digitalcv2/cert">Certificate</a></li>
@@ -303,116 +321,94 @@
         </div>
     </div>
 
-    <br>
-    <br>
-    <br>
-
-    <div style="width:65%;margin: auto;padding-bottom: 50px;">
-        <img src=<%=user.photo%> align="left" style="width:50%; height:100%">
-        <div style="padding-left: 70px;">
-            <br>
-            <h2 class="title">
-                About Me
-            </h2>
-            <h3>
-                <%=user.summary%>
-            </h3>
-            <br>
-            <iframe src="/user/papercv/<%=user.id%>" style="display:none;" name="frame"></iframe>
-            <button style="width:50%" type="submit" class="btn btn-dark" onclick="frames['frame'].print()"
-                target="_blank">Download CV</button>
-            <br>
-            <br>
-
+    <div style="width:80%;margin: auto;overflow: hidden;display: flex;">
+        <div class="left" >
+            <h2 class="intro"> <i class="fa fa-star" aria-hidden="true" style="padding-right: 20px;"></i>Skill</h2>
+            <div class="row">
+                <% skill.forEach(function(model) { %>
+                    <div class="card col-xl-4" style="border: 0px; background: transparent;">
+                        <div class="circle center">
+                            <%=model.type%>
+                        </div>
+                        <h4 style="text-align: center;font-weight: 700;">
+                            <%=model.content%>
+                        </h4>
+                    </div>
+                    <% }); %>
+            </div>
         </div>
+
+        <div class="right">
+            <h2 class="intro"> <i class="fa fa-language" aria-hidden="true" style="padding-right: 20px;"></i>Language</h2>
+            <% language.forEach(function(model) { %>
+                <h2 style="display: inline;">
+                    <%=model.type%>
+                </h2>
+                <h2 style="float:right;display: inline;"><%=model.degree *20%>%</h2>
+                <span class="bar">
+                    <%if (model.degree==5){%>
+                        <span style="width:100%"></span>
+                        <%} else if (model.degree==4){%>
+                            <span style="width:80%"></span>
+                            <%} else if (model.degree==3){%>
+                                <span style="width:60%"></span>
+                                <% } else if (model.degree==2){%>
+                                    <span style="width:40%"></span>
+                                    <% } else{%>
+                                        <span style="width:20%"></span>
+                                        <%};%>
+                </span>
+                <br>
+                <% }); %>
+        </div>       
     </div>
 
-    <br>
-    <br>
-    <br>
-    <div style="width:100%;margin: auto;overflow: hidden;display: flex;">
-        <div class="left" id="edu">
-            <h2 class="intro"> <i class="fa fa-graduation-cap" aria-hidden="true"
-                    style="padding-right: 20px;"></i>Education
-            </h2>
-            <ul class="timeline">
-                <% var i=1%>
-                    <% education.forEach(function(model) { %>
-                        <%if(i!=education.length){%>
-                            <li class="line">
-                                <div style="padding-left: 30px;">
-                                    <h2>
-                                        <%=model.syear%>-<%=model.eyear%>
-                                    </h2>
-                                    <h3>
-                                        <%=model.certification%>
-                                    </h3>
-                                    <h3>
-                                        <%=model.school%>
-                                    </h3>
-                                </div>
-                            </li>
-                            <% i++ %>
-                                <%} else {%>
-                                    <li>
-                                        <div style="padding-left: 30px;">
-                                            <h2>
-                                                <%=model.syear%>-<%=model.eyear%>
-                                            </h2>
-                                            <h3>
-                                                <%=model.certification%>
-                                            </h3>
-                                            <h3>
-                                                <%=model.school%>
-                                            </h3>
-                                        </div>
-                                    </li>
-                                    <% i++ %>
-                                        <% }}); %>
-            </ul>
+    <div style="width:65%;margin:auto" id="multi">
+        <br>
+        <% var i=1%>
+            <% image.forEach(function(model) { %>
+                <% if (i%2==1){%>
+                    <div class="row">
+                        <div class="card col-xl-6" style="border: none;">
+                            <img src="<%=model.file%>">
+                        </div>
+                        <div class="card col-xl-6" style="border: none;">
+                            <h2 style="font-weight: 700;">
+                                <%=model.description%>
+                            </h2>
+                        </div>
+                    </div>
+                    <br>
+                    <% i++} else if (i%2==0){%>
+                        <div class="row">
+                            <div class="card col-xl-6" style="border: none;">
+                                <h2 style="font-weight: 700;">
+                                    <%=model.description%>
+                                </h2>
+                            </div>
+                            <div class="card col-xl-6" style="border: none;">
 
-        </div>
+                                <img src="<%=model.file%>">
 
-        <div class="right" id="exp">
-            <h2 class="intro"> <i class="fa fa-briefcase" aria-hidden="true" style="padding-right: 20px;"></i>Experience
-            </h2>
-            <ul class="timeline">
-                <% var j=1%>
-                    <% work.forEach(function(model) { %>
-                        <%if(j!=work.length){%>
-                            <li class="line">
-                                <div style="padding-left: 30px;">
-                                    <h2>
-                                        <%=model.start%> - <%=model.end%>
-                                    </h2>
-                                    <h3 class="wcontent">
-                                        <%=model.job%> | <%=model.company%>
-                                    </h3>
-                                    <h3 class="wdescript">
-                                        <%=model.description%>
-                                    </h3>
-                                </div>
-                            </li>
-                            <% j++ %>
-                                <%} else {%>
-                                    <li>
-                                        <div style="padding-left: 30px;">
-                                            <h2>
-                                                <%=model.start%> - <%=model.end%>
-                                            </h2>
-                                            <h3 class="wcontent">
-                                                <%=model.job%> | <%=model.company%>
-                                            </h3>
-                                            <h3 class="wdescript">
-                                                <%=model.description%>
-                                            </h3>
-                                        </div>
-                                    </li>
-                                    <% j++ %>
-                                        <% }}); %>
-            </ul>
-        </div>
+                            </div>
+                        </div>
+                        <br>
+                        <% i++} });%>
+
     </div>
 
-    
+    <div style="width:50%;margin:auto">
+
+        <% video.forEach(function(model) { %>
+            <video controls style="width:100%;margin:auto">
+                <source src="<%=model.file%>">
+            </video>
+            <h2 style="text-align: center; font-weight: 700;">
+                <%=model.description%>
+            </h2>
+            <br>
+            <%});%>
+
+    </div>
+
 </body>

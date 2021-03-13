@@ -89,10 +89,7 @@ module.exports.routes = {
   //User Multimedia
   'GET /user/multimedia': 'UserController.usermultimedia',
   'GET /user/multiupdate': 'UserController.usermultiupdate',
-  'POST /user/multiupdate/:id': 'UserController.usermultiupdate', 
-  'POST /user/multidelete/:id': 'UserController.usermultidelete',
-  'GET /user/multiadd': 'UserController.usermultiadd',
-  'POST /user/multiadd': 'UserController.userlmultiadd',
+  'POST /user/multiupdate/:id': 'UserController.usermultiupdate',
 
   'POST /user/uploadimage': 'MultimediaController.useruploadimage',
   'POST /user/uploadvideo': 'MultimediaController.useruploadvideo',
@@ -130,7 +127,7 @@ module.exports.routes = {
   'GET /admin/pwupdate': 'UserController.adminpwupdate',
   'POST /admin/pwupdate/:id': 'UserController.adminpwupdate',
 
-  //User Digital CV
+  //User Digital CV 1
   ' /user/:id/digitalcv/index': 'UserController.digitalcvindex',
   ' /user/:id/digitalcv/work': 'UserController.digitalcvwork',
   ' /user/:id/digitalcv/skill': 'UserController.digitalcvskill',
@@ -138,6 +135,12 @@ module.exports.routes = {
   ' /user/:id/digitalcv/cert': 'UserController.digitalcvcert',
   ' /user/:id/digitalcv/contact': 'UserController.digitalcvcontact',
   ' /user/:id/digitalcv/pdf/:pid': 'UserController.digitalcvpdf',
+
+  //User Digital CV 2
+  ' /user/:id/digitalcv2/index': 'UserController.digitalcv2index',
+  ' /user/:id/digitalcv2/skill': 'UserController.digitalcv2skill',
+  ' /user/:id/digitalcv2/cert': 'UserController.digitalcv2cert',
+  ' /user/:id/digitalcv2/pdf/:pid': 'UserController.digitalcv2pdf',
 
 
 
