@@ -142,6 +142,9 @@ module.exports.routes = {
   ' /user/:id/digitalcv2/cert': 'UserController.digitalcv2cert',
   ' /user/:id/digitalcv2/pdf/:pid': 'UserController.digitalcv2pdf',
 
+   //User Digital CV 2
+   ' /user/:id/digitalcv3/index': 'UserController.digitalcv3index',
+
 
 
 

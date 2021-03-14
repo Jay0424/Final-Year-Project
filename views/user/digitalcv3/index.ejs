@@ -1,0 +1,107 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap"
+    rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap"
+    rel="stylesheet">
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<style>
+    .digital3 {
+        background-image: none;
+        background-size: 100% auto;
+        font-family: 'Titillium Web', sans-serif;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 20%;
+        background-color: #f1f1f1;
+        position: fixed;
+        height: 100%;
+        overflow: auto;
+        text-align: center;
+    }
+
+    ul li {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    ul a {
+        font-weight: 500;
+        font-size: 20px;
+        color: black;
+    }
+
+    .phr {
+        height: 5px;
+        border-width: 0;
+        color: white;
+        background-color: white;
+        margin: auto;
+    }
+
+    .active {
+        text-decoration: underline;
+        color: blue;
+    }
+
+    .title {
+        font-weight: 900;
+    }
+
+    .content {
+        font-weight: 400;
+    }
+
+    .contentbox {
+        color: white;
+    }
+</style>
+
+<body class="digital3">
+
+    <ul style="padding-top: 50px;">
+        <li><img src=<%=user.photo%> style="width:70%;height:auto"></li>
+        <h2 style="font-weight: 700;">
+            <%=user.name%>
+        </h2>
+        <br>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#news">Education</a></li>
+
+        <li><a href="#contact">Experience</a></li>
+
+        <li><a href="#about">Skill</a></li>
+
+        <li><a href="#about">Multimedia</a></li>
+
+    </ul>
+
+    <div style="float: right;display:inline-flex;padding-top: 150px;padding-right: 100px;">
+        <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_GjhcdO.json"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>
+    </div>
+
+    <div style="margin-left:10%;padding-top: 150px;width:70%">
+            
+        <div style="padding-top: 140px;">
+            <h2 style="text-align: left;font-size: 70px;font-weight: 700;margin-left:25%;">About Me</h2>
+            <br>
+            <div style="width:50%;margin-left:25%;">
+                <h2 class="content" style="font-size: 30px;">
+                    <%=user.summary%>
+                </h2>
+            </div>
+            <br>
+            <iframe src="/user/papercv/<%=user.id%>" style="display:none;" name="frame"></iframe>
+            <button style="width:50%;margin-left:25%;font-size: 25px;" type="submit" class="btn btn-outline-dark"
+                onclick="frames['frame'].print()" target="_blank">Download CV</button>
+        </div>
+        
+    </div>
+
+
+
+</body>

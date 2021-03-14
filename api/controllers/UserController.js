@@ -915,5 +915,51 @@ module.exports = {
         });
     },
 
+    digitalcv3index: async function (req, res) {
+        var thatUser = await User.findOne(req.params.id);
+
+        var userid = thatUser.id;
+
+        var educations = await User.findOne(userid).populate("ownEdu", { sort: "syear DESC" });
+
+        var works = await User.findOne(userid).populate("ownWork", { sort: "start DESC" });
+
+        var skills = await User.findOne(userid).populate("ownSkill", { sort: "id ASC" });
+
+        var languages = await User.findOne(userid).populate("ownLanguage", { sort: "degree DESC" });
+
+        var images = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "image"
+            },
+            sort: 'id DESC'
+        });
+
+        var videos = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "video"
+            },
+            sort: 'id DESC'
+        });
+
+        var pdfs = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "pdf"
+            },
+            sort: 'id DESC'
+        });
+
+        return res.view('user/digitalcv3/index', {
+            user: thatUser,
+            education: educations.ownEdu,
+            work: works.ownWork,
+            skill: skills.ownSkill,
+            language: languages.ownLanguage,
+            image: images.ownMultimedia,
+            video: videos.ownMultimedia,
+            pdf: pdfs.ownMultimedia,
+        });
+    },
+
 
 }
