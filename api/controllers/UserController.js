@@ -100,6 +100,7 @@ module.exports = {
     },
 
     visitorguide: async function (req, res) {
+        
         return res.view('visitor/guide');
     },
 

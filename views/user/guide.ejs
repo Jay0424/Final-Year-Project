@@ -3,7 +3,7 @@
 
 <body onload="pageLoaded()">
 
-    <% if (user.paperstatus!="submit"){%>
+    <% if (user.submitform==false){%>
     <nav>
         <a class="logo disable" href="/user/index">3D CV</a>
         <ul>
@@ -14,7 +14,7 @@
     </nav>
     <%}%>
 
-    <% if (user.paperstatus=="submit"){%>
+    <% if (user.submitform==true){%>
         <nav>
             <a class="logo disable" href="/user/index2">3D CV</a>
             <ul>
@@ -37,6 +37,10 @@
         <h3 style="text-align: center;">3. After submitting all the required information, you can view your own cv</h3>
         <br>
         <h3 style="text-align: center;">4. Top left hand corner logo can redirect you to homepage anytime</h3>
+        <br>
+        <h3 style="text-align: center;">5. Clicking profile can edit textform information after submitting form</h3>
+        <br>
+        <h3 style="text-align: center;">5. Clicking multimedia can edit multimedia form information after submitting form</h3>
     </div>
 
 </body>
