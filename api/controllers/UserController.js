@@ -803,6 +803,53 @@ module.exports = {
         });
     },
 
+    digitalcv3contact: async function (req, res) {
+        var thatUser = await User.findOne(req.params.id);
+
+        var userid = thatUser.id;
+
+        var educations = await User.findOne(userid).populate("ownEdu", { sort: "syear DESC" });
+
+        var works = await User.findOne(userid).populate("ownWork", { sort: "start DESC" });
+
+        var skills = await User.findOne(userid).populate("ownSkill", { sort: "id ASC" });
+
+        var languages = await User.findOne(userid).populate("ownLanguage", { sort: "degree DESC" });
+
+        var images = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "image"
+            },
+            sort: 'id DESC'
+        });
+
+        var videos = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "video"
+            },
+            sort: 'id DESC'
+        });
+
+        var pdfs = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "pdf"
+            },
+            sort: 'id DESC'
+        });
+
+
+        return res.view('user/digitalcv3/contact', {
+            user: thatUser,
+            education: educations.ownEdu,
+            work: works.ownWork,
+            skill: skills.ownSkill,
+            language: languages.ownLanguage,
+            image: images.ownMultimedia,
+            video: videos.ownMultimedia,
+            pdf: pdfs.ownMultimedia,
+        });
+    },
+
     digitalcvwork: async function (req, res) {
         var thatUser = await User.findOne(req.params.id);
 
@@ -864,6 +911,16 @@ module.exports = {
         var thisPDF = await Multimedia.findOne(req.params.pid)
 
         return res.view('user/digitalcv2/pdf', {
+            pdf: thisPDF,
+        });
+
+    },
+
+    digitalcv3pdf: async function (req, res) {
+
+        var thisPDF = await Multimedia.findOne(req.params.pid)
+
+        return res.view('user/digitalcv3/pdf', {
             pdf: thisPDF,
         });
 
@@ -960,6 +1017,237 @@ module.exports = {
             pdf: pdfs.ownMultimedia,
         });
     },
+
+    digitalcv3edu: async function (req, res) {
+        var thatUser = await User.findOne(req.params.id);
+
+        var userid = thatUser.id;
+
+        var educations = await User.findOne(userid).populate("ownEdu", { sort: "syear DESC" });
+
+        var works = await User.findOne(userid).populate("ownWork", { sort: "start DESC" });
+
+        var skills = await User.findOne(userid).populate("ownSkill", { sort: "id ASC" });
+
+        var languages = await User.findOne(userid).populate("ownLanguage", { sort: "degree DESC" });
+
+        var images = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "image"
+            },
+            sort: 'id DESC'
+        });
+
+        var videos = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "video"
+            },
+            sort: 'id DESC'
+        });
+
+        var pdfs = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "pdf"
+            },
+            sort: 'id DESC'
+        });
+
+        return res.view('user/digitalcv3/edu', {
+            user: thatUser,
+            education: educations.ownEdu,
+            work: works.ownWork,
+            skill: skills.ownSkill,
+            language: languages.ownLanguage,
+            image: images.ownMultimedia,
+            video: videos.ownMultimedia,
+            pdf: pdfs.ownMultimedia,
+        });
+    },
+
+    digitalcv3work: async function (req, res) {
+        var thatUser = await User.findOne(req.params.id);
+
+        var userid = thatUser.id;
+
+        var educations = await User.findOne(userid).populate("ownEdu", { sort: "syear DESC" });
+
+        var works = await User.findOne(userid).populate("ownWork", { sort: "start DESC" });
+
+        var skills = await User.findOne(userid).populate("ownSkill", { sort: "id ASC" });
+
+        var languages = await User.findOne(userid).populate("ownLanguage", { sort: "degree DESC" });
+
+        var images = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "image"
+            },
+            sort: 'id DESC'
+        });
+
+        var videos = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "video"
+            },
+            sort: 'id DESC'
+        });
+
+        var pdfs = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "pdf"
+            },
+            sort: 'id DESC'
+        });
+
+        return res.view('user/digitalcv3/work', {
+            user: thatUser,
+            education: educations.ownEdu,
+            work: works.ownWork,
+            skill: skills.ownSkill,
+            language: languages.ownLanguage,
+            image: images.ownMultimedia,
+            video: videos.ownMultimedia,
+            pdf: pdfs.ownMultimedia,
+        });
+    },
+
+    digitalcv3skill: async function (req, res) {
+        var thatUser = await User.findOne(req.params.id);
+
+        var userid = thatUser.id;
+
+        var educations = await User.findOne(userid).populate("ownEdu", { sort: "syear DESC" });
+
+        var works = await User.findOne(userid).populate("ownWork", { sort: "start DESC" });
+
+        var skills = await User.findOne(userid).populate("ownSkill", { sort: "id ASC" });
+
+        var languages = await User.findOne(userid).populate("ownLanguage", { sort: "degree DESC" });
+
+        var images = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "image"
+            },
+            sort: 'id DESC'
+        });
+
+        var videos = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "video"
+            },
+            sort: 'id DESC'
+        });
+
+        var pdfs = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "pdf"
+            },
+            sort: 'id DESC'
+        });
+
+        return res.view('user/digitalcv3/skill', {
+            user: thatUser,
+            education: educations.ownEdu,
+            work: works.ownWork,
+            skill: skills.ownSkill,
+            language: languages.ownLanguage,
+            image: images.ownMultimedia,
+            video: videos.ownMultimedia,
+            pdf: pdfs.ownMultimedia,
+        });
+    },
+
+    digitalcv3multi: async function (req, res) {
+        var thatUser = await User.findOne(req.params.id);
+
+        var userid = thatUser.id;
+
+        var educations = await User.findOne(userid).populate("ownEdu", { sort: "syear DESC" });
+
+        var works = await User.findOne(userid).populate("ownWork", { sort: "start DESC" });
+
+        var skills = await User.findOne(userid).populate("ownSkill", { sort: "id ASC" });
+
+        var languages = await User.findOne(userid).populate("ownLanguage", { sort: "degree DESC" });
+
+        var images = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "image"
+            },
+            sort: 'id DESC'
+        });
+
+        var videos = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "video"
+            },
+            sort: 'id DESC'
+        });
+
+        var pdfs = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "pdf"
+            },
+            sort: 'id DESC'
+        });
+
+        return res.view('user/digitalcv3/multi', {
+            user: thatUser,
+            education: educations.ownEdu,
+            work: works.ownWork,
+            skill: skills.ownSkill,
+            language: languages.ownLanguage,
+            image: images.ownMultimedia,
+            video: videos.ownMultimedia,
+            pdf: pdfs.ownMultimedia,
+        });
+    },
+
+    digitalcv3cert: async function (req, res) {
+        var thatUser = await User.findOne(req.params.id);
+
+        var userid = thatUser.id;
+
+        var educations = await User.findOne(userid).populate("ownEdu", { sort: "syear DESC" });
+
+        var works = await User.findOne(userid).populate("ownWork", { sort: "start DESC" });
+
+        var skills = await User.findOne(userid).populate("ownSkill", { sort: "id ASC" });
+
+        var languages = await User.findOne(userid).populate("ownLanguage", { sort: "degree DESC" });
+
+        var images = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "image"
+            },
+            sort: 'id DESC'
+        });
+
+        var videos = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "video"
+            },
+            sort: 'id DESC'
+        });
+
+        var pdfs = await User.findOne(userid).populate("ownMultimedia", {
+            where: {
+                type: "pdf"
+            },
+            sort: 'id DESC'
+        });
+
+        return res.view('user/digitalcv3/cert', {
+            user: thatUser,
+            education: educations.ownEdu,
+            work: works.ownWork,
+            skill: skills.ownSkill,
+            language: languages.ownLanguage,
+            image: images.ownMultimedia,
+            video: videos.ownMultimedia,
+            pdf: pdfs.ownMultimedia,
+        });
+    },
+
 
 
 }

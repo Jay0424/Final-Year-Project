@@ -35,6 +35,10 @@
         color: black;
     }
 
+    ul a:hover{
+        color: fuchsia;
+    }
+
     .phr {
         height: 5px;
         border-width: 0;
@@ -45,7 +49,7 @@
 
     .active {
         text-decoration: underline;
-        color: blue;
+        color:deepskyblue;
     }
 
     .title {
@@ -69,14 +73,22 @@
             <%=user.name%>
         </h2>
         <br>
-        <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#news">Education</a></li>
+        <li><a class="active" href="#" onclick="window.location.reload(true);">HOME</a></li>
+        <li><a href="/user/<%=user.id%>/digitalcv3/edu">EDUCATION</a></li>
 
-        <li><a href="#contact">Experience</a></li>
+        <li><a href="/user/<%=user.id%>/digitalcv3/work">EXPERIENCE</a></li>
 
-        <li><a href="#about">Skill</a></li>
+        <li><a href="/user/<%=user.id%>/digitalcv3/skill">SKILL</a></li>
 
-        <li><a href="#about">Multimedia</a></li>
+        <% if (image.length>0||video.length>0) {%>
+        <li><a href="/user/<%=user.id%>/digitalcv3/multi">MULTIMEDIA</a></li>
+        <%};%>
+
+        <% if (pdf.length>0){%>
+        <li><a href="/user/<%=user.id%>/digitalcv3/cert">CERTIFICATE</a></li>
+        <%};%>
+        
+        <li><a href="/user/<%=user.id%>/digitalcv3/contact">CONTACT</a></li>
 
     </ul>
 
