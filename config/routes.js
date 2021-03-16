@@ -30,10 +30,11 @@ module.exports.routes = {
   'GET /visitor/register': 'UserController.register',
   'POST /visitor/register': 'UserController.register',
 
-  //Login & Logout
+  //Login & Logout & Error
   'GET /visitor/login': 'UserController.login',
   'POST /visitor/login': 'UserController.login',
   'POST /user/logout': 'UserController.logout',
+  ' /error': 'UserController.error',
 
 
   //User Page & Basic
@@ -143,23 +144,23 @@ module.exports.routes = {
   ' /user/:id/digitalcv2/cert': 'UserController.digitalcv2cert',
   ' /user/:id/digitalcv2/pdf/:pid': 'UserController.digitalcv2pdf',
 
-   //User Digital CV 3
-   ' /user/:id/digitalcv3/index': 'UserController.digitalcv3index',
-   ' /user/:id/digitalcv3/edu': 'UserController.digitalcv3edu',
-   ' /user/:id/digitalcv3/work': 'UserController.digitalcv3work',
-   ' /user/:id/digitalcv3/skill': 'UserController.digitalcv3skill',
-   ' /user/:id/digitalcv3/multi': 'UserController.digitalcv3multi',
-   ' /user/:id/digitalcv3/cert': 'UserController.digitalcv3cert',
-   ' /user/:id/digitalcv3/pdf/:pid': 'UserController.digitalcv3pdf',
-   ' /user/:id/digitalcv3/contact': 'UserController.digitalcv3contact',
+  //User Digital CV 3
+  ' /user/:id/digitalcv3/index': 'UserController.digitalcv3index',
+  ' /user/:id/digitalcv3/edu': 'UserController.digitalcv3edu',
+  ' /user/:id/digitalcv3/work': 'UserController.digitalcv3work',
+  ' /user/:id/digitalcv3/skill': 'UserController.digitalcv3skill',
+  ' /user/:id/digitalcv3/multi': 'UserController.digitalcv3multi',
+  ' /user/:id/digitalcv3/cert': 'UserController.digitalcv3cert',
+  ' /user/:id/digitalcv3/pdf/:pid': 'UserController.digitalcv3pdf',
+  ' /user/:id/digitalcv3/contact': 'UserController.digitalcv3contact',
 
 
 
 
- 
 
 
-  
+
+
 
 
   /***************************************************************************

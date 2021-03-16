@@ -1256,6 +1256,12 @@ module.exports = {
         });
     },
 
+    error: async function (req, res) {
+        
+            return res.view('error')
+        
+    },
+
 
 
 }
