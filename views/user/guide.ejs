@@ -4,43 +4,50 @@
 <body onload="pageLoaded()">
 
     <% if (user.submitform==false){%>
-    <nav>
-        <a class="logo disable" href="/user/index">3D CV</a>
-        <ul>
-            <li><a href="#">User Guide</a></li>
-            <li><a href="#">CV Template</a></li>
-            <li><a class="nav-button" href="/user/logout"></i>Logout</a></li>
-        </ul>
-    </nav>
-    <%}%>
-
-    <% if (user.submitform==true){%>
         <nav>
-            <a class="logo disable" href="/user/index2">3D CV</a>
+            <a class="logo disable" href="/user/index">3D CV</a>
             <ul>
                 <li><a href="/user/guide">User Guide</a></li>
-                <li><a href="#">CV Template</a></li>
-                <li><a class="update-button" href="/user/basicupdate">Profile</a></li>
-                <li><a class="update-button" href="/user/multiupdate">Multimedia</a></li>
-                <li><a class="nav-button" href="/user/logout">Logout</a></li>
+                <li><a href="/user/template">CV Template</a></li>
+                <li><a class="nav-button" href="/user/logout"></i>Logout</a></li>
             </ul>
         </nav>
-    <%}%>
+        <%}%>
 
-    <div class="container" width="80%">
-        <h2 class="intro">User Guide</h2>
-        <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_giIhuM.json"  background="transparent"  speed="0.5"  class="center" style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
-        <h3 style="text-align: center;">1. Before using the system, you need to register an account</h3>
-        <br>
-        <h3 style="text-align: center;">2. At the first time of login, you need to input the required information</h3>
-        <br>
-        <h3 style="text-align: center;">3. After submitting all the required information, you can view your own cv</h3>
-        <br>
-        <h3 style="text-align: center;">4. Top left hand corner logo can redirect you to homepage anytime</h3>
-        <br>
-        <h3 style="text-align: center;">5. Clicking profile can edit textform information after submitting form</h3>
-        <br>
-        <h3 style="text-align: center;">5. Clicking multimedia can edit multimedia form information after submitting form</h3>
-    </div>
+            <% if (user.submitform==true){%>
+                <nav>
+                    <a class="logo disable" href="/user/index2">3D CV</a>
+                    <ul>
+                        <li><a href="/user/guide">User Guide</a></li>
+                        <li><a href="/user/template">CV Template</a></li>
+                        <li><a class="update-button" href="/user/basicupdate">Profile</a></li>
+                        <li><a class="update-button" href="/user/multiupdate">Multimedia</a></li>
+                        <li><a class="nav-button" href="/user/logout">Logout</a></li>
+                    </ul>
+                </nav>
+                <%}%>
+
+                    <div class="container" width="80%">
+                        <h2 class="intro">User Guide</h2>
+                        <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_giIhuM.json"
+                            background="transparent" speed="0.5" class="center" style="width: 300px; height: 300px;"
+                            loop autoplay></lottie-player>
+                        <h3 style="text-align: center;">1. Before using the system, you need to register an account</h3>
+                        <br>
+                        <h3 style="text-align: center;">2. At the first time of login, you need to input the required
+                            information</h3>
+                        <br>
+                        <h3 style="text-align: center;">3. After submitting all the required information, you can view
+                            your own cv</h3>
+                        <br>
+                        <h3 style="text-align: center;">4. Top left hand corner logo can redirect you to homepage
+                            anytime</h3>
+                        <br>
+                        <h3 style="text-align: center;">5. Clicking profile can edit textform information after
+                            submitting form</h3>
+                        <br>
+                        <h3 style="text-align: center;">5. Clicking multimedia can edit multimedia form information
+                            after submitting form</h3>
+                    </div>
 
 </body>

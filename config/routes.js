@@ -40,6 +40,7 @@ module.exports.routes = {
   ' /user/index': 'UserController.userindex',
   ' /user/index2': 'UserController.userindex2',
   ' /user/guide': 'UserController.userguide',
+  ' /user/template': 'UserController.usertemplate',
   '/user/papercv/:id': 'UserController.userpapercv',
   '/user/papercv2/:id': 'UserController.userpapercv2',
   '/user/papercv3/:id': 'UserController.userpapercv3',

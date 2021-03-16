@@ -108,6 +108,13 @@ module.exports = {
         return res.view('visitor/template');
     },
 
+   usertemplate: async function (req, res) {
+    var thatUser = await User.findOne(req.session.userid);
+        return res.view('user/template',{
+            user:thatUser,
+        });
+    },
+
     userindex: async function (req, res) {
 
         var thatUser = await User.findOne(req.session.userid);

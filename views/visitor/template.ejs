@@ -1,6 +1,13 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
-<body onload="pageLoaded()">
+<style>
+    .template {
+        background-image: none;
+    }
+</style>
+
+<body class="template">
 
     <nav>
         <a class="logo disable" href="/">3D CV</a>
@@ -11,20 +18,173 @@
             <li><a class="nav-button" href="/visitor/login">Login</a></li>
         </ul>
     </nav>
-    <h2 class="intro">CV Template</h2>
-    <div class="container" width="80%">
-        <div class="row">
-            <div class="column">
-                <h2>Paper CV:</h2>
-                <img width="500px" src="https://upload.cc/i1/2020/12/31/0a2WQr.png">
+
+    <div class="menubar">
+
+        <div class="btnbar">
+
+            <button onclick="showTab(0); showcurrent(0)" class="buttongroup" style="color:violet"><i
+                    class="fa fa-id-card-o" aria-hidden="true"></i>Paper CV Template</button>
+            <button onclick="showTab(1); showcurrent(1)" class="buttongroup"><i class="fa fa-desktop"
+                    aria-hidden="true"></i>
+                Digital CV Template</button>
+        </div>
+
+        <div class="tab">
+            <div class="row">
+                <div class="card col-xl-4" style="border: none;padding-bottom: 50px;">
+                    <h2 style="color:rebeccapurple;">Template 1</h2>
+                    <img src="https://upload.cc/i1/2021/03/15/wdiegx.png" style="border: 1px solid black;">
+                    <br>
+                </div>
+
+                <div class="card col-xl-4" style="border: none;padding-bottom: 50px;">
+                    <h2 style="color:rebeccapurple;">Template 2</h2>
+                    <img src="https://upload.cc/i1/2021/03/15/E3kX6o.png" style="border: 1px solid black;">
+                    <br>
+                </div>
+
+                <div class="card col-xl-4" style="border: none;">
+                    <h2 style="color:rebeccapurple;">Template 3</h2>
+                    <img src="https://upload.cc/i1/2021/03/15/8TYeVC.png" style="border: 1px solid black;">
+                    <br>
+                </div>
+
             </div>
-            <div class="column">
-                <h2>Digital CV:</h2>
-                <img width="500px" src="https://upload.cc/i1/2020/12/31/81E3K0.jpg">
+        </div>
+
+        <div class="tab">
+            <div style="padding-bottom: 100px;">
+                <h2 style="color:rebeccapurple;">Template 1</h2>
+                <div class="row">
+                    <div class="card col-xl-4" style="border: none;">
+                        <img src="https://upload.cc/i1/2021/03/15/49Y05a.png">
+                    </div>
+
+                    <div class="card col-xl-4" style="border: none;">
+                        <img src="https://upload.cc/i1/2021/03/15/fgVlIH.png">
+                    </div>
+
+                    <div class="card col-xl-4" style="border: none;">
+                        <img src="https://upload.cc/i1/2021/03/15/BHWwzm.png">
+                    </div>
+
+                    <div class="card col-xl-4" style="border: none;">
+                        <br>
+                        <img src="https://upload.cc/i1/2021/03/15/oL2CNE.png">
+                    </div>
+
+                    <div class="card col-xl-4" style="border: none;">
+                        <br>
+                        <img src="https://upload.cc/i1/2021/03/15/By4v9t.png">
+                    </div>
+
+                    <div class="card col-xl-4" style="border: none;">
+                        <br>
+                        <img src="https://upload.cc/i1/2021/03/15/yoR2LG.png">
+                    </div>
+                </div>
+                <br>
+            </div>
+
+            <div style="padding-bottom: 100px;">
+                <h2 style="color:rebeccapurple;">Template 2</h2>
+                <div class="row">
+                    <div class="card col-xl-4" style="border: none;">
+                        <img src="https://upload.cc/i1/2021/03/16/EaTANw.png">
+                    </div>
+
+                    <div class="card col-xl-4" style="border: none;">
+                        <img src="https://upload.cc/i1/2021/03/16/Amc92t.png">
+                    </div>
+
+                    <div class="card col-xl-4" style="border: none;">
+                        <img src="https://upload.cc/i1/2021/03/16/I5GShc.png">
+                    </div>
+
+                    <div class="card col-xl-4" style="border: none;">
+                        <br>
+                        <img src="https://upload.cc/i1/2021/03/16/kESPCO.png">
+                    </div>
+
+                    <div class="card col-xl-4" style="border: none;">
+                        <br>
+                        <img src="https://upload.cc/i1/2021/03/16/5nvpMF.png">
+                    </div>
+
+                    <div class="card col-xl-4" style="border: none;">
+                        <br>
+                        <img src="https://upload.cc/i1/2021/03/16/CaRG2f.png">
+                    </div>
+                </div>
+                <br>
+            </div>
+
+            <div style="padding-bottom: 100px;">
+                <h2 style="color:rebeccapurple;">Template 3</h2>
+                <div class="row">
+                    <div class="card col-xl-4" style="border: none;">
+                        <img src="https://upload.cc/i1/2021/03/16/9ftIPm.png">
+                    </div>
+
+                    <div class="card col-xl-4" style="border: none;">
+                        <img src="https://upload.cc/i1/2021/03/16/equQk4.png">
+                    </div>
+
+                    <div class="card col-xl-4" style="border: none;">
+                        <img src="https://upload.cc/i1/2021/03/16/5LbXsY.png">
+                    </div>
+
+                    <div class="card col-xl-4" style="border: none;">
+                        <br>
+                        <img src="https://upload.cc/i1/2021/03/16/Mh8USz.png">
+                    </div>
+
+                    <div class="card col-xl-4" style="border: none;">
+                        <br>
+                        <img src="https://upload.cc/i1/2021/03/16/uMsb4O.png">
+                    </div>
+
+                    <div class="card col-xl-4" style="border: none;">
+                        <br>
+                        <img src="https://upload.cc/i1/2021/03/16/aP3zwA.png">
+                    </div>
+
+                    <div class="card col-xl-4" style="border: none;">
+                        <br>
+                        <img src="https://upload.cc/i1/2021/03/16/qBPCxV.png">
+                    </div>
+                </div>
+                <br>
             </div>
         </div>
     </div>
-
-
-
 </body>
+
+<script>
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+
+    function showTab(n) {
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        for (i = 0; i < x.length; i++) {
+            if (i != n) {
+                x[i].style.display = "none";
+            }
+        }
+    }
+
+    var currenbutton = 0;
+    showcurrent(currentbutton);
+
+    function showcurrent(n) {
+        var x = document.getElementsByClassName("buttongroup");
+        x[n].style.color = "violet";
+        for (i = 0; i < x.length; i++) {
+            if (i != n) {
+                x[i].style.color = "black";
+            }
+        }
+    }
+</script>
