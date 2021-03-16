@@ -278,7 +278,7 @@
     
 </style>
 
-<body class="digital2">
+<body class="digital2" style="padding-bottom: 50px;">
 
     <nav>
         <a class="digital2logo" href="/user/<%=user.id%>/digitalcv2/index">Home</a>
@@ -327,8 +327,6 @@
         </div>
     </div>
 
-    <br>
-
     <div style="width:55%;margin: auto;" id="cert" >
         <h2 class="intro" style="font-weight: 900;"> <i class="fa fa-certificate" aria-hidden="true"
             style="padding-right: 20px;"></i>Certificate</h2>
@@ -337,36 +335,33 @@
                  PDF, you can view the entire PDF
              </h2>
         <div class="row">
-            <div style="padding-left: 80px;">
+            <div style="padding-left: 200px;">
                 <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_h59xofz0.json"
-                    background="transparent" speed="0.75" style="width: 450px; height: 450px;" loop autoplay>
+                    background="transparent" speed="0.75" style="width: 300px; height: 300px;" loop autoplay>
                 </lottie-player>
             </div>
             <div >
                 <br>
                 <br>
                 <% pdf.forEach(function(model) { %>
-                    <a style="font-size: 50px" href="/user/<%=user.id%>/digitalcv2/pdf/<%=model.id%>" target="_blank">
+                    <a style="font-size: 40px;padding-left:50px;" href="/user/<%=user.id%>/digitalcv2/pdf/<%=model.id%>" target="_blank">
                         <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                        <%=model.name%>
                     </a>
                     <br>
-
                     <% }); %>
             </div>
         </div>
     </div>
 
-    <br>
-
     <div style="width:50%;margin: auto;border: 10px solid rgb(53, 2, 2);"id="contact">
         <h2 class="intro" style="font-weight: 900;"><i class="fa fa-address-card-o" aria-hidden="true" style="padding-right: 20px;"></i>Contact</h2>
         <div class="row">
-            <div style="padding-left: 50px;">
-                <lottie-player src="https://assets2.lottiefiles.com/temp/lf20_baStwL.json"  background="transparent"  speed="1"  style="width: 400px; height: 400px;"  loop  autoplay></lottie-player>
+            <div style="padding-left: 20px;">
+                <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_nnQHiM.json"  background="transparent"  speed="1"  style="width: 400px; height: 400px;"  loop autoplay ></lottie-player>
             </div>
 
-            <div>
+            <div style="padding-left: 50px;">
                 <br>
                 <br>
                 <br>
@@ -382,7 +377,7 @@
                 <h2 class="contactinfo"><i class="fa fa-phone-square" aria-hidden="true"  style="padding-right: 5px;"></i>
                     <%=user.phoneno%><h2>
             </div>
-            <br>
+        </div>
     </div>
     
 </body>
