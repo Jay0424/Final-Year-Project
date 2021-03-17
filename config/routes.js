@@ -124,7 +124,6 @@ module.exports.routes = {
   ' /admin/index': 'UserController.adminindex',
   'GET /admin/useradd': 'UserController.adminuseradd',
   'POST /admin/useradd': 'UserController.adminuseradd',
-  '/admin/papercv/:id': 'UserController.adminpapercv',
   'POST /admin/userdelete/:id': 'UserController.adminuserdelete',
   'GET /admin/pwupdate': 'UserController.adminpwupdate',
   'POST /admin/pwupdate/:id': 'UserController.adminpwupdate',
