@@ -31,7 +31,6 @@ module.exports.policies = {
     userpwupdate:'isUser',
     userphoto:'isUser',
     userphotoupdate:'isUser',
-    adminpapercv:'isAdmin',
     adminindex:'isAdmin',
     adminuseradd:'isAdmin',
     adminuserdelete:'isAdmin',
