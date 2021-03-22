@@ -405,7 +405,7 @@ module.exports = {
     userphoto: async function (req, res) {
         var thatUser = await User.findOne(req.session.userid);
 
-        req.file('avatarfile').upload({ maxBytes: 10000000 }, async function whenDone(err, uploadedFiles) {
+        req.file('avatarfile').upload({ maxBytes: 1048576 }, async function whenDone(err, uploadedFiles) {
             if (err) { return res.serverError(err); }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 
@@ -427,7 +427,7 @@ module.exports = {
     userphotoupdate: async function (req, res) {
         var thatUser = await User.findOne(req.session.userid);
 
-        req.file('avatarfile').upload({ maxBytes: 10000000 }, async function whenDone(err, uploadedFiles) {
+        req.file('avatarfile').upload({ maxBytes: 1048576 }, async function whenDone(err, uploadedFiles) {
             if (err) { return res.serverError(err); }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 

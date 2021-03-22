@@ -19,7 +19,7 @@ module.exports = {
 
         await User.addToCollection(thatUser.id, "ownMultimedia").members(image.id);
 
-        req.file('avatarfile').upload({ maxBytes: 10000000 }, async function whenDone(err, uploadedFiles) {
+        req.file('avatarfile').upload({ maxBytes: 1048576 }, async function whenDone(err, uploadedFiles) {
             if (err) { return res.serverError(err); }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 
@@ -67,7 +67,7 @@ module.exports = {
                 description: req.body.description,
             });
 
-            req.file('avatarfile').upload({ maxBytes: 10000000 }, async function whenDone(err, uploadedFiles) {
+            req.file('avatarfile').upload({ maxBytes: 1048576 }, async function whenDone(err, uploadedFiles) {
                 if (err) { return res.serverError(err); }
                 if (uploadedFiles.length === 0) { return }
 
@@ -122,7 +122,7 @@ module.exports = {
 
             await User.addToCollection(thatUser.id, "ownMultimedia").members(image.id);
 
-            req.file('avatarfile').upload({ maxBytes: 10000000 }, async function whenDone(err, uploadedFiles) {
+            req.file('avatarfile').upload({ maxBytes: 1048576 }, async function whenDone(err, uploadedFiles) {
                 if (err) { return res.serverError(err); }
                 if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 
@@ -154,7 +154,7 @@ module.exports = {
 
         await User.addToCollection(thatUser.id, "ownMultimedia").members(video.id);
 
-        req.file('avatarfile').upload({ maxBytes: 10000000000 }, async function whenDone(err, uploadedFiles) {
+        req.file('avatarfile').upload({ maxBytes: 5368706371 }, async function whenDone(err, uploadedFiles) {
             if (err) { return res.serverError(err); }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 
@@ -200,7 +200,7 @@ module.exports = {
                 description: req.body.description,
             }).fetch();
 
-            req.file('avatarfile').upload({ maxBytes: 10000000000 }, async function whenDone(err, uploadedFiles) {
+            req.file('avatarfile').upload({ maxBytes: 5368706371 }, async function whenDone(err, uploadedFiles) {
                 if (err) { return res.serverError(err); }
                 if (uploadedFiles.length === 0) { return }
 
@@ -254,7 +254,7 @@ module.exports = {
 
             await User.addToCollection(thatUser.id, "ownMultimedia").members(video.id);
 
-            req.file('avatarfile').upload({ maxBytes: 10000000000000 }, async function whenDone(err, uploadedFiles) {
+            req.file('avatarfile').upload({ maxBytes: 5368706371 }, async function whenDone(err, uploadedFiles) {
                 if (err) { return res.serverError(err); }
                 if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 
@@ -286,7 +286,7 @@ module.exports = {
 
         await User.addToCollection(thatUser.id, "ownMultimedia").members(pdf.id);
 
-        req.file('avatarfile').upload({ maxBytes: 10000000 }, async function whenDone(err, uploadedFiles) {
+        req.file('avatarfile').upload({ maxBytes: 1048576 }, async function whenDone(err, uploadedFiles) {
             if (err) { return res.serverError(err); }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 
@@ -332,7 +332,7 @@ module.exports = {
                 name: req.body.pdfname,
             });
 
-            req.file('avatarfile').upload({ maxBytes: 10000000000000 }, async function whenDone(err, uploadedFiles) {
+            req.file('avatarfile').upload({ maxBytes: 1048576 }, async function whenDone(err, uploadedFiles) {
                 if (err) { return res.serverError(err); }
                 if (uploadedFiles.length === 0) { return }
 
@@ -397,7 +397,7 @@ module.exports = {
 
             await User.addToCollection(thatUser.id, "ownMultimedia").members(pdf.id);
 
-            req.file('avatarfile').upload({ maxBytes: 10000000000000 }, async function whenDone(err, uploadedFiles) {
+            req.file('avatarfile').upload({ maxBytes: 1048576 }, async function whenDone(err, uploadedFiles) {
                 if (err) { return res.serverError(err); }
                 if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 
