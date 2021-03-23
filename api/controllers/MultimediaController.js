@@ -11,19 +11,23 @@ module.exports = {
 
         var thatUser = await User.findOne(req.session.userid);
 
-        var image = await Multimedia.create(
-            {
-                type: "image",
-                description: req.body.description,
-            }).fetch();
-
-        await User.addToCollection(thatUser.id, "ownMultimedia").members(image.id);
-
-        req.file('avatarfile').upload({ maxBytes: 1048576 }, async function whenDone(err, uploadedFiles) {
-            if (err) { return res.serverError(err); }
+        req.file('avatarfile').upload({ maxBytes: 524288000 }, async function whenDone(err, uploadedFiles) {
+            if (err) {
+                req.addFlash('error2', 'Upload unsuccessful. The maximum size for Image is 500MB');
+                return res.redirect('/user/multimedia');
+            }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 
             const datauri = require('datauri');
+
+            var image = await Multimedia.create(
+                {
+                    type: "image",
+                    description: req.body.description,
+                }).fetch();
+
+            await User.addToCollection(thatUser.id, "ownMultimedia").members(image.id);
+
             await Multimedia.update(image.id).set({
                 file: await datauri(uploadedFiles[0].fd)
             }).fetch();
@@ -35,6 +39,7 @@ module.exports = {
                 if (err) return console.log(err);
             });
 
+            req.addFlash('error2', 'Image is uploaded successfully');
             return res.redirect('/user/multimedia');
         });
     },
@@ -67,7 +72,7 @@ module.exports = {
                 description: req.body.description,
             });
 
-            req.file('avatarfile').upload({ maxBytes: 1048576 }, async function whenDone(err, uploadedFiles) {
+            req.file('avatarfile').upload({ maxBytes: 524288000 }, async function whenDone(err, uploadedFiles) {
                 if (err) { return res.serverError(err); }
                 if (uploadedFiles.length === 0) { return }
 
@@ -114,17 +119,20 @@ module.exports = {
         if (req.method == "POST") {
             var thatUser = await User.findOne(req.session.userid);
 
-            var image = await Multimedia.create(
-                {
-                    type: "image",
-                    description: req.body.description,
-                }).fetch();
-
-            await User.addToCollection(thatUser.id, "ownMultimedia").members(image.id);
-
-            req.file('avatarfile').upload({ maxBytes: 1048576 }, async function whenDone(err, uploadedFiles) {
-                if (err) { return res.serverError(err); }
+            req.file('avatarfile').upload({ maxBytes: 524288000 }, async function whenDone(err, uploadedFiles) {
+                if (err) {
+                    req.addFlash('error1', 'Upload unsuccessful. The maximum size for Image is 500MB');
+                    return res.redirect('/user/imgadd');
+                }
                 if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+                var image = await Multimedia.create(
+                    {
+                        type: "image",
+                        description: req.body.description,
+                    }).fetch();
+
+                await User.addToCollection(thatUser.id, "ownMultimedia").members(image.id);
 
                 const datauri = require('datauri');
                 await Multimedia.update(image.id).set({
@@ -136,7 +144,7 @@ module.exports = {
                 fs.unlink(uploadedFiles[0].fd, function (err) {
                     if (err) return console.log(err);
                 });
-
+                req.addFlash('error1', 'Image is uploaded successfully');
                 return res.redirect('/user/imgadd');
             });
         }
@@ -146,17 +154,20 @@ module.exports = {
 
         var thatUser = await User.findOne(req.session.userid);
 
-        var video = await Multimedia.create(
-            {
-                type: "video",
-                description: req.body.description,
-            }).fetch();
-
-        await User.addToCollection(thatUser.id, "ownMultimedia").members(video.id);
-
         req.file('avatarfile').upload({ maxBytes: 5368706371 }, async function whenDone(err, uploadedFiles) {
-            if (err) { return res.serverError(err); }
+            if (err) {
+                req.addFlash('error3', 'Upload unsuccessful. The maximum size for Video is 5GB');
+                return res.redirect('/user/multimedia');
+            }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+            var video = await Multimedia.create(
+                {
+                    type: "video",
+                    description: req.body.description,
+                }).fetch();
+
+            await User.addToCollection(thatUser.id, "ownMultimedia").members(video.id);
 
             const datauri = require('datauri');
             await Multimedia.update(video.id).set({
@@ -169,6 +180,7 @@ module.exports = {
                 if (err) return console.log(err);
             });
 
+            req.addFlash('error3', 'Video is uploaded successfully');
             return res.redirect('/user/multimedia');
         });
     },
@@ -246,17 +258,21 @@ module.exports = {
         if (req.method == "POST") {
             var thatUser = await User.findOne(req.session.userid);
 
-            var video = await Multimedia.create(
-                {
-                    type: "video",
-                    description: req.body.description,
-                }).fetch();
-
-            await User.addToCollection(thatUser.id, "ownMultimedia").members(video.id);
 
             req.file('avatarfile').upload({ maxBytes: 5368706371 }, async function whenDone(err, uploadedFiles) {
-                if (err) { return res.serverError(err); }
+                if (err) {
+                    req.addFlash('error1', 'Upload unsuccessful. The maximum size for Video is 5GB');
+                    return res.redirect('/user/videoadd');
+                }
                 if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+                var video = await Multimedia.create(
+                    {
+                        type: "video",
+                        description: req.body.description,
+                    }).fetch();
+
+                await User.addToCollection(thatUser.id, "ownMultimedia").members(video.id);
 
                 const datauri = require('datauri');
                 await Multimedia.update(video.id).set({
@@ -269,6 +285,7 @@ module.exports = {
                     if (err) return console.log(err);
                 });
 
+                req.addFlash('error1', 'Video is uploaded successfully');
                 return res.redirect('/user/videoadd');
             });
         }
@@ -278,17 +295,20 @@ module.exports = {
 
         var thatUser = await User.findOne(req.session.userid);
 
-        var pdf = await Multimedia.create(
-            {
-                type: "pdf",
-                name: req.body.name,
-            }).fetch();
-
-        await User.addToCollection(thatUser.id, "ownMultimedia").members(pdf.id);
-
-        req.file('avatarfile').upload({ maxBytes: 1048576 }, async function whenDone(err, uploadedFiles) {
-            if (err) { return res.serverError(err); }
+        req.file('avatarfile').upload({ maxBytes: 524288000 }, async function whenDone(err, uploadedFiles) {
+            if (err) {
+                req.addFlash('error4', 'Upload unsuccessful. The maximum size for PDF is 500MB');
+                return res.redirect('/user/multimedia');
+            }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+            var pdf = await Multimedia.create(
+                {
+                    type: "pdf",
+                    name: req.body.name,
+                }).fetch();
+
+            await User.addToCollection(thatUser.id, "ownMultimedia").members(pdf.id);
 
             const datauri = require('datauri');
             await Multimedia.update(pdf.id).set({
@@ -301,6 +321,7 @@ module.exports = {
                 if (err) return console.log(err);
             });
 
+            req.addFlash('error4', 'PDF is uploaded successfully');
             return res.redirect('/user/multimedia');
         });
     },
@@ -332,7 +353,7 @@ module.exports = {
                 name: req.body.pdfname,
             });
 
-            req.file('avatarfile').upload({ maxBytes: 1048576 }, async function whenDone(err, uploadedFiles) {
+            req.file('avatarfile').upload({ maxBytes: 524288000 }, async function whenDone(err, uploadedFiles) {
                 if (err) { return res.serverError(err); }
                 if (uploadedFiles.length === 0) { return }
 
@@ -389,17 +410,20 @@ module.exports = {
         if (req.method == "POST") {
             var thatUser = await User.findOne(req.session.userid);
 
-            var pdf = await Multimedia.create(
-                {
-                    type: "pdf",
-                    name: req.body.pdfname,
-                }).fetch();
-
-            await User.addToCollection(thatUser.id, "ownMultimedia").members(pdf.id);
-
-            req.file('avatarfile').upload({ maxBytes: 1048576 }, async function whenDone(err, uploadedFiles) {
-                if (err) { return res.serverError(err); }
+            req.file('avatarfile').upload({ maxBytes: 524288000 }, async function whenDone(err, uploadedFiles) {
+                if (err) {
+                    req.addFlash('error1', 'Upload unsuccessful. The maximum size for PDF is 500MB');
+                    return res.redirect('/user/pdfadd');
+                }
                 if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+                var pdf = await Multimedia.create(
+                    {
+                        type: "pdf",
+                        name: req.body.pdfname,
+                    }).fetch();
+
+                await User.addToCollection(thatUser.id, "ownMultimedia").members(pdf.id);
 
                 const datauri = require('datauri');
                 await Multimedia.update(pdf.id).set({
@@ -412,6 +436,7 @@ module.exports = {
                     if (err) return console.log(err);
                 });
 
+                req.addFlash('error1', 'PDF is uploaded successfully');
                 return res.redirect('/user/pdfadd');
             });
         }

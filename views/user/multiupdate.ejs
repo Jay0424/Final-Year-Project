@@ -62,6 +62,14 @@
                         <button type="submit" class="btn btn-dark btn-block">Update</button>
                     </form>
 
+                    <% flash.get('error1').forEach(function (message) { %>
+                        <div class="errormessage">
+                            <strong style="color:red;font-size: 18px;">
+                                <%= message %>
+                            </strong>
+                        </div>
+                    <% }) %>
+
                     <br>
 
                     <form action="/user/photoremove" method="POST" onsubmit="return validremove()">
@@ -82,11 +90,11 @@
         document.querySelector(".custom-file-label").textContent = this.files[0].name;
     }
 
-    function validupdate() {
-        var valid = true;
-        alert("Your personal photo is updated");
-        return valid;
-    }
+    // function validupdate() {
+    //     var valid = true;
+    //     alert("Your personal photo is updated");
+    //     return valid;
+    // }
 
     function validremove() {
         var valid = true;

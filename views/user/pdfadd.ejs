@@ -28,6 +28,14 @@
                 <label class="custom-file-label" for="customFile">Choose file</label>
             </div>
 
+            <% flash.get('error1').forEach(function (message) { %>
+                <div class="errormessage">
+                    <strong style="color:red;font-size: 18px;">
+                        <%= message %>
+                    </strong>
+                </div>
+            <% }) %>
+
             <button type="submit" class="btn btn-dark btn-block">Upload</button>
         </form>
 
@@ -37,12 +45,6 @@
 <script>
     document.querySelector(".custom-file-input").onchange = function () {
         document.querySelector(".custom-file-label").textContent = this.files[0].name;
-    }
-
-    function validadd() {
-        var valid = true;
-        alert("PDF is uploaded");
-        return valid;
     }
 
 </script>

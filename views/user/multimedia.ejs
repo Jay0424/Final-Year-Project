@@ -31,6 +31,14 @@
                 </form>
             </div>
 
+            <% flash.get('error1').forEach(function (message) { %>
+                <div class="errormessage">
+                    <strong style="color:red;font-size: 18px;">
+                        <%= message %>
+                    </strong>
+                </div>
+            <% }) %>
+
             <div class="col-xl-12 col-form-label center" style="border-style: solid;">
                 <form action="/user/uploadimage" method="POST" enctype="multipart/form-data" onsubmit="return validimage()">
                     <label>Image description:</label>
@@ -44,6 +52,14 @@
                     <button type="submit" class="btn btn-dark" style="float:right">Upload</button>
                 </form>
             </div>
+
+            <% flash.get('error2').forEach(function (message) { %>
+                <div class="errormessage">
+                    <strong style="color:red;font-size: 18px;">
+                        <%= message %>
+                    </strong>
+                </div>
+            <% }) %>
 
             <br>
 
@@ -59,6 +75,14 @@
                 </form>
             </div>
 
+            <% flash.get('error3').forEach(function (message) { %>
+                <div class="errormessage">
+                    <strong style="color:red;font-size: 18px;">
+                        <%= message %>
+                    </strong>
+                </div>
+            <% }) %>
+
             <br>
 
             <div class="col-xl-12 col-form-label center" style="border-style: solid;">
@@ -71,6 +95,13 @@
                     <button type="submit" class="btn btn-dark" style="float:right">Upload</button>
                 </form>
             </div>
+            <% flash.get('error4').forEach(function (message) { %>
+                <div class="errormessage">
+                    <strong style="color:red;font-size: 18px;">
+                        <%= message %>
+                    </strong>
+                </div>
+            <% }) %>
 
 
         </div>
@@ -87,25 +118,3 @@
 
 </body>
 
-<script>
-    function validphoto() {
-        var valid = true;
-        alert("Personal Photo is uploaded")
-    }
-
-    function validimage() {
-        var valid = true;
-        alert("Image is uploaded")
-    }
-
-    function validvideo() {
-        var valid = true;
-        alert("Video is uploaded")
-    }
-
-    function validpdf() {
-        var valid = true;
-        alert("PDF is uploaded")
-    }
-
-</script>

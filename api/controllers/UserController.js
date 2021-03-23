@@ -100,7 +100,7 @@ module.exports = {
     },
 
     visitorguide: async function (req, res) {
-        
+
         return res.view('visitor/guide');
     },
 
@@ -108,10 +108,10 @@ module.exports = {
         return res.view('visitor/template');
     },
 
-   usertemplate: async function (req, res) {
-    var thatUser = await User.findOne(req.session.userid);
-        return res.view('user/template',{
-            user:thatUser,
+    usertemplate: async function (req, res) {
+        var thatUser = await User.findOne(req.session.userid);
+        return res.view('user/template', {
+            user: thatUser,
         });
     },
 
@@ -405,8 +405,11 @@ module.exports = {
     userphoto: async function (req, res) {
         var thatUser = await User.findOne(req.session.userid);
 
-        req.file('avatarfile').upload({ maxBytes: 1048576 }, async function whenDone(err, uploadedFiles) {
-            if (err) { return res.serverError(err); }
+        req.file('avatarfile').upload({ maxBytes: 524288000 }, async function whenDone(err, uploadedFiles) {
+            if (err) {
+                req.addFlash('error1', 'Upload unsuccessful. The maximum size for Personal Photo is 500MB');
+                return res.redirect('/user/multimedia');
+            }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 
             const datauri = require('datauri');
@@ -417,9 +420,10 @@ module.exports = {
             const fs = require('fs');
 
             fs.unlink(uploadedFiles[0].fd, function (err) {
-                if (err) return console.log(err); 
+                if (err) return console.log(err);
             });
 
+            req.addFlash('error1', 'Personal Photo is uploaded successfully');
             return res.redirect('/user/multimedia');
         });
     },
@@ -427,8 +431,10 @@ module.exports = {
     userphotoupdate: async function (req, res) {
         var thatUser = await User.findOne(req.session.userid);
 
-        req.file('avatarfile').upload({ maxBytes: 1048576 }, async function whenDone(err, uploadedFiles) {
-            if (err) { return res.serverError(err); }
+        req.file('avatarfile').upload({ maxBytes: 524288000 }, async function whenDone(err, uploadedFiles) {
+            if (err) {
+                return res.serverError(err);;
+            }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 
             const datauri = require('datauri');
@@ -439,9 +445,9 @@ module.exports = {
             const fs = require('fs');
 
             fs.unlink(uploadedFiles[0].fd, function (err) {
-                if (err) return console.log(err); 
+                if (err) return console.log(err);
             });
-
+            
             return res.redirect('/user/multiupdate');
         });
     },
@@ -1230,9 +1236,9 @@ module.exports = {
     },
 
     error: async function (req, res) {
-        
-            return res.view('error')
-        
+
+        return res.view('error')
+
     },
 
 
