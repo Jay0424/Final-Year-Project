@@ -153,6 +153,8 @@ module.exports.routes = {
   ' /user/:id/digitalcv3/pdf/:pid': 'UserController.digitalcv3pdf',
   ' /user/:id/digitalcv3/contact': 'UserController.digitalcv3contact',
 
+  
+
 
 
 

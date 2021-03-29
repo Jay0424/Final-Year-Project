@@ -1,5 +1,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+
 
 <style>
     .papercv {
@@ -9,13 +10,13 @@
 
     .pmain {
         font-family: 'Lato', sans-serif;
-        font-weight: 700;
-        font-size:30px;
+        font-weight: 900;
+        font-size: 30px;
     }
 
     .ptitle {
         font-family: 'Lato', sans-serif;
-        font-weight: 400;
+        font-weight: 700;
         font-size: 25px;
     }
 
@@ -43,84 +44,141 @@
         color: gray;
         background-color: gray
     }
-
 </style>
 
 <body class="papercv">
     <div class="container">
         <br>
-        <h2 class="pmain pcenter"><%=user.name%></h2>
-        <h2 class="pmain pcenter">Email:<%=user.email%></h2>
-        <h2 class="pmain pcenter">Phone number:<%=user.phoneno%></h2>
+        <h2 class="pmain pcenter">
+            <%=user.name%>
+        </h2>
+        <h2 class="pmain pcenter">Email:<%=user.email%>
+        </h2>
+        <h2 class="pmain pcenter">Phone number:<%=user.phoneno%>
+        </h2>
 
         <hr class="phr">
 
         <h2 class="pmain">Summary</h2>
-        <h2 class="ptitle"><%=user.summary%></h2>
-        
+        <h2 class="pcontent">
+            <%=user.summary%>
+        </h2>
+
         <hr class="phr">
 
 
         <h2 class="pmain">Education</h2>
         <% var i=1%>
-        <% education.forEach(function(model) { %>
-        
-        <h2 class="ptitle"><%=model.certification%></h2>
-        <h2 class="pcontent"><%=model.school%> </h2>
-        <h2 class="pcontent"><%=model.syear%>-<%=model.eyear%></h2> 
+            <% education.forEach(function(model) { %>
 
-        <%if(i!=education.length){%>
-        <br id="oneline">
-        <% i++ %>
-        <%}%>
-        <% }); %>
-        
-        <hr class="phr">
+                <h2 class="ptitle">
+                    <%=model.certification%>
+                </h2>
+                <h2 class="pcontent">
+                    <%=model.school%>
+                </h2>
+                <h2 class="pcontent">
+                    <%=model.syear%>-<%=model.eyear%>
+                </h2>
 
-        <h2 class="pmain">Work Experience</h2>
-        <% var j=1%>
-        <% work.forEach(function(model) { %>
-        
-        <h2 class="ptitle"> <%=model.job%></h2>
-        <h2 class="pcontent"><%=model.company%> / <%=model.start%> - <%=model.end%></h2>
-        <h2 class="pdescription"><%=model.description%></h2>
+                <%if(i!=education.length){%>
+                    <br id="oneline">
+                    <% i++ %>
+                        <%}%>
+                            <% }); %>
 
-    
-        <%if(j!=work.length){%>
-        <br id="oneline">
-        <% j++ %>
-        <%}%>
-        <% }); %>
+                                <hr class="phr">
 
-        <hr class="phr">
+                                <h2 class="pmain">Project</h2>
+                                <h2 class="ptitle"> 3D CV System (Final year project)</h2>
+                                <h2 class="pcontent">Augest 2020 – March 2021</h2>
+                                <h2 class="pcontent">An individual project which developed an online CV builder website
+                                    that allows users to create their own paper CV and digital CV (personal website)
+                                    with information in form of text and multimedia files such as video with Sails.js
+                                    (MVC framework for Node.js) and HTML, CSS, JavaSript.</h2>
 
-        <h2 class="pmain">Skill</h2>
-        <% skill.forEach(function(model) { %>
-        
-        <h2 class="ptitle"> <%=model.type%>: <%=model.content%></h2>
-    
-        <% }); %>
+                                <br>
+                                <h2 class="ptitle"> Inventory System for CUBC (an NGO)</h2>
+                                <h2 class="pcontent">January 2020 – April 2020</h2>
+                                <h2 class="pcontent">At this project, we developed a web-based inventory system for an
+                                    NGO which is called CUBC to them in terms of borrowing and returning their items
+                                    such as books and board games. I was responsible for the major functions of the
+                                    system including borrowing, returning, renewing, adding and
+                                    removing items with Sails.js (MVC framework for Node.js) and HTML, CSS, JavaSript.
+                                </h2>
 
-        <hr class="phr">
 
-        <h2 class="pmain">Language</h2>
-        <% language.forEach(function(model) { %>
-        
-        <h2 class="ptitle"> <%=model.type%> (<%=model.level%>)</h2>
-    
-        <% }); %>
 
-        <hr class="phr">
+                                <hr class="phr">
 
-        <h2 class="pmain">Expected Salary</h2>
-        <h2 class="ptitle">$<%=user.salary%></h2>
-        <hr class="phr">
 
-        <h2 class="pmain">Availability</h2>
-        <h2 class="ptitle"><%=user.availability%></h2>
-        <hr class="phr">
 
-        <!-- <h2 class="pmain">Skills</h2>
+                                <% if(work.length>0){%>
+                                    <h2 class="pmain">Work Experience</h2>
+                                    <%}%>
+                                        <% var j=1%>
+                                            <% work.forEach(function(model) { %>
+
+                                                <h2 class="ptitle">
+                                                    <%=model.job%>
+                                                </h2>
+                                                <h2 class="pcontent">
+                                                    <%=model.company%> / <%=model.start%> - <%=model.end%>
+                                                </h2>
+                                                <h2 class="pcontent">
+                                                    <%=model.description%>
+                                                </h2>
+
+
+                                                <%if(j!=work.length){%>
+                                                    <br id="oneline">
+                                                    <% j++ %>
+                                                        <%}%>
+                                                            <% }); %>
+
+                                                                <% if(work.length>0){%>
+                                                                    <hr class="phr">
+                                                                    <%}%>
+
+                                                                        <h2 class="pmain">Skill</h2>
+                                                                        <% skill.forEach(function(model) { %>
+
+                                                                            <h2 class="ptitle">
+                                                                                <%=model.type%>: <%=model.content%>
+                                                                            </h2>
+
+                                                                            
+
+                                                                            <% }); %>
+
+                                                                                <hr class="phr">
+
+                                                                                <!-- <h2 class="pmain">Language</h2>
+                                                                                <% language.forEach(function(model) { %>
+
+                                                                                    <h2 class="pcontent">
+                                                                                        <%=model.type%> (<%=model.level%>)
+                                                                                    </h2>
+
+                                                                                    <% }); %> -->
+
+                                                                                        <!-- <hr class="phr"> -->
+
+                                                                                        <h2 class="pmain">Expected
+                                                                                            Salary</h2>
+                                                                                        <h2 class="ptitle">$
+                                                                                            <%=user.salary%>
+                                                                                        </h2>
+                                                                                        <hr class="phr">
+
+                                                                                        <h2 class="pmain">Availability
+                                                                                        </h2>
+                                                                                        <h2 class="ptitle">
+                                                                                            <%=user.availability%>
+                                                                                        </h2>
+                                                                                        <hr class="phr">
+
+                                                                                        <!-- <h2 class="pmain">Skills</h2>
         <h2 class="pcontent">Experienced Human Resources Manager with over 5 years of experience.</h2>
         <hr class="phr">
         <h2 class="pmain">Work Experiences</h2>
