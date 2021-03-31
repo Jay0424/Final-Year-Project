@@ -13,7 +13,7 @@ module.exports.bootstrap = async function() {
   //Use bcrypt to encrypt pasword
   sails.bcrypt = require('bcryptjs');
   const saltRounds = 10;
-  const hash = await sails.bcrypt.hash('a123456', saltRounds);
+  const hash = await sails.bcrypt.hash('Password123', saltRounds);
 
 
   // By convention, this is a good place to set up fake data during development.
