@@ -82,6 +82,10 @@
         animation: level 3s;
     }
 
+    .break{
+        word-break: break-all;
+    }
+
     @keyframes level {
         0% {
             width: 0%;
@@ -155,10 +159,11 @@
             <% skill.forEach(function(model) { %>
                 <div style="margin-left:18%;width:80%;">
                     <br>
-                    <h2 style="font-weight: 600;"><i class="fa fa-anchor" aria-hidden="true"
+                    <h2  style="font-weight: 600;"><i class="fa fa-anchor" aria-hidden="true"
                             style="padding-right: 10px;"></i>
-                        <%=model.type%>
+                            <%=model.type%>                                               
                     </h2>
+
                     <h2>
                         <%=model.content%>
                     </h2>

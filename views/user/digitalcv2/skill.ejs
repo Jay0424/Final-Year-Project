@@ -328,7 +328,11 @@
                 <% skill.forEach(function(model) { %>
                     <div class="card col-xl-4" style="border: 0px; background: transparent;">
                         <div class="circle center">
-                            <%=model.type%>
+                            <%if (model.type.length>18){%>
+                                <%=model.type.split(" ")[0]%>
+                                <%}else{%>
+                                <%=model.type%>
+                                <%}%>
                         </div>
                         <h4 style="text-align: center;font-weight: 700;">
                             <%=model.content%>
