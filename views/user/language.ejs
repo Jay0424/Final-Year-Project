@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
-    .selectlevel {
+    /* .selectlevel {
         display: none;
-    }
+    } */
 </style>
 
 <body onload="pageLoaded()">
@@ -28,12 +28,12 @@
         <h4>Basic: Only knowing some knowledge of the language</h4>
 
 
-        <form action="/user/language" id="languageform" method="POST" onsubmit="return (validlanguage2()&&validlanguage3())">
+        <form action="/user/language" id="languageform" method="POST">
             <div class="form-group row">
 
                 <div class="col-xl-6 col-form-label center">
                     <label>Language:</label>
-                    <input type="text" class="form-control" name="type1" list="optionlist" placeholder="Enter the language" equired>
+                    <input type="text" class="form-control" name="type1" list="optionlist" placeholder="Enter the language" required>
                     <datalist id="optionlist">
                         <option value="English">English</option>
                         <option value="Cantonese">Cantonese</option>
@@ -47,7 +47,7 @@
                 <div class="col-xl-6 col-form-label center">
                     <label>Level:</label>
                     <select name="level1" class="form-control" required>
-                        <option value="" class="selectlevel">Please select a level</option>
+                        <option value="notselect" class="selectlevel">Please select a level</option>
                         <option value="Native">Native</option>
                         <option value="Fluent">Fluent</option>
                         <option value="Proficient">Proficient</option>
@@ -59,7 +59,7 @@
 
                 <div class="col-xl-6 col-form-label center">
                     <label>Language:</label>
-                    <input type="text" class="form-control" name="type2" placeholder="Enter the language" list="optionlist">
+                    <input type="text" class="form-control" id="type2" name="type2" placeholder="Enter the language" list="optionlist">
                     <datalist id="optionlist">
                         <option value="English">English</option>
                         <option value="Cantonese">Cantonese</option>
@@ -72,7 +72,7 @@
 
                 <div class="col-xl-6 col-form-label center">
                     <label>Level:</label>
-                    <select name="level2" class="form-control">
+                    <select name="level2" id="level2" class="form-control">
                         <option value="" class="selectlevel">Please select a level</option>
                         <option value="Native">Native</option>
                         <option value="Fluent">Fluent</option>
@@ -85,7 +85,7 @@
 
                 <div class="col-xl-6 col-form-label center">
                     <label>Language:</label>
-                    <input type="text" class="form-control" name="type3" placeholder="Enter the language" list="optionlist">
+                    <input type="text" class="form-control" name="type3" id="type3" placeholder="Enter the language" list="optionlist">
                     <datalist id="optionlist">
                         <option value="English">English</option>
                         <option value="Cantonese">Cantonese</option>
@@ -98,8 +98,8 @@
 
                 <div class="col-xl-6 col-form-label center">
                     <label>Level:</label>
-                    <select name="level3" class="form-control">
-                        <option value="" class="selectlevel">Please select a level</option>
+                    <select name="level3" id="level3" class="form-control">
+                        <option value="notselect" class="selectlevel">Please select a level</option>
                         <option value="Native">Native</option>
                         <option value="Fluent">Fluent</option>
                         <option value="Proficient">Proficient</option>
@@ -138,39 +138,42 @@
         window.history.back();
     }
 
-    function validlanguage2() {
-        const type = document.getElementById("type2");
-        const level = document.getElementById("level2");
+    // function validlanguage2() {
+    //     const type = document.getElementById("type2");
+    //     var level = document.getElementsByName("level2").value;
+        
+    //     var valid = true;
 
-        var valid = true;
+    //     if (type.value == "" &&  level=="") {
+    //         valid = true;
+    //     } else if (type.value != "" && level!="") {
+    //         valid = true;
+    //     } else if (type.value == "" &&  (level=="Native"||level=="Fluent"||level=="Proficient"||level=="Intermediate"||level=="Basic")) {
+    //         alert("Make sure you enter all the elements of one language record");
+    //         valid = false;
+    //     }else if (type.value != "" &&  level=="") {
+    //         alert("Make sure you enter all the elements of one language record");
+    //         valid = false;
+    //     }
+    //     return valid;
+    // }
 
-        if (type.value == "" &&  level.value == "") {
-            valid = true;
-        } else if (type.value != "" && level.value != "") {
-            valid = true;
-        } else {
-            alert("Make sure you enter all the elements of one language record");
-            valid = false;
-        }
-        return valid;
-    }
+    // function validlanguage3() {
+    //     var type = document.getElementById("type3");
+    //     var level = document.getElementById("level3");
 
-    function validlanguage3() {
-        const type = document.getElementById("type3");
-        const level = document.getElementById("level3");
+    //     var valid = true;
 
-        var valid = true;
-
-        if (type.value == "" &&  level.value == "") {
-            valid = true;
-        } else if (type.value != "" && level.value != "") {
-            valid = true;
-        } else {
-            alert("Make sure you enter all the elements of one language record");
-            valid = false;
-        }
-        return valid;
-    }
+    //     if (type.value == "" &&  level.selectedIndex ==0) {
+    //         valid = true;
+    //     } else if (type.value != "" && level.selectedIndex >0) {
+    //         valid = true;
+    //     } else {
+    //         alert("Make sure you enter all the elements of one language record");
+    //         valid = false;
+    //     }
+    //     return valid;
+    // }
 
 
 </script>
