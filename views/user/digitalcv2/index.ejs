@@ -252,6 +252,16 @@
             transform: scale(1.3) translateY(-50px) rotate(70deg);
         }
     }
+
+    .search1 div h2:hover,
+    .search1 div h3:hover{
+        color:black;
+    }
+
+    .search2 div h2:hover,
+    .search2 div h3:hover{
+        color:white;
+    }
 </style>
 
 <body class="digital2">
@@ -340,6 +350,7 @@
                     <% education.forEach(function(model) { %>
                         <%if(i!=education.length){%>
                             <li class="line">
+                                <a href="https://google.com/search?q=<%=model.school%> <%=model.certification%>" class="search1" target="_blank">
                                 <div style="padding-left: 30px;">
                                     <h2>
                                         <%=model.syear%>-<%=model.eyear%>
@@ -351,10 +362,12 @@
                                         <%=model.school%>
                                     </h3>
                                 </div>
+                            </a>
                             </li>
                             <% i++ %>
                                 <%} else {%>
                                     <li>
+                                        <a href="https://google.com/search?q=<%=model.school%> <%=model.certification%>" class="search1" target="_blank">
                                         <div style="padding-left: 30px;">
                                             <h2>
                                                 <%=model.syear%>-<%=model.eyear%>
@@ -366,6 +379,7 @@
                                                 <%=model.school%>
                                             </h3>
                                         </div>
+                                    </a>
                                     </li>
                                     <% i++ %>
                                         <% }}); %>
@@ -381,6 +395,7 @@
                     <% work.forEach(function(model) { %>
                         <%if(j!=work.length){%>
                             <li class="line">
+                                <a href="https://google.com/search?q=<%=model.company%>" target="_blank" class="search2">
                                 <div style="padding-left: 30px;">
                                     <h2>
                                         <%=model.start%> - <%=model.end%>
@@ -392,10 +407,12 @@
                                         <%=model.description%>
                                     </h3>
                                 </div>
+                            </a>
                             </li>
                             <% j++ %>
                                 <%} else {%>
                                     <li>
+                                        <a href="https://google.com/search?q=<%=model.company%>" target="_blank" class="search2">
                                         <div style="padding-left: 30px;">
                                             <h2>
                                                 <%=model.start%> - <%=model.end%>
@@ -407,6 +424,7 @@
                                                 <%=model.description%>
                                             </h3>
                                         </div>
+                                    </a>
                                     </li>
                                     <% j++ %>
                                         <% }}); %>

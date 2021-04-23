@@ -161,6 +161,7 @@
                             <%if(i!=education.length){%>
                                 <li class="line">
                                     <div style="padding-left: 30px;">
+                                        <a href="https://google.com/search?q=<%=model.school%> <%=model.certification%>" target="_blank">
                                         <h2>
                                             <%=model.syear%>-<%=model.eyear%>
                                         </h2>
@@ -170,12 +171,14 @@
                                         <h3>
                                             <%=model.school%>
                                         </h3>
+                                    </a>
                                     </div>
                                 </li>
                                 <% i++ %>
                                     <%} else {%>
                                         <li>
                                             <div style="padding-left: 30px;">
+                                                <a href="https://google.com/search?q=<%=model.school%> <%=model.certification%>" target="_blank">
                                                 <h2>
                                                     <%=model.syear%>-<%=model.eyear%>
                                                 </h2>
@@ -185,6 +188,7 @@
                                                 <h3>
                                                     <%=model.school%>
                                                 </h3>
+                                            </a>
                                             </div>
                                         </li>
                                         <% i++ %>

@@ -166,6 +166,7 @@
                             <%if(j!=work.length){%>
                                 <li class="line">
                                     <div style="padding-left: 30px;">
+                                        <a href="https://google.com/search?q=<%=model.company%>" target="_blank">
                                         <h2>
                                             <%=model.start%> - <%=model.end%>
                                         </h2>
@@ -175,12 +176,14 @@
                                         <h3 class="wdescript">
                                             <%=model.description%>
                                         </h3>
+                                    </a>
                                     </div>
                                 </li>
                                 <% j++ %>
                                     <%} else {%>
                                         <li>
                                             <div style="padding-left: 30px;">
+                                                <a href="https://google.com/search?q=<%=model.company%>" target="_blank">
                                                 <h2>
                                                     <%=model.start%> - <%=model.end%>
                                                 </h2>
@@ -190,6 +193,7 @@
                                                 <h3 class="wdescript">
                                                     <%=model.description%>
                                                 </h3>
+                                                </a>
                                             </div>
                                         </li>
                                         <% j++ %>
