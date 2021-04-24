@@ -13,10 +13,15 @@
 
     <div class="container">
         <h2 class="intro"> <i class="fa fa-picture-o" aria-hidden="true" style="padding-right: 20px;"></i>Image</h2>
+
         <h4>Uploading Image</h4>
+
         <h4>1. Everytime you can only upload one image</h4>
         <h4>2. After uploading, the page will be refreshed for you to upload another one</h4>
         <h4>3. Multimedia button (upper right) can let you to edit your image</h4>
+        <form action="/user/imgupdate" method="GET">
+            <button class="btn btn-primary" style="float:right">Back to Image Update</button>
+        </form>
         <br>
 
         <form action="/user/imgadd" method="POST" enctype="multipart/form-data" onsubmit="return validadd()">
@@ -35,11 +40,10 @@
                         <%= message %>
                     </strong>
                 </div>
-            <% }) %>
-            
-            <button type="submit" class="btn btn-dark btn-block">Upload</button>
+                <% }) %>
 
-            
+                    <button type="submit" class="btn btn-dark btn-block">Upload</button>
+
         </form>
 
     </div>

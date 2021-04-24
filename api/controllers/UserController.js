@@ -33,7 +33,7 @@ module.exports = {
                 {
                     username: req.body.username,
                     password: hash,
-                    photo: "https://upload.cc/i1/2021/01/28/SyUtXK.png"
+                    photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png"
                 });
 
             return res.redirect("/visitor/login");
@@ -406,15 +406,17 @@ module.exports = {
         var thatUser = await User.findOne(req.session.userid);
 
         req.file('avatarfile').upload({ maxBytes: 524288000 }, async function whenDone(err, uploadedFiles) {
+            const filename=uploadedFiles[0].filename;
             if (err) {
-                req.addFlash('error1', 'Upload unsuccessful. The maximum size for Personal Photo is 500MB');
+                req.addFlash('error1', 'Personal Photo: **'+filename+'** Upload unsuccessful. The maximum size for Personal Photo is 500MB');
                 return res.redirect('/user/multimedia');
             }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 
             const datauri = require('datauri');
             await User.update(thatUser.id).set({
-                photo: await datauri(uploadedFiles[0].fd)
+                photo: await datauri(uploadedFiles[0].fd),
+                photoname:filename,
             });
 
             const fs = require('fs');
@@ -423,7 +425,7 @@ module.exports = {
                 if (err) return console.log(err);
             });
 
-            req.addFlash('error1', 'Personal Photo is uploaded successfully');
+            req.addFlash('error1', 'Personal Photo: **'+filename+'** is uploaded successfully');
             return res.redirect('/user/multimedia');
         });
     },
@@ -433,12 +435,14 @@ module.exports = {
 
         req.file('avatarfile').upload({ maxBytes: 524288000 }, async function whenDone(err, uploadedFiles) {
             if (err) {
-                return res.serverError(err);;
+                req.addFlash('error1', 'Personal Photo: **'+filename+'** Update unsuccessful. The maximum size for Personal Photo is 500MB');
+                return res.redirect('/user/multiupdate');
             }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 
             const datauri = require('datauri');
             await User.update(thatUser.id).set({
+                photoname:filename,
                 photo: await datauri(uploadedFiles[0].fd)
             });
 
@@ -448,6 +452,7 @@ module.exports = {
                 if (err) return console.log(err);
             });
             
+            req.addFlash('error1', 'Personal Photo is updated successfully with **'+filename+"**");
             return res.redirect('/user/multiupdate');
         });
     },

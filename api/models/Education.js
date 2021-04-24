@@ -42,6 +42,14 @@ module.exports = {
     EduownBy:{
       collection:"User",
       via:"ownEdu"
+    },
+
+    cGPA:{
+      type:"number"
+    },
+
+    honors:{
+      type:"string"
     }
 
   },

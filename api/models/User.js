@@ -101,6 +101,11 @@ module.exports = {
       type:"string",
     },
 
+    photoname:{
+      defaultsTo:"Default.png",
+      type:"string",
+    }
+
   },
 
 };

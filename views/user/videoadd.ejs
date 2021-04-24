@@ -17,6 +17,9 @@
         <h4>1. Everytime you can only upload one video</h4>
         <h4>2. After uploading, the page will be refreshed for you to upload another one</h4>
         <h4>3. Multimedia button (upper right) can let you to edit your video</h4>
+        <form action="/user/videoupdate" method="GET">
+            <button class="btn btn-primary" style="float:right">Back to Video Update</button>
+        </form>
         <br>
 
         <form action="/user/videoadd" method="POST" enctype="multipart/form-data" onsubmit="return validadd()">

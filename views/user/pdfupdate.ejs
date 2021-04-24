@@ -38,13 +38,12 @@
             <% pdf.forEach(function(model) { %>
                 <div class="card col-xl-6 control-label">
 
-                    <a style="text-align: center; font-size: 30px; text-decoration: underline;" href="/user/pdfview/<%=model.id%>" target="_blank">View PDF: <%=model.name%></a>
+                    <a style="text-align: center; font-size: 30px;" href="/user/pdfview/<%=model.id%>" target="_blank">View PDF: <%=model.name%></a>
 
                     <form action="/user/pdfupdate/<%=model.id%>" method="POST" enctype="multipart/form-data"
                         onsubmit="return validupdate()">
                         <br>
-                        <label>PDF name:</label>
-                        <input type="text" class="form-control" name="pdfname" value=<%=model.name%>>
+                        <label>PDF:</label>
                         <div class="custom-file">
                             <input type="file" accept="application/pdf" name="avatarfile" id="avatarfile" value=<%model.file%> />
                         </div>

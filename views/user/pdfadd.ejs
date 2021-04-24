@@ -17,12 +17,14 @@
         <h4>1. Everytime you can only upload one PDF</h4>
         <h4>2. After uploading, the page will be refreshed for you to upload another one</h4>
         <h4>3. Multimedia button (upper right) can let you to edit your PDF</h4>
+        <form action="/user/pdfupdate" method="GET">
+            <button class="btn btn-primary" style="float:right">Back to PDF Update</button>
+        </form>
         <br>
 
         <form action="/user/pdfadd" method="POST"enctype="multipart/form-data" onsubmit="return validadd()">
             <br>
             <labe>PDF name:</labe>
-            <input type="text" class="form-control" name="pdfname" id="pdfname" required>
             <div class="custom-file">
                 <input type="file" class="custom-file-input"accept="application/pdf" name="avatarfile" required>
                 <label class="custom-file-label" for="customFile">Choose file</label>
