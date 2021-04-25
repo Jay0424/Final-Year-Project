@@ -102,7 +102,7 @@ module.exports = {
     },
 
     photoname:{
-      defaultsTo:"Default.png",
+      defaultsTo:"Default Photo",
       type:"string",
     }
 

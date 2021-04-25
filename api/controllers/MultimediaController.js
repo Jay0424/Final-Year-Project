@@ -10,14 +10,16 @@ module.exports = {
     useruploadimage: async function (req, res) {
 
         var thatUser = await User.findOne(req.session.userid);
-
+        //524288000
         req.file('avatarfile').upload({ maxBytes: 524288000 }, async function whenDone(err, uploadedFiles) {
-            const filename=uploadedFiles[0].filename;
             if (err) {
-                req.addFlash('error2', 'Image: **'+filename+'** Upload unsuccessful. The maximum size for Image is 500MB');
+                req.addFlash('error2', 'Upload unsuccessful. The maximum size for Image is 500MB');
                 return res.redirect('/user/multimedia');
             }
+
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+            const filename=uploadedFiles[0].filename;
 
             const datauri = require('datauri');
 
@@ -123,12 +125,13 @@ module.exports = {
             var thatUser = await User.findOne(req.session.userid);
 
             req.file('avatarfile').upload({ maxBytes: 524288000 }, async function whenDone(err, uploadedFiles) {
-                const filename=uploadedFiles[0].filename;
                 if (err) {
-                    req.addFlash('error1', 'Image: **'+filename+'** Upload unsuccessful. The maximum size for Image is 500MB');
+                    req.addFlash('error1', 'Upload unsuccessful. The maximum size for Image is 500MB');
                     return res.redirect('/user/imgadd');
                 }
                 if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+                const filename=uploadedFiles[0].filename;
 
                 var image = await Multimedia.create(
                     {
@@ -158,14 +161,16 @@ module.exports = {
     useruploadvideo: async function (req, res) {
 
         var thatUser = await User.findOne(req.session.userid);
+        //5368706371
 
         req.file('avatarfile').upload({ maxBytes: 5368706371 }, async function whenDone(err, uploadedFiles) {
-            const filename=uploadedFiles[0].filename;
             if (err) {
-                req.addFlash('error3', 'Video: **'+filename+'**Upload unsuccessful. The maximum size for Video is 5GB');
+                req.addFlash('error3', 'Upload unsuccessful. The maximum size for Video is 5GB');
                 return res.redirect('/user/multimedia');
             }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+            const filename=uploadedFiles[0].filename;
 
             var video = await Multimedia.create(
                 {
@@ -268,12 +273,13 @@ module.exports = {
 
 
             req.file('avatarfile').upload({ maxBytes: 5368706371 }, async function whenDone(err, uploadedFiles) {
-                const filename=uploadedFiles[0].filename;
                 if (err) {
-                    req.addFlash('error1', 'Video: **'+filename+'**Upload unsuccessful. The maximum size for Video is 5GB');
+                    req.addFlash('error1', 'Upload unsuccessful. The maximum size for Video is 5GB');
                     return res.redirect('/user/videoadd');
                 }
                 if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+                const filename=uploadedFiles[0].filename;
 
                 var video = await Multimedia.create(
                     {
@@ -305,13 +311,15 @@ module.exports = {
 
         var thatUser = await User.findOne(req.session.userid);
 
+        //524288000
         req.file('avatarfile').upload({ maxBytes: 524288000 }, async function whenDone(err, uploadedFiles) {
-            const filename=uploadedFiles[0].filename;
             if (err) {
-                req.addFlash('error4', 'PDF: **'+filename+'** Upload unsuccessful. The maximum size for PDF is 500MB');
+                req.addFlash('error4', 'Upload unsuccessful. The maximum size for PDF is 500MB');
                 return res.redirect('/user/multimedia');
             }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+            const filename=uploadedFiles[0].filename;
 
             var pdf = await Multimedia.create(
                 {
@@ -419,13 +427,13 @@ module.exports = {
             var thatUser = await User.findOne(req.session.userid);
 
             req.file('avatarfile').upload({ maxBytes: 524288000 }, async function whenDone(err, uploadedFiles) {
-                const filename=uploadedFiles[0].filename;
-
                 if (err) {
-                    req.addFlash('error1', 'PDF: **'+filename+'** Upload unsuccessful. The maximum size for PDF is 500MB');
+                    req.addFlash('error1', 'Upload unsuccessful. The maximum size for PDF is 500MB');
                     return res.redirect('/user/pdfadd');
                 }
                 if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+                const filename=uploadedFiles[0].filename;
 
                 var pdf = await Multimedia.create(
                     {

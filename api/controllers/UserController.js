@@ -33,7 +33,7 @@ module.exports = {
                 {
                     username: req.body.username,
                     password: hash,
-                    photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png"
+                    photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png",
                 });
 
             return res.redirect("/visitor/login");
@@ -404,14 +404,15 @@ module.exports = {
 
     userphoto: async function (req, res) {
         var thatUser = await User.findOne(req.session.userid);
-
+        //524288000
         req.file('avatarfile').upload({ maxBytes: 524288000 }, async function whenDone(err, uploadedFiles) {
-            const filename=uploadedFiles[0].filename;
             if (err) {
-                req.addFlash('error1', 'Personal Photo: **'+filename+'** Upload unsuccessful. The maximum size for Personal Photo is 500MB');
+                req.addFlash('error1', 'Upload unsuccessful. The maximum size for Personal Photo is 500MB');
                 return res.redirect('/user/multimedia');
             }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
+
+            const filename=uploadedFiles[0].filename;
 
             const datauri = require('datauri');
             await User.update(thatUser.id).set({
@@ -461,8 +462,8 @@ module.exports = {
         var thatUser = await User.findOne(req.session.userid);
 
         await User.update(thatUser.id).set({
-            photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png"
-
+            photo: "https://upload.cc/i1/2021/01/28/v4gpxB.png",
+            photoname:"Default Photo",
         });
 
         return res.redirect('/user/multiupdate');
