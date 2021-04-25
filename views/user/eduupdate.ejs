@@ -1,6 +1,12 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
+<style>
+    .current {
+        display: none;
+    }
+</style>
+
 <body onload="pageLoaded()">
 
     <nav>
@@ -74,18 +80,49 @@
                                 value="<%=model.certification%>" required>
                         </div>
 
-                        <div class="col-xl-2 col-form-label center">
+                        <div class="col-xl-4 col-form-label center">
+                            <label>Honours:</label>
+                            <select name="honours" class="form-control">
+                                <%if(model.honours==""){%>
+                                <option value="<%=model.honours%>" class="current" selected>
+                                    Current: Do Not Display
+                                </option>
+                                <%} else {%>
+                                    <option value="<%=model.honours%>" class="current" selected>
+                                        Current: <%=model.honours%>
+                                    </option>
+                                <%}%>
+                                <option value="" class="selectlevel">Do Not Display</option>
+                                <option value="First Class Honours">First Class Honours</option>
+                                <option value="Second Class (Division I) Honours">Second Class (Division I) Honours</option>
+                                <option value="Second Class (Division II) Honours">Second Class (Division II) Honours</option>
+                                <option value="Third Class Honours">Third Class Honours</option>
+                            </select>
+                        </div>
+
+                        <div class="col-xl-4 col-form-label center">
                             <label>From:</label>
                             <input type="number" class="form-control" min="1900" max="<%=new Date().getFullYear()%>"
                                 name="syear" id="syear" value=<%=model.syear%>
                             required>
                         </div>
 
-                        <div class="col-xl-2 col-form-label center">
+                        <div class="col-xl-4 col-form-label center">
                             <label>To:</label>
                             <input type="number" class="form-control" min="1900" max="<%=new Date().getFullYear()%>"
                                 name="eyear" id="eyear" value=<%=model.eyear%> required>
                         </div>
+
+                        <div class="col-xl-4 col-form-label center">
+                            <label>cGPA:</label>
+                            <% if (model.cgpa==0){%>
+                            <input type="number" name="cgpa" class="form-control" step="0.01" min="0" max="5" placeholder="Optional">
+                            <%} else {%>
+                            <input type="number" name="cgpa" class="form-control" step="0.01" min="0" max="5" value="<%=model.cgpa%>">
+                            <%}%>
+                        </div>
+        
+                        
 
                     </div>
 

@@ -5,7 +5,7 @@
     .papercv2 {
         height: 100%;
         background-image: url("https://i.pinimg.com/originals/e0/77/ee/e077eec5651d294de5ffd25b340f9e13.jpg");
-        background-size:100%;
+        background-size: 100%;
         font-family: 'Roboto', sans-serif;
     }
 
@@ -30,7 +30,7 @@
     .left {
         float: left;
         width: 40%;
-        padding:0px;
+        padding: 0px;
         margin: auto;
     }
 
@@ -95,7 +95,7 @@
 
 
     .bar span {
-        background-color:coral;
+        background-color: coral;
         display: block;
         height: 20px;
         border-radius: 10px;
@@ -114,6 +114,7 @@
         background: #D1D6E6;
         margin-left: 8.3px;
     }
+    
 </style>
 
 
@@ -121,7 +122,7 @@
     <br>
     <br>
     <div class="container" style="width:100%;">
-        <div style="margin:auto;" class="left" >
+        <div style="margin:auto;" class="left">
             <img src=<%=user.photo%> style="width:100%">
             <div>
                 <p style="text-align: center" class="name">
@@ -200,20 +201,46 @@
                 <h1 class="title">Education</h1>
                 <% var i=1%>
                     <% education.forEach(function(model) { %>
+
                         <h3 class="swtitle">
-                            <%=model.certification%>
-                        </h3>
-                        <h2>
                             <%=model.school%>
-                        </h2>
+                                <span style="float:right;">
+                                    <%=model.syear%>-<%=model.eyear%>
+                                </span>
+                        </h3>
+
                         <h2>
-                            <%=model.syear%>-<%=model.eyear%>
+                            <%=model.certification%>
                         </h2>
-                        <%if(i!=education.length){%>
-                            <br>
-                            <% i++ %>
-                                <%}%>
-                                    <%});%>
+
+
+                        <%if(model.cgpa!=0&&model.honours=="" ){%>
+
+                            <h2>
+                                &bull; cGPA: <%=model.cgpa%>
+                            </h2>
+
+                            <%}else if(model.cgpa==0&&model.honours!="" ){%>
+
+                                <h2 class="pcontent">
+                                    &bull; <%=model.honours%>
+                                </h2>
+
+                                <%}else if(model.cgpa!=0&&model.honours!="" ){%>
+
+                                    <h2 class="pcontent">
+                                        &bull; <%=model.honours%>
+                                    </h2>
+                                    <h2 class="pcontent">
+                                        &bull; cGPA: <%=model.cgpa%>
+                                    </h2>
+
+                                    <%}%>
+                                        <%if(i!=education.length){%>
+                                            <br>
+                                            <% i++ %>
+                                                <%}%>
+                                                    <%});%>
 
             </div>
             <hr class="phr">

@@ -141,6 +141,25 @@
                                     <h3>
                                         <%=model.certification%>
                                     </h3>
+                                    <%if(model.cgpa!=0&&model.honours=="" ){%>
+
+                                        <h3>
+                                           cGPA: <%=model.cgpa%>
+                                        </h3>
+                
+                                        <%}else if(model.cgpa==0&&model.honours!="" ){%>
+                
+                                            <h3>
+                                                <%=model.honours%>
+                                            </h3>
+                
+                                            <%}else if(model.cgpa!=0&&model.honours!="" ){%>
+                
+                                                <h3>
+                                                     <%=model.honours%>, cGPA: <%=model.cgpa%>
+                                                </h3>
+                
+                                            <%}%>
                                     <h3>
                                         <%=model.school%>
                                     </h3>
@@ -154,8 +173,27 @@
                                                 <%=model.syear%>-<%=model.eyear%>
                                             </h2>
                                             <h3>
-                                                <%=model.certification%>
+                                                <%=model.certification%> 
                                             </h3>
+                                            <%if(model.cgpa!=0&&model.honours=="" ){%>
+
+                                                <h3>
+                                                   cGPA: <%=model.cgpa%>
+                                                </h3>
+                        
+                                                <%}else if(model.cgpa==0&&model.honours!="" ){%>
+                        
+                                                    <h3>
+                                                        <%=model.honours%>
+                                                    </h3>
+                        
+                                                    <%}else if(model.cgpa!=0&&model.honours!="" ){%>
+                        
+                                                        <h3>
+                                                             <%=model.honours%>, cGPA: <%=model.cgpa%>
+                                                        </h3>
+                        
+                                                    <%}%>
                                             <h3>
                                                 <%=model.school%>
                                             </h3>

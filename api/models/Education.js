@@ -44,11 +44,11 @@ module.exports = {
       via:"ownEdu"
     },
 
-    cGPA:{
+    cgpa:{
       type:"number"
     },
 
-    honors:{
+    honours:{
       type:"string"
     }
 

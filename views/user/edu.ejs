@@ -1,4 +1,13 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .phr {
+        height: 1px;
+        width:100%;
+        color: black;
+        background-color: black;
+    }
+    
+</style>
 
 
 <body onload="pageLoaded()">
@@ -12,19 +21,20 @@
         </ul>
     </nav>
 
-    <div class="container">
+    <div style="width:55%;margin: auto;">
        
         <h2 class="intro">  <i class="fa fa-graduation-cap" aria-hidden="true" style="padding-right: 20px;"></i>Education</h2>
         <h4>Example:</h4>
         <h4>School: Hong Kong Baptist University</h4>
-        <h4>Certification: BSc (Hons) in Mathematics and Statistics</h4>
-        <H4>Year: From 2014 To 2018</H4>
+        <h4>Certification: BSc (Hons) in Mathematics and Statistics, cGPA:3.9, Honours: First Class</h4>
+        <h4>Year: From 2014 To 2018</h4>
+        <h4>Optional to fill in the cGPA, Honours can be chosen as not display</h4>
         
         <form action="/user/edu" id="eduform" method="POST"
-            onsubmit="return (validedu1()&&validedu2()&&validedu3()&&validyear2()&&validyear3())">
+            onsubmit="return (validedu1()&&validedu2()&&validyear2())">
             <div class="form-group row">
 
-                <div class="col-xl-4 col-form-label center">
+                <div class="col-xl-6 col-form-label center">
                     <label>School:</label>
                     <input type="text" class="form-control" placeholder="Enter school name" name="school1" id="school1" list="optionlist" required>
                         <datalist id="optionlist">
@@ -39,98 +49,86 @@
                         </datalist>
                 </div>
 
-                <div class="col-xl-4 col-form-label center">
+                <div class="col-xl-3 col-form-label center">
+                    <label>From:</label>
+                    <input type="number" class="form-control" min="1900" max="<%=new Date().getFullYear()%>" placeholder="year (start)" name="syear1" id="syear1"
+                        required>
+                </div>
+
+                <div class="col-xl-3 col-form-label center">
+                    <label>To:</label>
+                    <input type="number" class="form-control" min="1900" max="<%=new Date().getFullYear()%>" placeholder="year (end)" name="eyear1" id="eyear1"
+                        required>
+                </div>
+
+                <div class="col-xl-6 col-form-label center">
                     <label>Certification:</label>
                     <input type="text" class="form-control" placeholder="Enter certification" name="certification1"
                         id="certification1" required>
                 </div>
 
                 <div class="col-xl-2 col-form-label center">
-                    <label>From:</label>
-                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (start)" name="syear1" id="syear1"
-                        required>
-                </div>
-
-                <div class="col-xl-2 col-form-label center">
-                    <label>To:</label>
-                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (end)" name="eyear1" id="eyear1"
-                        required>
+                    <label>cGPA:</label>
+                    <input type="number" class="form-control" step="0.01" min="0" max="5" placeholder="Optional" name="cgpa1" id="cgpa1">
                 </div>
 
                 <div class="col-xl-4 col-form-label center">
+                    <label>Honours:</label>
+                    <select name="honours1" class="form-control">
+                        <option value="" class="selectlevel">Default: Do Not Display</option>
+                        <option value="First Class Honours">First Class Honours</option>
+                        <option value="Second Class (Division I) Honours">Second Class (Division I) Honours</option>
+                        <option value="Second Class (Division II) Honours">Second Class (Division II) Honours</option>
+                        <option value="Third Class Honours">Third Class Honours</option>
+                    </select>
+                </div>
+
+                <div class="col-xl-6 col-form-label center">
                     <label>School:</label>
                     <input type="text" class="form-control" placeholder="Enter school name" name="school2" id="school2" list="optionlist">
-                    <datalist id="optionlist">
-                        <option value="City University of Hong Kong">City University of Hong Kong</option>
-                        <option value="Hong Kong Baptist University">Hong Kong Baptist University</option>
-                        <option value="Lingnan University">Lingnan University</option>
-                        <option value="The Chinese University of Hong Kong">The Chinese University of Hong Kong</option>
-                        <option value="The Education University of Hong Kong">The Education University of Hong Kong</option>
-                        <option value="The Hong Kong Polytechnic University">The Hong Kong Polytechnic University</option>
-                        <option value="The Hong Kong University of Science and Technology">The Hong Kong University of Science and Technology</option>
-                        <option value="The University of Hong Kong">The University of Hong Kong</option>
-                    </datalist>
+                        <datalist id="optionlist">
+                            <option value="City University of Hong Kong">City University of Hong Kong</option>
+                            <option value="Hong Kong Baptist University">Hong Kong Baptist University</option>
+                            <option value="Lingnan University">Lingnan University</option>
+                            <option value="The Chinese University of Hong Kong">The Chinese University of Hong Kong</option>
+                            <option value="The Education University of Hong Kong">The Education University of Hong Kong</option>
+                            <option value="The Hong Kong Polytechnic University">The Hong Kong Polytechnic University</option>
+                            <option value="The Hong Kong University of Science and Technology">The Hong Kong University of Science and Technology</option>
+                            <option value="The University of Hong Kong">The University of Hong Kong</option>
+                        </datalist>
                 </div>
 
-                <div class="col-xl-4 col-form-label center">
+                <div class="col-xl-3 col-form-label center">
+                    <label>From:</label>
+                    <input type="number" class="form-control" min="1900" max="<%=new Date().getFullYear()%>" placeholder="year (start)" name="syear2" id="syear2">
+                </div>
+
+                <div class="col-xl-3 col-form-label center">
+                    <label>To:</label>
+                    <input type="number" class="form-control" min="1900" max="<%=new Date().getFullYear()%>" placeholder="year (end)" name="eyear2" id="eyear2">
+                </div>
+
+                <div class="col-xl-6 col-form-label center">
                     <label>Certification:</label>
                     <input type="text" class="form-control" placeholder="Enter certification" name="certification2"
                         id="certification2">
                 </div>
 
                 <div class="col-xl-2 col-form-label center">
-                    <label>From:</label>
-                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (start)" name="syear2" id="syear2">
-                </div>
-
-                <div class="col-xl-2 col-form-label center">
-                    <label>To:</label>
-                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (end)" name="eyear2" id="eyear2">
+                    <label>cGPA:</label>
+                    <input type="number" class="form-control" step="0.01" min="0" max="5" placeholder="Optional" name="cgpa2" id="cgpa2">
                 </div>
 
                 <div class="col-xl-4 col-form-label center">
-                    <label>School:</label>
-                    <input type="text" class="form-control" placeholder="Enter school name" name="school3" id="school3" list="optionlist">
-                    <datalist id="optionlist">
-                        <option value="City University of Hong Kong">City University of Hong Kong</option>
-                        <option value="Hong Kong Baptist University">Hong Kong Baptist University</option>
-                        <option value="Lingnan University">Lingnan University</option>
-                        <option value="The Chinese University of Hong Kong">The Chinese University of Hong Kong</option>
-                        <option value="The Education University of Hong Kong">The Education University of Hong Kong</option>
-                        <option value="The Hong Kong Polytechnic University">The Hong Kong Polytechnic University</option>
-                        <option value="The Hong Kong University of Science and Technology">The Hong Kong University of Science and Technology</option>
-                        <option value="The University of Hong Kong">The University of Hong Kong</option>
-                    </datalist>
+                    <label>Honours:</label>
+                    <select name="honours2" class="form-control">
+                        <option value="" class="selectlevel">Default: Do Not Display</option>
+                        <option value="First Class Honours">First Class Honours</option>
+                        <option value="Second Class (Division I) Honours">Second Class (Division I) Honours</option>
+                        <option value="Second Class (Division II) Honours">Second Class (Division II) Honours</option>
+                        <option value="Third Class Honours">Third Class Honours</option>
+                    </select>
                 </div>
-
-                <div class="col-xl-4 col-form-label center">
-                    <label>Certification:</label>
-                    <input type="text" class="form-control" placeholder="Enter certification" name="certification3"
-                        id="certification3">
-                </div>
-
-                <div class="col-xl-2 col-form-label center">
-                    <label>From:</label>
-                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (start)" name="syear3" id="syear3">
-                </div>
-
-                <div class="col-xl-2 col-form-label center">
-                    <label>To:</label>
-                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (end)" name="eyear3" id="eyear3">
-                </div>
-
-                <div class="col-xl-2 col-form-label center">
-                    <label>From:</label>
-                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (start)" name="syear3" id="syear3">
-                </div>
-
-                <div class="col-xl-2 col-form-label center">
-                    <label>To:</label>
-                    <input type="number" class="form-control" min="1900" max=<%=new Date().getFullYear()%> placeholder="year (end)" name="eyear3" id="eyear3">
-                </div>
-
-
-
 
             </div>
             <button type="submit" class="btn btn-primary" style="float:right">Next</button>
