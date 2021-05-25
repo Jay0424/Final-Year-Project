@@ -441,6 +441,8 @@ module.exports = {
             }
             if (uploadedFiles.length === 0) { return res.badRequest('No file was uploaded'); }
 
+            const filename=uploadedFiles[0].filename;
+
             const datauri = require('datauri');
             await User.update(thatUser.id).set({
                 photoname:filename,
